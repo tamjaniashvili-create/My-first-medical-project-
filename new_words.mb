@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v3.5</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); margin: 0; padding: 15px; }
+        .header { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0; }
+        .vocab-card { background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 20px; border: 1px solid #f1f5f9; animation: fadeIn 0.5s ease; }
+        .vocab-card h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; font-size: 20px; }
+        .error { color: #ef4444; background: #fef2f2; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #fee2e2; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin:0; color:var(--primary); font-size:24px;">MEDVOCAB-PRO</h1>
+        <small style="color: #64748b; font-weight: 600; text-transform: uppercase;">Clinical Pharmacology Database</small>
+    </div>
+    
+    <div id="container">მონაცემები იტვირთება...</div>
+
+    <script>
+        const repoBase = 'https://raw.githubusercontent.com/tamjaniashvili/My-first-medical-project-/main/';
+        const possibleFiles = ['new_wods.md', 'new_words.md'];
+
+        async function loadDatabase() {
+            const container = document.getElementById('container');
+            
+            for (let fileName of possibleFiles) {
+                try {
+                    const response = await fetch(repoBase + fileName);
+                    if (!response.ok) continue;
+
+                    const markdown = await response.text();
+                    const sections = markdown.split('---').filter(s => s.trim().length > 10);
+                    
+                    container.innerHTML = '';
+                    sections.forEach(content => {
+                        const card = document.createElement('div');
+                        card.className = 'vocab-card';
+                        card.innerHTML = marked.parse(content);
+                        container.appendChild(card);
+                    });
+                    return; // წარმატების შემთხვევაში წყვეტს ციკლს
+                } catch (e) { console.error(e); }
+            }
+            container.innerHTML = '<div class="error">ხარვეზი: მონაცემთა ბაზა ვერ მოიძებნა. შეამოწმეთ ფაილის სახელი GitHub-ზე.</div>';
+        }
+
+        loadDatabase();
+    </script>
+</body>
+</html>
