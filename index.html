@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro | Clinical Database</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; --text: #1e293b; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 15px; line-height: 1.5; }
+        .header { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 25px; text-align: center; border: 1px solid #e2e8f0; }
+        .vocab-card { background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 20px; border: 1px solid #f1f5f9; transition: transform 0.2s; }
+        .vocab-card:hover { transform: translateY(-5px); }
+        .vocab-card h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; font-size: 22px; }
+        .footer { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 40px; padding-bottom: 20px; }
+        strong { color: #0f172a; }
+        em { color: #64748b; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 style="margin:0; color:var(--primary); font-size:26px; letter-spacing: -0.5px;">MEDVOCAB-PRO</h1>
+    <p style="margin:5px 0 0 0; color: #64748b; font-weight: 500;">პროფესიული კლინიკური ლექსიკონი</p>
+</div>
+
+<div id="vocab-container">იტვირთება მონაცემები...</div>
+
+<div class="footer">
+    MedVocab-Pro v4.0 (Offline Edition) | 2026
+</div>
+
+<script>
+    // ყველა ტერმინი ინახება პირდაპირ აქ. 
+    // ახალი სიტყვის დასამატებლად უბრალოდ ჩაამატეთ ტექსტი --- გამყოფებს შორის.
+    const medicalData = `
+---
+## Therapeutic Index (TI)
+**განმარტება:** ფარმაკოლოგიური მაჩვენებელი, რომელიც განსაზღვრავს პრეპარატის უსაფრთხოებას.
+**ფორმულა:** $$TI = \frac{TD_{50}}{ED_{50}}$$
+*დაბალი TI ნიშნავს, რომ წამლის ტოქსიკური და ეფექტური დოზები ერთმანეთთან ახლოსაა, რაც ზრდის რისკს.*
+
+---
+## Adherence
+**განმარტება:** პაციენტის მიერ მკურნალობის რეჟიმის (დოზირება, მიღების დრო, ხანგრძლივობა) ზუსტი დაცვა. 
+*დაბალი ადჰერენცია ხშირად რეზისტენტობისა და მკურნალობის წარუმატებლობის მიზეზია.*
+
+---
+## Precision
+**განმარტება:** კლინიკური გაზომვების სიზუსტე და შედეგების განმეორებადობა ერთი და იმავე პირობებში.
+
+---
+## Refractory
+**განმარტება:** მდგომარეობა ან დაავადება (მაგ. რეფრაქტერული ეპილეფსია), რომელიც არ რეაგირებს სტანდარტულ მკურნალობაზე.
+
+---
+## Bioavailability
+**განმარტება:** პრეპარატის ის რაოდენობა (პროცენტებში), რომელიც აღწევს სისტემურ ცირკულაციაში და ხდება ბიოლოგიურად ხელმისაწვდომი.
+*ინტრავენური მიღებისას ბიოშეღწევადობა 100%-ია.*
+
+---
+## Clearance
+**განმარტება:** ორგანიზმის უნარი, სრულად გაწმინდოს ბიოლოგიური სითხე (მაგ. პლაზმა) კონკრეტული ნივთიერებისგან დროის ერთეულში.
+
+---
+## Half-life (t½)
+**განმარტება:** დრო, რომელიც საჭიროა სისხლის პლაზმაში პრეპარატის კონცენტრაციის განახევრებისთვის.
+    `;
+
+    function initApp() {
+        const container = document.getElementById('vocab-container');
+        // ტექსტის დაყოფა '---' სიმბოლოებით
+        const sections = medicalData.split('---').filter(s => s.trim().length > 10);
+        
+        container.innerHTML = '';
+        
+        sections.forEach(content => {
+            const card = document.createElement('div');
+            card.className = 'vocab-card';
+            // Markdown-ის გარდაქმნა HTML-ად
+            card.innerHTML = marked.parse(content);
+            container.appendChild(card);
+        });
+    }
+
+    // აპლიკაციის ჩატვირთვა
+    initApp();
+</script>
+
+</body>
+</html>
