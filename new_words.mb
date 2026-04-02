@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v6.0 | Study Mode</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --secondary: #10b981; --bg: #f8fafc; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; }
+        .header { background: white; width: 100%; max-width: 400px; padding: 15px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; }
+        
+        /* ფლეშქარდის სტილი */
+        .card-container { perspective: 1000px; width: 100%; max-width: 400px; height: 300px; margin-bottom: 20px; }
+        .card { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+        .card.flipped { transform: rotateY(180deg); }
+        .front, .back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: white; border-radius: 30px; padding: 30px; box-sizing: border-box;
+            border: 2px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .back { transform: rotateY(180deg); background: #f0f9ff; text-align: left; align-items: flex-start; overflow-y: auto; }
+        
+        .term-title { color: var(--primary); font-size: 28px; margin: 0; text-align: center; }
+        .nav-btns { display: flex; gap: 10px; margin-top: 10px; }
+        button { padding: 12px 25px; border: none; border-radius: 15px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .btn-next { background: var(--primary); color: white; }
+        .btn-speak { background: #eff6ff; color: var(--primary); font-size: 20px; }
+        .quiz-container { display: none; width: 100%; max-width: 400px; background: white; padding: 20px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .option-btn { width: 100%; text-align: left; padding: 15px; margin: 5px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: none; }
+        .option-btn:hover { background: #f8fafc; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1 style="margin:0; color:var(--primary); font-size:22px;">MEDVOCAB-PRO v6.0</h1>
+    <div style="margin-top:10px;">
+        <button onclick="showStudy()" id="study-tab" style="background:var(--primary); color:white;">სწავლა</button>
+        <button onclick="showQuiz()" id="quiz-tab">ქვიზი</button>
+    </div>
+</div>
+
+<div id="study-mode" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <div class="card-container">
+        <div class="card" id="main-card" onclick="this.classList.toggle('flipped')">
+            <div class="front">
+                <h2 class="term-title" id="display-term">Term</h2>
+                <button class="btn-speak" onclick="event.stopPropagation(); speakCurrent()">🔊</button>
+                <p style="font-size:12px; color:#94a3b8; margin-top:30px;">დააჭირეთ გადასაბრუნებლად</p>
+            </div>
+            <div class="back" id="display-def">
+                განმარტება აქ გამოჩნდება...
+            </div>
+        </div>
+    </div>
+    <div class="nav-btns">
+        <button class="btn-next" onclick="prevWord()" style="background:#64748b;">წინა</button>
+        <button class="btn-next" onclick="nextWord()">შემდეგი</button>
+    </div>
+</div>
+
+<div id="quiz-mode" class="quiz-container">
+    <h3 id="quiz-question">რა არის ამ ტერმინის განმარტება?</h3>
+    <div id="quiz-options"></div>
+    <p id="quiz-feedback" style="margin-top:15px; font-weight:bold;"></p>
+</div>
+
+<script>
+    // მონაცემთა ბაზა (შეგიძლიათ აქ ჩაამატოთ ნებისმიერი რაოდენობის სიტყვა)
+    const words = [
+        {
+            term: "Therapeutic Index (TI)",
+            def: "**განმარტება:** ფარმაკოლოგიური მაჩვენებელი, რომელიც განსაზღვრავს პრეპარატის უსაფრთხოებას.<br>**მაგალითი:** Monitoring the **therapeutic index** is vital for drugs with high toxicity risks.",
+            simpleDef: "ფარმაკოლოგიური მაჩვენებელი, რომელიც განსაზღვრავს პრეპარატის უსაფრთხოებას."
+        },
+        {
+            term: "Adherence",
+            def: "**განმარტება:** პაციენტის მიერ მკურნალობის რეჟიმის ზუსტი დაცვა.<br>**მაგალითი:** High levels of **adherence** improve clinical outcomes.",
+            simpleDef: "პაციენტის მიერ მკურნალობის რეჟიმის ზუსტი დაცვა."
+        },
+        {
+            term: "Precision",
+            def: "**განმარტება:** კლინიკური გაზომვების სიზუსტე და განმეორებადობა.<br>**მაგალითი:** High **precision** in laboratory tests is essential for correct diagnosis.",
+            simpleDef: "კლინიკური გაზომვების სიზუსტე და განმეორებადობა."
+        },
+        {
+            term: "Refractory",
+            def: "**განმარტება:** მდგომარეობა, რომელიც არ რეაგირებს მკურნალობაზე.<br>**მაგალითი:** The patient has **refractory** hypertension.",
+            simpleDef: "მდგომარეობა, რომელიც არ რეაგირებს მკურნალობაზე."
+        }
+    ];
+
+    let currentIndex = 0;
+
+    function updateCard() {
+        const card = document.getElementById('main-card');
+        card.classList.remove('flipped');
+        document.getElementById('display-term').innerText = words[currentIndex].term;
+        document.getElementById('display-def').innerHTML = marked.parse(words[currentIndex].def);
+    }
+
+    function nextWord() {
+        currentIndex = (currentIndex + 1) % words.length;
+        updateCard();
+    }
+
+    function prevWord() {
+        currentIndex = (currentIndex - 1 + words.length) % words.length;
+        updateCard();
+    }
+
+    function speakCurrent() {
+        const msg = new SpeechSynthesisUtterance(words[currentIndex].term);
+        msg.lang = 'en-US';
+        window.speechSynthesis.speak(msg);
+    }
+
+    function showStudy() {
+        document.getElementById('study-mode').style.display = 'flex';
+        document.getElementById('quiz-mode').style.display = 'none';
+        document.getElementById('study-tab').style.background = '#2563eb';
+        document.getElementById('study-tab').style.color = 'white';
+        document.getElementById('quiz-tab').style.background = '#e2e8f0';
+        document.getElementById('quiz-tab').style.color = 'black';
+    }
+
+    function showQuiz() {
+        document.getElementById('study-mode').style.display = 'none';
+        document.getElementById('quiz-mode').style.display = 'block';
+        document.getElementById('quiz-tab').style.background = '#2563eb';
+        document.getElementById('quiz-tab').style.color = 'white';
+        document.getElementById('study-tab').style.background = '#e2e8f0';
+        document.getElementById('study-tab').style.color = 'black';
+        loadQuiz();
+    }
+
+    function loadQuiz() {
+        const word = words[Math.floor(Math.random() * words.length)];
+        document.getElementById('quiz-question').innerText = `რა არის "${word.term}"-ის განმარტება?`;
+        const optionsDiv = document.getElementById('quiz-options');
+        optionsDiv.innerHTML = '';
+        document.getElementById('quiz-feedback').innerText = '';
+
+        const options = [word.simpleDef];
+        while(options.length < 3) {
+            let randomDef = words[Math.floor(Math.random() * words.length)].simpleDef;
+            if(!options.includes(randomDef)) options.push(randomDef);
+        }
+        options.sort(() => Math.random() - 0.5);
+
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(opt === word.simpleDef) {
+                    document.getElementById('quiz-feedback').innerText = "✅ სწორია!";
+                    document.getElementById('quiz-feedback').style.color = "green";
+                    setTimeout(loadQuiz, 1500);
+                } else {
+                    document.getElementById('quiz-feedback').innerText = "❌ სცადეთ თავიდან";
+                    document.getElementById('quiz-feedback').style.color = "red";
+                }
+            };
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    updateCard();
+</script>
+</body>
+</html>
