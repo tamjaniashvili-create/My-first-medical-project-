@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v17.0 | Full Control</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --blue: #2563eb; --green: #22c55e; --red: #ef4444; --bg: #f1f5f9; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        
+        /* მენიუ და ჰედერი */
+        header { background: var(--blue); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .menu-content { display: none; position: absolute; right: 10px; background: white; min-width: 180px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); border-radius: 12px; top: 50px; }
+        .menu-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; border-bottom: 1px solid #eee; }
+        .show { display: block; }
+
+        .container { padding: 15px; max-width: 500px; margin: 0 auto; }
+        .page { display: none; }
+        .active-page { display: block; }
+
+        /* ფლეშქარდი */
+        .card-box { perspective: 1000px; height: 280px; cursor: pointer; }
+        .card-inner { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; }
+        .is-flipped { transform: rotateY(180deg); }
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; border: 2px solid #e2e8f0; padding: 20px; box-sizing: border-box; }
+        .card-back { transform: rotateY(180deg); background: #f0f7ff; text-align: left; align-items: flex-start; }
+
+        /* ქვიზი */
+        .quiz-option { padding: 15px; border: 2px solid #e2e8f0; margin-top: 10px; border-radius: 15px; cursor: pointer; transition: 0.3s; background: white; }
+        .correct { border-color: var(--green) !important; background-color: #f0fdf4 !important; }
+        .wrong { border-color: var(--red) !important; background-color: #fef2f2 !important; }
+        
+        .btn-next { background: var(--green); color: white; border: none; padding: 12px 25px; border-radius: 15px; font-weight: bold; cursor: pointer; margin-top: 15px; display: none; width: 100%; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div style="font-weight: bold;">MedVocab-Pro v17.0</div>
+    <div style="cursor:pointer; font-size:25px;" onclick="toggleMenu()">⋮</div>
+    <div id="menu" class="menu-content">
+        <a href="#" onclick="navigate('study')">📚 სწავლა</a>
+        <a href="#" onclick="navigate('quiz')">📝 ქვიზი</a>
+        <a href="#" onclick="navigate('add')">➕ დამატება</a>
+    </div>
+</header>
+
+<div class="container">
+    <div id="page-study" class="page active-page">
+        <div class="card-box" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped'); speakCurrent();">
+            <div class="card-inner">
+                <div class="card-face">
+                    <span id="level-tag" style="background:#fee2e2; color:var(--red); padding:4px 10px; border-radius:10px; font-size:12px; margin-bottom:10px;">C1</span>
+                    <h1 id="card-term" style="margin:0;">Adherence</h1>
+                    <p id="card-ipa" style="color:#64748b; font-style:italic;">/ədˈhɪərəns/</p>
+                    <small>🔊 შეეხეთ</small>
+                </div>
+                <div class="card-face card-back">
+                    <strong>მნიშვნელობა:</strong>
+                    <p id="card-def">მკურნალობის რეჟიმის დაცვა.</p>
+                    <strong>მაგალითი:</strong>
+                    <p id="card-ex" style="font-style:italic;">"Strict adherence is key."</p>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:20px;">
+            <button onclick="changeWord(-1)" style="flex:1; padding:12px; border-radius:12px; border:1px solid #ccc;">⬅️</button>
+            <button onclick="changeWord(1)" style="flex:1; padding:12px; border-radius:12px; border:1px solid #ccc;">➡️</button>
+        </div>
+    </div>
+
+    <div id="page-quiz" class="page">
+        <div style="background:white; padding:20px; border-radius:20px;">
+            <h3 id="q-text" style="margin-top:0;">რას ნიშნავს?</h3>
+            <div id="q-options"></div>
+            <div id="q-feedback" style="text-align:center; margin-top:15px; font-weight:bold;"></div>
+            <button id="btn-next-q" class="btn-next" onclick="startQuiz()">შემდეგი კითხვა ➡️</button>
+        </div>
+    </div>
+
+    <div id="page-add" class="page">
+        <div style="background:white; padding:20px; border-radius:20px;">
+            <h3>➕ ახალი სიტყვა</h3>
+            <input type="text" id="in-term" placeholder="ტერმინი" style="width:100%; padding:10px; margin-bottom:10px; border-radius:10px; border:1px solid #ddd;">
+            <input type="text" id="in-def" placeholder="განმარტება" style="width:100%; padding:10px; margin-bottom:10px; border-radius:10px; border:1px solid #ddd;">
+            <button onclick="saveWord()" style="width:100%; padding:12px; background:var(--blue); color:white; border:none; border-radius:10px;">შენახვა</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let words = JSON.parse(localStorage.getItem('med_v17')) || [
+        { term: "Adherence", ipa: "/ədˈhɪərəns/", level: "C1", def: "მკურნალობის რეჟიმის დაცვა.", ex: "Strict adherence is required." }
+    ];
+    let idx = 0;
+
+    function toggleMenu() { document.getElementById('menu').classList.toggle('show'); }
+    function navigate(p) { 
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active-page'));
+        document.getElementById('page-' + p).classList.add('active-page');
+        if(p === 'quiz') startQuiz();
+        toggleMenu();
+    }
+
+    function changeWord(d) { idx = (idx + d + words.length) % words.length; updateCard(); }
+    function updateCard() {
+        const w = words[idx];
+        document.getElementById('card-term').innerText = w.term;
+        document.getElementById('card-ipa').innerText = w.ipa || "";
+        document.getElementById('card-def').innerText = w.def;
+        document.getElementById('card-ex').innerText = w.ex || "";
+    }
+
+    function speakCurrent() {
+        const m = new SpeechSynthesisUtterance(words[idx].term);
+        m.lang = 'en-US';
+        window.speechSynthesis.speak(m);
+    }
+
+    function startQuiz() {
+        document.getElementById('btn-next-q').style.display = 'none';
+        document.getElementById('q-feedback').innerText = '';
+        const correct = words[Math.floor(Math.random() * words.length)];
+        document.getElementById('q-text').innerText = `რას ნიშნავს "${correct.term}"?`;
+        
+        let opts = [correct.def];
+        while(opts.length < 3 && words.length > 2) {
+            let r = words[Math.floor(Math.random() * words.length)].def;
+            if(!opts.includes(r)) opts.push(r);
+        }
+        opts.sort(() => Math.random() - 0.5);
+
+        const container = document.getElementById('q-options');
+        container.innerHTML = '';
+        opts.forEach(o => {
+            const d = document.createElement('div');
+            d.className = 'quiz-option';
+            d.innerText = o;
+            d.onclick = function() {
+                if(o === correct.def) {
+                    this.classList.add('correct');
+                    document.getElementById('q-feedback').innerHTML = "<span style='color:var(--green)'>✅ სწორია!</span>";
+                    document.getElementById('btn-next-q').style.display = 'block';
+                } else {
+                    this.classList.add('wrong');
+                    document.getElementById('q-feedback').innerHTML = "<span style='color:var(--red)'>❌ სცადეთ კვლავ</span>";
+                }
+            };
+            container.appendChild(d);
+        });
+    }
+
+    function saveWord() {
+        const t = document.getElementById('in-term').value;
+        const d = document.getElementById('in-def').value;
+        if(t && d) {
+            words.push({ term: t, def: d, level: "C2", ipa: "" });
+            localStorage.setItem('med_v17', JSON.stringify(words));
+            alert("დაემატა!");
+            navigate('study');
+        }
+    }
+</script>
+</body>
+</html>
