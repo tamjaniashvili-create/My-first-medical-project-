@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedVocab Pro v2</title>
+
+<style>
+body { font-family: system-ui; background:#f1f5f9; margin:0; padding:15px; text-align:center; }
+.container { max-width:500px; margin:auto; }
+
+.card { background:white; padding:25px; border-radius:20px; margin-bottom:15px; cursor:pointer; }
+button { padding:12px; margin:5px; border:none; border-radius:10px; cursor:pointer; }
+input, textarea { width:100%; padding:10px; margin:5px 0; border-radius:10px; border:1px solid #ccc; }
+
+.hidden { display:none; }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>MEDVOCAB PRO</h2>
+<div id="score">ქულა: 0</div>
+
+<!-- STUDY CARD -->
+<div class="card" onclick="flipCard()">
+    <h3 id="term">...</h3>
+    <div id="details" class="hidden">
+        <p id="ipa"></p>
+        <p id="simple"></p>
+        <p id="def"></p>
+        <p id="example"></p>
+    </div>
+</div>
+
+<button onclick="prev()">⬅</button>
+<button onclick="next()">➡</button>
+
+<hr>
+
+<!-- ADD WORD -->
+<h3>➕ ახალი სიტყვა</h3>
+<input id="new-term" placeholder="Term">
+<input id="new-ipa" placeholder="IPA">
+<input id="new-simple" placeholder="Simple meaning">
+<textarea id="new-def" placeholder="Definition"></textarea>
+<input id="new-example" placeholder="Example sentence">
+<button onclick="addWord()">დამატება</button>
+
+<hr>
+
+<!-- QUIZ -->
+<h3>📝 Quiz</h3>
+<div id="quiz-question"></div>
+<div id="quiz-options"></div>
+<div id="feedback"></div>
+
+<hr>
+
+<!-- IMPORT EXPORT -->
+<button onclick="exportWords()">Export</button>
+<input type="file" onchange="importWords(event)">
+
+</div>
+
+<script>
+
+// DATA
+let words = JSON.parse(localStorage.getItem('words')) || [
+{
+term:"Adherence",
+ipa:"/ədˈhɪərəns/",
+simple:"მკურნალობის დაცვა",
+def:"Patient follows treatment plan correctly",
+example:"Poor adherence leads to complications",
+mistakes:0
+}
+];
+
+let index = 0;
+let score = parseInt(localStorage.getItem('score')) || 0;
+
+// SAVE
+function save() {
+localStorage.setItem('words', JSON.stringify(words));
+localStorage.setItem('score', score);
+}
+
+// CARD
+function update() {
+let w = words[index];
+term.innerText = w.term;
+ipa.innerText = w.ipa;
+simple.innerText = w.simple;
+def.innerText = w.def;
+example.innerText = w.example;
+details.classList.add('hidden');
+scoreDisplay();
+}
+
+function flipCard() {
+details.classList.toggle('hidden');
+}
+
+function next() {
+index = (index+1) % words.length;
+update();
+}
+
+function prev() {
+index = (index-1+words.length) % words.length;
+update();
+}
+
+// ADD
+function addWord() {
+let w = {
+term:document.getElementById('new-term').value,
+ipa:document.getElementById('new-ipa').value,
+simple:document.getElementById('new-simple').value,
+def:document.getElementById('new-def').value,
+example:document.getElementById('new-example').value,
+mistakes:0
+};
+
+if(!w.term || !w.simple) return alert("შეავსე აუცილებელი ველები");
+
+words.push(w);
+save();
+update();
+
+document.querySelectorAll('input, textarea').forEach(e=>e.value='');
+}
+
+// QUIZ
+function loadQuiz() {
+let w = words[Math.floor(Math.random()*words.length)];
+
+quiz-question.innerText = `რა ნიშნავს "${w.term}"?`;
+
+let options = [w.simple];
+while(options.length<3){
+let r = words[Math.floor(Math.random()*words.length)].simple;
+if(!options.includes(r)) options.push(r);
+}
+
+options.sort(()=>Math.random()-0.5);
+quiz-options.innerHTML='';
+
+options.forEach(opt=>{
+let btn = document.createElement('button');
+btn.innerText = opt;
+
+btn.onclick = ()=>{
+if(opt===w.simple){
+score+=10;
+feedback.innerText="სწორია";
+}else{
+w.mistakes++;
+feedback.innerText="არასწორია";
+}
+save();
+scoreDisplay();
+setTimeout(loadQuiz,1000);
+};
+
+quiz-options.appendChild(btn);
+});
+}
+
+function scoreDisplay(){
+document.getElementById('score').innerText = "ქულა: "+score;
+}
+
+// IMPORT EXPORT
+function exportWords(){
+let blob = new Blob([JSON.stringify(words)],{type:"application/json"});
+let a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = "words.json";
+a.click();
+}
+
+function importWords(e){
+let file = e.target.files[0];
+let reader = new FileReader();
+reader.onload = ()=>{
+words = JSON.parse(reader.result);
+save();
+update();
+};
+reader.readAsText(file);
+}
+
+// INIT
+update();
+loadQuiz();
+
+</script>
+</body>
+</html>
