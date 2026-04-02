@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v3.5</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); margin: 0; padding: 15px; }
+        .header { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; border: 1px solid #e2e8f0; }
+        .vocab-card { background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); margin-bottom: 20px; border: 1px solid #f1f5f9; }
+        .vocab-card h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #eff6ff; padding-bottom: 10px; font-size: 20px; }
+        .error { color: #ef4444; background: #fef2f2; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #fee2e2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin:0; color:var(--primary); font-size:24px;">MEDVOCAB-PRO</h1>
+        <small style="color: #64748b; font-weight: 600;">CLINICAL DATABASE</small>
+    </div>
+    <div id="container">იტვირთება...</div>
+
+    <script>
+        const repo = 'https://raw.githubusercontent.com/tamjaniashvili/My-first-medical-project-/main/';
+        const files = ['new_wods.md', 'new_words.md'];
+
+        async function init() {
+            const container = document.getElementById('container');
+            for (let f of files) {
+                try {
+                    const res = await fetch(repo + f);
+                    if (!res.ok) continue;
+                    const text = await res.text();
+                    const sections = text.split('---').filter(s => s.trim().length > 10);
+                    container.innerHTML = '';
+                    sections.forEach(s => {
+                        const card = document.createElement('div');
+                        card.className = 'vocab-card';
+                        card.innerHTML = marked.parse(s);
+                        container.appendChild(card);
+                    });
+                    return;
+                } catch (e) {}
+            }
+            container.innerHTML = '<div class="error">ხარვეზი: მონაცემთა ბაზა ვერ მოიძებნა.</div>';
+        }
+        init();
+    </script>
+</body>
+</html>
