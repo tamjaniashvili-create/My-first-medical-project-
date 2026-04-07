@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>MedVocab-Pro v22.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue: #1d4ed8; --blue-light: #dbeafe; --green: #16a34a; --green-light: #dcfce7;
+  --red: #dc2626; --red-light: #fee2e2; --amber: #d97706; --amber-light: #fef3c7;
+  --purple: #7c3aed; --purple-light: #ede9fe; --bg: #f8fafc; --card: #ffffff;
+  --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --radius: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; max-width: 480px; margin: 0 auto; overflow-x: hidden; }
+header { background: var(--blue); color: white; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 12px rgba(29,78,216,0.2); }
+.header-title { font-family: 'DM Serif Display', serif; font-size: 20px; }
+
+.container { padding: 20px 16px 100px; }
+.page { display: none; animation: fadeIn 0.3s ease; }
+.page.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+/* Flashcard */
+.card-box { perspective: 1200px; height: 360px; cursor: pointer; margin-bottom: 20px; }
+.card-inner { width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; position: relative; }
+.card-inner.flipped { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--radius); padding: 30px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: var(--card); box-shadow: 0 8px 30px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+.card-back { transform: rotateY(180deg); align-items: flex-start; justify-content: flex-start; background: #fafbff; }
+
+.card-term { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--blue); text-align: center; margin: 10px 0; }
+.card-ipa { color: var(--muted); font-size: 16px; margin-bottom: 20px; }
+.level-badge { background: var(--purple-light); color: var(--purple); padding: 4px 12px; border-radius: 99px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+
+/* Navigation Buttons */
+.btn-nav-group { display: flex; gap: 12px; }
+.btn-action { flex: 1; padding: 16px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; font-family: inherit; transition: opacity 0.2s; }
+.btn-prev { background: white; border: 1px solid var(--border); color: var(--text); }
+.btn-next { background: var(--blue); color: white; flex: 1.5; }
+
+/* Bottom Menu */
+.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: white; border-top: 1px solid var(--border); display: flex; z-index: 999; padding-bottom: env(safe-area-inset-bottom); }
+.nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 12px 0; cursor: pointer; color: var(--muted); font-size: 10px; border: none; background: none; }
+.nav-item.active { color: var(--blue); font-weight: 700; }
+.nav-icon { font-size: 22px; margin-bottom: 4px; }
+
+/* Quiz & Forms */
+.quiz-opt { width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 14px; margin-bottom: 10px; text-align: left; background: white; cursor: pointer; font-size: 15px; }
+.quiz-opt.correct { background: var(--green-light); border-color: var(--green); color: var(--green); }
+.quiz-opt.wrong { background: var(--red-light); border-color: var(--red); color: var(--red); }
+.ai-status { padding: 12px; border-radius: 12px; margin-top: 10px; font-size: 14px; display: none; text-align: center; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-title">MedVocab-Pro</div>
+    <div id="page-indicator" style="font-size: 11px; opacity: 0.8;">სწავლა</div>
+  </div>
+  <div style="font-size: 22px;">🇬🇪</div>
+</header>
+
+<div class="container">
+  <div id="page-study" class="page active">
+    <div class="card-box" onclick="flipCard()">
+      <div class="card-inner" id="card-inner">
+        <div class="card-face">
+          <div class="level-badge">MED</div>
+          <div class="card-term" id="c-term">...</div>
+          <div class="card-ipa" id="c-ipa">/ipa/</div>
+          <button class="btn-action" style="background:var(--blue-light); color:var(--blue); padding:8px 20px; font-size:14px; flex:none;" onclick="event.stopPropagation(); speakTerm()">🔊 მოისმინე</button>
+        </div>
+        <div class="card-face card-back">
+          <p style="color:var(--blue); font-weight:700; font-size:11px; text-transform:uppercase;">განმარტება</p>
+          <p id="c-def" style="margin: 10px 0 20px; font-size:16px; line-height:1.5;"></p>
+          <p style="color:var(--green); font-weight:700; font-size:11px; text-transform:uppercase;">ქართულად</p>
+          <p id="c-geo" style="font-size:18px; font-weight:700; color:var(--green);"></p>
+        </div>
+      </div>
+    </div>
+    <div class="btn-nav-group">
+      <button class="btn-action btn-prev" onclick="changeIdx(-1)">⬅️ წინა</button>
+      <button class="btn-action btn-next" onclick="changeIdx(1)">შემდეგი ➡️</button>
+    </div>
+  </div>
+
+  <div id="page-quiz" class="page">
+    <div style="background:white; padding:20px; border-radius:var(--radius); border:1px solid var(--border);">
+      <div id="q-text" style="font-family:'DM Serif Display', serif; font-size:24px; margin-bottom:20px;"></div>
+      <div id="q-options"></div>
+      <button id="btn-next-q" onclick="initQuiz()" style="display:none; width:100%; padding:16px; background:var(--blue); color:white; border:none; border-radius:12px; margin-top:15px; font-weight:700;">შემდეგი კითხვა</button>
+    </div>
+  </div>
+
+  <div id="page-add" class="page">
+    <div style="background:white; padding:24px; border-radius:var(--radius); border:1px solid var(--border);">
+      <h3 style="font-family:'DM Serif Display', serif; margin-bottom:15px;">✨ AI დამატება</h3>
+      <input type="text" id="in-term" placeholder="ტერმინი (ინგლისურად)" style="width:100%; padding:15px; border:1px solid var(--border); border-radius:12px; margin-bottom:10px;">
+      <input type="text" id="in-cat" placeholder="კატეგორია" style="width:100%; padding:15px; border:1px solid var(--border); border-radius:12px; margin-bottom:15px;">
+      <button onclick="generateAI()" style="width:100%; padding:16px; background:var(--blue); color:white; border:none; border-radius:12px; font-weight:700;">🪄 გენერირება</button>
+      <div id="ai-status" class="ai-status"></div>
+    </div>
+  </div>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nav-item active" onclick="navigate('study')"><span class="nav-icon">📚</span>სწავლა</button>
+  <button class="nav-item" onclick="navigate('quiz')"><span class="nav-icon">📝</span>ქვიზი</button>
+  <button class="nav-item" onclick="navigate('add')"><span class="nav-icon">✨</span>დამატება</button>
+</nav>
+
+<script>
+// მონაცემების მიგრაცია v20-დან v22-ში
+let oldWords = JSON.parse(localStorage.getItem('medvocab_v20')) || [];
+let currentWords = JSON.parse(localStorage.getItem('medvocab_v22'));
+
+if (!currentWords && oldWords.length > 0) {
+    currentWords = oldWords;
+    localStorage.setItem('medvocab_v22', JSON.stringify(currentWords));
+}
+
+let words = currentWords || [
+    { term:"Diagnosis", ipa:"/ˌdaɪəɡˈnoʊsɪs/", def:"Identification of a disease from symptoms.", geo:"დიაგნოზი" }
+];
+
+let idx = 0;
+
+function save() { localStorage.setItem('medvocab_v22', JSON.stringify(words)); }
+
+function navigate(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  
+  document.getElementById('page-' + pageId).classList.add('active');
+  const targetNav = Array.from(document.querySelectorAll('.nav-item')).find(el => el.innerText.toLowerCase().includes(pageId === 'add' ? 'დამატება' : pageId === 'quiz' ? 'ქვიზი' : 'სწავლა'));
+  if(targetNav) targetNav.classList.add('active');
+
+  document.getElementById('page-indicator').innerText = pageId === 'study' ? 'სწავლა' : pageId === 'quiz' ? 'ქვიზი' : 'AI დამატება';
+  if(pageId === 'quiz') initQuiz();
+}
+
+function updateView() {
+  if(words.length === 0) return;
+  const w = words[idx];
+  document.getElementById('c-term').innerText = w.term;
+  document.getElementById('c-ipa').innerText = w.ipa || '';
+  document.getElementById('c-def').innerText = w.def;
+  document.getElementById('c-geo').innerText = w.geo;
+  document.getElementById('card-inner').classList.remove('flipped');
+}
+
+function flipCard() { document.getElementById('card-inner').classList.toggle('flipped'); }
+function changeIdx(d) { idx = (idx + d + words.length) % words.length; updateView(); }
+function speakTerm() {
+  const u = new SpeechSynthesisUtterance(words[idx].term);
+  u.lang = 'en-US'; window.speechSynthesis.speak(u);
+}
+
+// QUIZ
+function initQuiz() {
+  if(words.length < 2) { document.getElementById('q-text').innerText = "საჭიროა მინიმუმ 2 სიტყვა"; return; }
+  document.getElementById('btn-next-q').style.display = 'none';
+  const correct = words[Math.floor(Math.random() * words.length)];
+  document.getElementById('q-text').innerText = `რას ნიშნავს "${correct.term}"?`;
+  
+  let options = [correct.geo];
+  while(options.length < 3) {
+    let rand = words[Math.floor(Math.random() * words.length)].geo;
+    if(!options.includes(rand)) options.push(rand);
+  }
+  options.sort(() => Math.random() - 0.5);
+
+  const container = document.getElementById('q-options');
+  container.innerHTML = '';
+  options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerText = opt;
+    btn.onclick = () => {
+      if(opt === correct.geo) btn.classList.add('correct');
+      else btn.classList.add('wrong');
+      document.getElementById('btn-next-q').style.display = 'block';
+      Array.from(container.children).forEach(b => b.onclick = null);
+    };
+    container.appendChild(btn);
+  });
+}
+
+// AI GENERATE
+async function generateAI() {
+  const term = document.getElementById('in-term').value.trim();
+  const cat = document.getElementById('in-cat').value.trim() || 'General';
+  const status = document.getElementById('ai-status');
+  if(!term) return;
+
+  status.style.display = 'block';
+  status.innerText = "🤖 Gemini ამუშავებს...";
+  status.style.background = 'var(--amber-light)';
+  status.style.color = 'var(--amber)';
+
+  try {
+    const res = await fetch('/api/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ word: term, category: cat })
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error();
+
+    words.push({ term, ipa: data.ipa, def: data.definition, geo: data.georgian });
+    save();
+    status.innerText = "✅ წარმატებით დაემატა!";
+    status.style.background = 'var(--green-light)';
+    status.style.color = 'var(--green)';
+    document.getElementById('in-term').value = '';
+    setTimeout(() => { idx = words.length - 1; updateView(); navigate('study'); }, 1500);
+  } catch(e) {
+    status.innerText = "❌ შეცდომა (შეამოწმეთ API Key Vercel-ზე)";
+    status.style.background = 'var(--red-light)';
+    status.style.color = 'var(--red)';
+  }
+}
+
+updateView();
+</script>
+</body>
+</html>
