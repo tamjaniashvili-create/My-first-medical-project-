@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>MedVocab-Pro v24.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root { --blue: #1d4ed8; --card: #ffffff; --border: #e2e8f0; --text: #0f172a; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'DM Sans', sans-serif; }
+body { background: #f8fafc; max-width: 480px; margin: 0 auto; min-height: 100vh; }
+.container { padding: 20px; padding-bottom: 100px; }
+.page { display: none; }
+.page.active { display: block; }
+.card { background: white; padding: 40px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); text-align: center; margin-bottom: 20px; }
+.bottom-nav { position: fixed; bottom: 0; width: 100%; max-width: 480px; background: white; border-top: 1px solid var(--border); display: flex; padding: 15px; }
+.nav-item { flex: 1; text-align: center; cursor: pointer; color: #64748b; font-size: 12px; }
+.nav-item.active { color: var(--blue); font-weight: bold; }
+</style>
+</head>
+<body>
+
+<header style="background:var(--blue); color:white; padding:20px; text-align:center;">
+    <div style="font-family:'DM Serif Display'; font-size:20px;">MedVocab-Pro</div>
+</header>
+
+<div class="container">
+    <div id="page-study" class="page active">
+        <div class="card" id="word-card">
+            <h2 id="c-term" style="font-family:'DM Serif Display'; font-size:32px; color:var(--blue);">Loading...</h2>
+            <p id="c-geo" style="margin-top:15px; font-size:18px; color:#16a34a; font-weight:bold;"></p>
+        </div>
+        <button onclick="changeIdx(1)" style="width:100%; padding:15px; background:var(--blue); color:white; border:none; border-radius:12px; font-weight:bold;">შემდეგი ➡️</button>
+    </div>
+
+    <div id="page-quiz" class="page">
+        <div id="q-content" class="card"></div>
+    </div>
+
+    <div id="page-add" class="page">
+        <div class="card">
+            <input type="text" id="in-term" placeholder="ინგლისური სიტყვა" style="width:100%; padding:12px; margin-bottom:10px;">
+            <button onclick="askAI()" style="width:100%; padding:12px; background:var(--blue); color:white; border:none;">🪄 დამატება</button>
+            <div id="status" style="margin-top:10px; font-size:14px;"></div>
+        </div>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <div class="nav-item active" onclick="show('study')">📚 სწავლა</div>
+    <div class="nav-item" onclick="show('quiz')">📝 ქვიზი</div>
+    <div class="nav-item" onclick="show('add')">✨ დამატება</div>
+</nav>
+
+<script>
+// 1. მონაცემთა აღდგენის მექანიზმი
+let words = JSON.parse(localStorage.getItem('medvocab_v24')) || 
+            JSON.parse(localStorage.getItem('medvocab_v22')) || 
+            [{term:"Diagnosis", geo:"დიაგნოზი"}];
+let idx = 0;
+
+function show(p) {
+    document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('page-'+p).classList.add('active');
+    event.currentTarget.classList.add('active');
+    if(p === 'quiz') startQuiz();
+}
+
+function updateView() {
+    document.getElementById('c-term').innerText = words[idx].term;
+    document.getElementById('c-geo').innerText = words[idx].geo;
+}
+
+function changeIdx(d) { idx = (idx + d + words.length) % words.length; updateView(); }
+
+function startQuiz() {
+    if(words.length < 2) { document.getElementById('q-content').innerHTML = "საჭიროა 2+ სიტყვა!"; return; }
+    let w = words[Math.floor(Math.random() * words.length)];
+    document.getElementById('q-content').innerHTML = `რას ნიშნავს "${w.term}"?<br><br><b>${w.geo}</b>`;
+}
+
+async function askAI() {
+    const term = document.getElementById('in-term').value;
+    const s = document.getElementById('status');
+    s.innerText = "🤖 Gemini ამუშავებს...";
+    try {
+        const res = await fetch('/api/generate', {
+            method: 'POST',
+            body: JSON.stringify({ word: term })
+        });
+        const data = await res.json();
+        words.push({ term: term, geo: data.georgian });
+        localStorage.setItem('medvocab_v24', JSON.stringify(words));
+        s.innerText = "✅ დაემატა!";
+        updateView();
+    } catch(e) { s.innerText = "❌ შეცდომა. შეამოწმეთ Vercel API Key!"; }
+}
+
+updateView();
+</script>
+</body>
+</html>
