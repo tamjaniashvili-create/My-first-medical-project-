@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>MedVocab-Pro v19.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div>
+            <div class="header-title">MedVocab-Pro</div>
+            <div class="header-sub">Advanced Medical Glossary</div>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div id="dropdown" class="dropdown">
+        <a onclick="navigate('study')">📖 სწავლა</a>
+        <a onclick="navigate('add')">➕ დამატება</a>
+    </div>
+
+    <div class="container">
+        <div id="page-study" class="page active">
+            <div class="progress-label">
+                <span>პროგრესი</span>
+                <span id="progress-text">1/1</span>
+            </div>
+            <div class="progress-bar-wrap">
+                <div id="progress-fill" class="progress-bar-fill" style="width: 100%"></div>
+            </div>
+            
+            <div class="card-box" onclick="flipCard()">
+                <div id="card-inner" class="card-inner">
+                    <div class="card-face">
+                        <div id="c-level" class="level-badge">MED</div>
+                        <div id="c-term" class="card-term">Term</div>
+                        <div id="c-ipa" class="card-ipa">/pronunciation/</div>
+                        <button class="speak-btn" onclick="event.stopPropagation(); speak()">🔊 მოსმენა</button>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="back-label">განმარტება</div>
+                        <div id="c-def" class="back-def">Definition...</div>
+                        <div class="divider"></div>
+                        <div class="back-label">ქართულად</div>
+                        <div id="c-geo" class="back-geo">თარგმანი...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-btns">
+                <button class="btn-side" onclick="prev()">◀</button>
+                <button class="btn-side" onclick="next()">▶</button>
+            </div>
+        </div>
+
+        <div id="page-add" class="page">
+            <div class="add-card">
+                <h3>ახალი ტერმინი</h3>
+                <input type="text" id="in-term" placeholder="მაგ: Homeostasis">
+                <div id="ai-status" class="ai-status">მზად არის</div>
+                <button id="btn-save" class="btn" onclick="saveWordWithAI()">🤖 დამატება Gemini AI-ით</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <button class="nav-item active" onclick="navigate('study')">📖<span>სწავლა</span></button>
+        <button class="nav-item" onclick="navigate('add')">➕<span>დამატება</span></button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
