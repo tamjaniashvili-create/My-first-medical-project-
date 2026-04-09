@@ -1,0 +1,142 @@
+:root {
+  --blue: #1d4ed8;
+  --blue-light: #dbeafe;
+  --green: #16a34a;
+  --green-light: #dcfce7;
+  --red: #dc2626;
+  --red-light: #fee2e2;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --radius: 20px;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+header {
+  background: var(--blue);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-title { font-family: 'DM Serif Display', serif; font-size: 22px; }
+.header-sub { font-size: 11px; opacity: 0.8; }
+
+.container { padding: 20px 16px 100px; }
+
+/* გვერდების მართვა */
+.page { display: none; animation: fadeIn 0.3s ease; }
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ბარათის დიზაინი (ფლეშ-ბარათი) */
+.card-box { perspective: 1000px; height: 350px; margin-bottom: 25px; cursor: pointer; }
+.card-inner { 
+  width: 100%; height: 100%; 
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+  transform-style: preserve-3d; 
+  position: relative; 
+}
+.card-inner.flipped { transform: rotateY(180deg); }
+
+.card-face {
+  position: absolute; width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius);
+  background: var(--card);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  padding: 30px;
+  border: 1px solid var(--border);
+}
+
+.card-back { 
+    transform: rotateY(180deg); 
+    align-items: flex-start; 
+    justify-content: flex-start; 
+    overflow-y: auto;
+}
+
+.card-term { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--blue); margin-bottom: 10px; }
+.card-ipa { font-size: 18px; color: var(--muted); margin-bottom: 20px; }
+
+/* ბარათის უკანა მხარის ტექსტები */
+.back-label { font-size: 10px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 5px; letter-spacing: 1px; }
+.back-def { font-size: 16px; margin-bottom: 15px; color: var(--text); }
+.back-geo { font-size: 18px; color: var(--green); font-weight: 600; }
+.divider { width: 100%; height: 1px; background: var(--border); margin: 15px 0; }
+
+/* ქვიზის სექცია */
+.quiz-card { background: white; padding: 25px; border-radius: var(--radius); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.quiz-question { font-size: 20px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+.q-options-grid { display: flex; flex-direction: column; gap: 10px; }
+.quiz-feedback { margin-top: 15px; padding: 10px; border-radius: 10px; text-align: center; font-weight: 600; }
+
+/* ღილაკები და ინპუტები */
+.btn {
+  width: 100%; padding: 16px; border-radius: 14px;
+  border: none; background: var(--blue); color: white;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:active { transform: scale(0.98); opacity: 0.9; }
+
+input {
+  width: 100%; padding: 14px; border-radius: 12px;
+  border: 2px solid var(--border); margin-bottom: 16px;
+  font-size: 16px; outline: none; transition: border-color 0.2s;
+}
+input:focus { border-color: var(--blue); }
+
+/* ქვედა მენიუ */
+.bottom-nav {
+  position: fixed; bottom: 0; width: 100%; max-width: 480px;
+  background: white; display: flex; border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-item {
+  flex: 1; padding: 12px 5px; text-align: center; border: none;
+  background: none; color: var(--muted); cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; font-size: 11px;
+}
+.nav-item.active { color: var(--blue); font-weight: 700; }
+.nav-item span { margin-top: 4px; }
+
+/* სტატუსები */
+.ai-status { padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; font-size: 14px; }
+.loading { background: var(--blue-light); color: var(--blue); }
+.success { background: var(--green-light); color: var(--green); }
+.error { background: var(--red-light); color: var(--red); }
+
+/* პროგრეს ბარი */
+.progress-bar-wrap { width: 100%; height: 6px; background: var(--border); border-radius: 3px; margin: 10px 0 20px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--blue); transition: width 0.3s ease; }
