@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro</title>
+    <style>
+        :root { --primary: #2563eb; --success: #22c55e; --danger: #ef4444; --bg: #f8fafc; }
+        body { font-family: -apple-system, sans-serif; background: var(--bg); margin: 0; padding-bottom: 70px; direction: ltr; }
+        .header { background: var(--primary); color: white; padding: 15px; text-align: center; }
+        .section-header { text-align: center; color: var(--primary); font-weight: bold; margin: 10px 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+        .search-area { padding: 10px; display: flex; gap: 8px; background: white; }
+        .search-input { flex: 1; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 16px; }
+        .page { display: none; padding: 15px; }
+        .active { display: block; }
+        .card { background: white; border-radius: 20px; min-height: 280px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); perspective: 1000px; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; min-height: 280px; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; border-radius: 20px; }
+        .card-back { transform: rotateY(180deg); background: #f1f5f9; }
+        .quiz-option { width: 100%; padding: 18px; margin: 10px 0; border: 2px solid #e2e8f0; border-radius: 15px; background: white; font-size: 17px; cursor: pointer; transition: 0.3s; }
+        .correct { background-color: #dcfce7 !important; border-color: var(--success) !important; color: #166534; font-weight: bold; }
+        .wrong { background-color: #fee2e2 !important; border-color: var(--danger) !important; color: #991b1b; }
+        .nav-btns { display: flex; justify-content: space-between; margin-top: 20px; gap: 15px; }
+        .n-btn { flex: 1; padding: 15px; border: none; border-radius: 12px; background: white; font-size: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #e2e8f0; height: 65px; }
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: #64748b; }
+        .nav-item.active { color: var(--primary); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="header"><h1 style="margin:0; font-size: 20px;">MedVocab-Pro</h1></div>
+    <div id="page-study" class="page active">
+        <div class="search-area">
+            <input type="text" id="term-search" placeholder="🔍 ძებნა..." class="search-input">
+            <button onclick="startVoiceSearch()" style="background:var(--primary); color:white; border:none; border-radius:10px; padding:0 15px;">🎤</button>
+        </div>
+        <div class="section-header" id="letter-header">Section</div>
+        <div id="progress-text" style="text-align:center; font-size:12px; color:#64748b; margin-bottom:5px;">0/0</div>
+        <div class="card" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front">
+                    <h2 id="c-term" style="font-size: 28px; margin: 10px 0;">...</h2>
+                    <p id="c-ipa" style="color: #64748b; font-size: 18px;"></p>
+                    <button onclick="event.stopPropagation(); speak();" style="border: 1px solid #e2e8f0; background:none; padding:8px 15px; border-radius:20px;">🔊 მოსმენა</button>
+                </div>
+                <div class="card-back">
+                    <p id="c-def" style="text-align:center; padding:0 10px;"></p>
+                    <hr style="width:80%; margin:15px 0;">
+                    <p id="c-geo" style="font-size:20px; font-weight:bold; color:var(--success);"></p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-btns"><button onclick="prev()" class="n-btn">◀</button><button onclick="next()" class="n-btn">▶</button></div>
+    </div>
+    <div id="page-quiz" class="page">
+        <h2 id="q-question" style="text-align:center;"></h2>
+        <div id="q-options"></div>
+        <button id="btn-next-q" onclick="nextQuestion()" style="display:none; width:100%; background:var(--primary); color:white; border:none; padding:15px; border-radius:12px; margin-top:20px; font-weight:bold;">შემდეგი</button>
+    </div>
+    <div id="page-add" class="page">
+        <input type="text" id="in-term" placeholder="ახალი სიტყვა..." class="search-input" style="width:100%; margin-bottom:15px;">
+        <button onclick="saveWordWithAI()" style="width:100%; background:var(--primary); color:white; border:none; padding:15px; border-radius:12px; font-weight:bold;">🤖 დამატება AI-თ</button>
+        <p id="ai-status" style="text-align:center; color:#64748b;"></p>
+    </div>
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="nav-study" onclick="navigate('study')">📖<span>სწავლა</span></div>
+        <div class="nav-item" id="nav-quiz" onclick="navigate('quiz')">🧠<span>ქვიზი</span></div>
+        <div class="nav-item" id="nav-add" onclick="navigate('add')">➕<span>დამატება</span></div>
+    </nav>
+    <script src="app.js"></script>
+</body>
+</html>
