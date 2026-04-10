@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v2.2</title>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; }
+        body { font-family: sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
+        .header { background: var(--primary); color: white; padding: 20px; text-align: center; }
+        .page { display: none; padding: 20px; }
+        .active { display: block; }
+        .card { background: white; border-radius: 20px; min-height: 300px; perspective: 1000px; margin: 20px 0; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s; transform-style: preserve-3d; min-height: 300px; cursor: pointer; }
+        .card-inner.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; border-radius: 20px; border: 1px solid #ddd; box-sizing: border-box; }
+        .card-back { transform: rotateY(180deg); background: #f1f5f9; }
+        .quiz-option { width: 100%; padding: 15px; margin: 5px 0; border: 1px solid #ddd; border-radius: 10px; background: white; text-align: left; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #ddd; height: 70px; }
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: #64748b; cursor: pointer; }
+        .nav-item.active { color: var(--primary); font-weight: bold; }
+        .btn-action { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; width: 100%; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="header"><h3>MedVocab-Pro v2.2</h3></header>
+
+    <div id="page-study" class="page active">
+        <div id="progress-text" style="text-align: center;">0 / 0</div>
+        <div class="card" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front">
+                    <h1 id="c-term">...</h1>
+                    <p id="c-ipa" style="color:var(--primary)"></p>
+                    <button onclick="event.stopPropagation(); speak();">🔊 Pronounce</button>
+                </div>
+                <div class="card-back">
+                    <p id="c-def" style="text-align: center;"></p>
+                    <h3 id="c-geo" style="color:var(--primary)"></h3>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="prev()" class="btn-action" style="background: #64748b;">Back</button>
+            <button onclick="next()" class="btn-action">Next</button>
+        </div>
+    </div>
+
+    <div id="page-quiz" class="page">
+        <h3 id="q-question">...</h3>
+        <div id="q-options"></div>
+        <button id="btn-next-q" onclick="nextQuestion()" class="btn-action" style="display:none; background:#22c55e;">შემდეგი</button>
+    </div>
+
+    <div id="page-glossary" class="page">
+        <div id="glossary-list"></div>
+    </div>
+
+    <div id="page-add" class="page">
+        <div style="background: white; padding: 20px; border-radius: 15px;">
+            <h4>სისტემის განახლება</h4>
+            <input type="text" id="in-term" placeholder="RESET" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <button onclick="saveWordWithAI()" class="btn-action">Action</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="nav-study" onclick="navigate('study')">📖 სწავლა</div>
+        <div class="nav-item" id="nav-quiz" onclick="navigate('quiz')">🧠 ქვიზი</div>
+        <div class="nav-item" id="nav-glossary" onclick="navigate('glossary')">📚 ლექსიკონი</div>
+        <div class="nav-item" id="nav-add" onclick="navigate('add')">⚙️ მართვა</div>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
