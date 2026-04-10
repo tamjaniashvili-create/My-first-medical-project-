@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* სწრაფი ფიქსი ვიზუალისთვის */
+        .search-container {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: #f8fafc;
+        }
+        .search-input {
+            flex: 1; /* ეს აფართოებს ველს მთელ სიგანეზე */
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-input:focus { border-color: #2563eb; }
+        
+        .add-form-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .input-label {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: -10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>MedVocab-Pro</h1>
+        <p>Advanced Academic & Medical Glossary</p>
+    </header>
+
+    <div id="page-study" class="page active">
+        <div class="search-container">
+            <input type="text" id="term-search" placeholder="🔍 მოძებნე ტერმინი..." class="search-input">
+            <button onclick="startVoiceSearch()" class="voice-btn">🎤</button>
+        </div>
+        
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        <p id="progress-text" style="text-align:center; margin-top:5px;">0/0</p>
+
+        <div class="card" onclick="flipCard()">
+            <div class="card-inner" id="card-inner">
+                <div class="card-front">
+                    <span class="tag">C1/MED</span>
+                    <h2 id="c-term">იტვირთება...</h2>
+                    <p id="c-ipa" class="ipa"></p>
+                    <button onclick="event.stopPropagation(); speak();" class="speak-btn">🔊 მოსმენა</button>
+                </div>
+                <div class="card-back">
+                    <h3 style="color: #2563eb;">განმარტება:</h3>
+                    <p id="c-def"></p>
+                    <hr>
+                    <h3 style="color: #059669;">ქართულად:</h3>
+                    <p id="c-geo" style="font-size: 1.2rem; font-weight: bold;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="prev()" class="nav-btn">◀</button>
+            <button onclick="next()" class="nav-btn">▶</button>
+        </div>
+    </div>
+
+    <div id="page-add" class="page">
+        <div class="add-form-container">
+            <label class="input-label">ახალი ტერმინი:</label>
+            <input type="text" id="in-term" placeholder="მაგალითად: Paradox" class="search-input">
+            
+            <button onclick="saveWordWithAI()" class="btn-primary" style="background: #2563eb; color: white; padding: 15px; border-radius: 10px; border: none; font-size: 17px; font-weight: bold; cursor: pointer;">
+                🤖 Gemini AI გენერირება
+            </button>
+            
+            <p id="ai-status" style="text-align: center; color: #64748b;"></p>
+        </div>
+    </div>
+
+    <div id="page-quiz" class="page">
+        <div class="quiz-container" style="padding: 20px;">
+            <h2 id="q-question" style="text-align: center; margin-bottom: 20px;"></h2>
+            <div id="q-options" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            <p id="q-feedback" style="text-align: center; margin-top: 20px; font-weight: bold;"></p>
+            <button id="btn-next-q" onclick="nextQuestion()" class="btn-primary" style="display:none; margin-top: 20px; background: #059669;">შემდეგი კითხვა</button>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="nav-study" onclick="navigate('study')">📖<span>სწავლა</span></div>
+        <div class="nav-item" id="nav-quiz" onclick="navigate('quiz')">🧠<span>ქვიზი</span></div>
+        <div class="nav-item" id="nav-add" onclick="navigate('add')">➕<span>დამატება</span></div>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
