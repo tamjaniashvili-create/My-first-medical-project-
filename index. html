@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedVocab-Pro v7.5 | Full Edition</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root { --primary: #2563eb; --bg: #f8fafc; }
+        body { font-family: system-ui, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
+        .header { background: var(--primary); color: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .page { display: none; padding: 20px; animation: fadeIn 0.3s; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* ბარათის სტილი */
+        .card-container { perspective: 1000px; width: 100%; max-width: 400px; height: 350px; margin: 20px auto; }
+        .card { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+        .card.flipped { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; background: white; border-radius: 25px; padding: 25px; box-sizing: border-box; border: 1px solid #e2e8f0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .back { transform: rotateY(180deg); background: #f0f9ff; text-align: left; align-items: flex-start; overflow-y: auto; }
+        
+        /* მენიუ */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #ddd; height: 70px; z-index: 1000; }
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 12px; color: #64748b; cursor: pointer; }
+        .nav-item.active { color: var(--primary); font-weight: bold; }
+        
+        /* ღილაკები */
+        .btn-action { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 12px; width: 100%; font-weight: bold; margin-top: 10px; cursor: pointer; }
+        .quiz-option { width: 100%; text-align: left; padding: 15px; margin: 8px 0; border: 1px solid #e2e8f0; border-radius: 12px; background: white; cursor: pointer; }
+        .glossary-item { background: white; padding: 15px; margin-bottom: 10px; border-radius: 12px; border: 1px solid #e2e8f0; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h3 style="margin:0;">MEDVOCAB-PRO v7.5</h3>
+        <small id="progress-text">იტვირთება...</small>
+    </header>
+
+    <div id="page-study" class="page active">
+        <div class="card-container">
+            <div class="card" id="main-card" onclick="this.classList.toggle('flipped')">
+                <div class="front">
+                    <h2 id="display-term" style="color:var(--primary); font-size:28px; text-align:center;">...</h2>
+                    <button onclick="event.stopPropagation(); speak();" style="background:none; border:none; font-size:40px; cursor:pointer; margin-top:20px;">🔊</button>
+                    <p style="font-size:12px; color:#94a3b8; margin-top:20px;">დააჭირეთ გადასაბრუნებლად</p>
+                </div>
+                <div class="back" id="display-def"></div>
+            </div>
+        </div>
+        <div style="display: flex; gap: 10px; max-width:400px; margin:auto;">
+            <button onclick="prev()" class="btn-action" style="background:#64748b;">წინა</button>
+            <button onclick="next()" class="btn-action">შემდეგი</button>
+        </div>
+    </div>
+
+    <div id="page-quiz" class="page">
+        <div style="max-width:400px; margin:auto;">
+            <h3 id="q-question">...</h3>
+            <div id="q-options"></div>
+            <p id="q-feedback" style="text-align:center; font-weight:bold; margin-top:15px;"></p>
+        </div>
+    </div>
+
+    <div id="page-glossary" class="page">
+        <div id="glossary-list" style="max-width:400px; margin:auto;"></div>
+    </div>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="nav-study" onclick="navigate('study')">📖 სწავლა</div>
+        <div class="nav-item" id="nav-quiz" onclick="navigate('quiz')">🧠 ქვიზი</div>
+        <div class="nav-item" id="nav-glossary" onclick="navigate('glossary')">📚 ბიბლიოთეკა</div>
+    </nav>
+
+    <script>
+        let words = [];
+        let idx = 0;
+
+        // 1. მონაცემების ჩატვირთვა
+        async function loadData() {
+            try {
+                // ვცდილობთ წავიკითხოთ words.json
+                const response = await fetch('./words.json');
+                if (!response.ok) throw new Error("JSON ვერ მოიძებნა");
+                words = await response.json();
+                updateView();
+            } catch (err) {
+                document.getElementById('display-term').innerText = "შეცდომა!";
+                document.getElementById('display-def').innerText = "დარწმუნდით, რომ words.json არსებობს და სწორია.";
+                console.error(err);
+            }
+        }
+
+        function updateView() {
+            if (words.length === 0) return;
+            const w = words[idx];
+            document.getElementById('main-card').classList.remove('flipped');
+            document.getElementById('display-term').innerText = w.term;
+            document.getElementById('display-def').innerHTML = marked.parse(w.def);
+            document.getElementById('progress-text').innerText = `${idx + 1} / ${words.length} სიტყვა`;
+        }
+
+        // ფუნქციები
+        function next() { idx = (idx + 1) % words.length; updateView(); }
+        function prev() { idx = (idx - 1 + words.length) % words.length; updateView(); }
+        
+        function speak() {
+            window.speechSynthesis.cancel();
+            const m = new SpeechSynthesisUtterance(words[idx].term);
+            m.lang = 'en-US';
+            window.speechSynthesis.speak(m);
+        }
+
+        function navigate(pId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            document.getElementById('page-' + pId).classList.add('active');
+            document.getElementById('nav-' + pId).classList.add('active');
+            if (pId === 'quiz') startQuiz();
+            if (pId === 'glossary') renderGlossary();
+        }
+
+        // ქვიზი
+        function startQuiz() {
+            if (words.length < 2) return;
+            const correct = words[Math.floor(Math.random() * words.length)];
+            document.getElementById('q-question').innerText = `რა არის "${correct.term}"?`;
+            const optionsDiv = document.getElementById('q-options');
+            optionsDiv.innerHTML = '';
+            document.getElementById('q-feedback').innerText = '';
+
+            let opts = [correct.simpleDef];
+            while(opts.length < 3) {
+                let r = words[Math.floor(Math.random() * words.length)].simpleDef;
+                if(!opts.includes(r)) opts.push(r);
+            }
+            opts.sort(() => Math.random() - 0.5);
+
+            opts.forEach(o => {
+                const b = document.createElement('button');
+                b.className = 'quiz-option';
+                b.innerText = o;
+                b.onclick = () => {
+                    if(o === correct.simpleDef) {
+                        document.getElementById('q-feedback').innerText = "✅ სწორია!";
+                        setTimeout(startQuiz, 1000);
+                    } else {
+                        document.getElementById('q-feedback').innerText = "❌ სცადეთ თავიდან";
+                    }
+                };
+                optionsDiv.appendChild(b);
+            });
+        }
+
+        // ბიბლიოთეკა
+        function renderGlossary() {
+            const container = document.getElementById('glossary-list');
+            container.innerHTML = '';
+            words.forEach((w, i) => {
+                const div = document.createElement('div');
+                div.className = 'glossary-item';
+                div.innerHTML = `<strong>${w.term}</strong><br><small>${w.simpleDef}</small>`;
+                div.onclick = () => { idx = i; navigate('study'); };
+                container.appendChild(div);
+            });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
