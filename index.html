@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedVocab-Pro v12.0</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f1f5f9;
+      --success: #22c55e;
+      --error: #ef4444;
+      --text: #1e293b;
+    }
+
+    body {
+      margin: 0;
+      padding-bottom: 80px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .header {
+      background: var(--primary);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .page {
+      display: none;
+      padding: 15px;
+      max-width: 520px;
+      margin: auto;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .card, .box {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      margin-top: 15px;
+    }
+
+    .card {
+      min-height: 260px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    h1 {
+      color: var(--primary);
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .ipa {
+      color: #64748b;
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .meaning {
+      display: none;
+      margin-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 20px;
+    }
+
+    .geo {
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 15px;
+      border-radius: 12px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .btn-main {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-sec {
+      background: white;
+      border: 1px solid #cbd5e1;
+      color: var(--text);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+      width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .controls button {
+      flex: 1;
+    }
+
+    input, textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 90px;
+    }
+
+    .list-item {
+      background: white;
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 14px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .quiz-option {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      background: white;
+      border: 1px solid #cbd5e1;
+      text-align: left;
+    }
+
+    .correct {
+      background: #dcfce7;
+      border: 1px solid #22c55e;
+    }
+
+    .wrong {
+      background: #fee2e2;
+      border: 1px solid #ef4444;
+    }
+
+    .nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 70px;
+      background: white;
+      display: flex;
+      border-top: 1px solid #e2e8f0;
+      z-index: 20;
+    }
+
+    .nav-item {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+      font-weight: bold;
+      border-top: 3px solid var(--primary);
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <h2 style="margin:0;">MedVocab-Pro v12.0</h2>
+  <small id="stat">Loading...</small>
+</header>
+
+<section id="p-study" class="page active">
+  <div class="card" onclick="toggleMeaning()">
+    <h1 id="term">...</h1>
+    <div class="ipa" id="ipa"></div>
+
+    <div class="meaning" id="meaning">
+      <p id="def"></p>
+      <div class="geo" id="geo"></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn-sec" onclick="prev()">წინა</button>
+    <button class="btn-sec" onclick="speak()">🔊</button>
+    <button class="btn-main" onclick="next()">შემდეგი</button>
+  </div>
+</section>
+
+<section id="p-list" class="page">
+  <input id="search" placeholder="ძებნა..." oninput="renderList()">
+  <div id="list"></div>
+</section>
+
+<section id="p-quiz" class="page">
+  <div class="box">
+    <h3>Quiz რეჟიმი</h3>
+    <p id="quiz-question"></p>
+    <div id="quiz-options"></div>
+    <p id="quiz-result"></p>
+    <button class="btn-main" style="width:100%;" onclick="newQuiz()">შემდეგი კითხვა</button>
+  </div>
+</section>
+
+<section id="p-manage" class="page">
+  <div class="box">
+    <h3>ახალი ტერმინი</h3>
+
+    <input id="new-term" placeholder="სიტყვა">
+    <input id="new-ipa" placeholder="ტრანსკრიპცია">
+    <textarea id="new-def" placeholder="ინგლისური განმარტება"></textarea>
+    <input id="new-geo" placeholder="ქართული თარგმანი">
+
+    <button class="btn-success" onclick="addWord()">დამატება</button>
+
+    <hr>
+
+    <button class="btn-sec" style="width:100%; margin-bottom:10px;" onclick="exportData()">Export JSON</button>
+    <input type="file" accept=".json" onchange="importData(event)">
+  </div>
+</section>
+
+<nav class="nav">
+  <div class="nav-item active" id="n-study" onclick="nav('study')">📖 სწავლა</div>
+  <div class="nav-item" id="n-list" onclick="nav('list')">📚 სია</div>
+  <div class="nav-item" id="n-quiz" onclick="nav('quiz')">🧠 Quiz</div>
+  <div class="nav-item" id="n-manage" onclick="nav('manage')">⚙️ მართვა</div>
+</nav>
+
+<script>
+  let words = [];
+  let index = 0;
+  let quizAnswer = "";
+
+  async function init() {
+    const saved = localStorage.getItem("my_med_vocab_v12");
+
+    if (saved) {
+      words = JSON.parse(saved);
+      show();
+      return;
+    }
+
+    try {
+      const res = await fetch("words.json");
+      words = await res.json();
+      save();
+      show();
+    } catch (e) {
+      words = [
+        {
+          term: "Adherence",
+          ipa: "/ədˈhɪərəns/",
+          def: "Following medical advice or a treatment plan correctly.",
+          geo: "მკურნალობის რეკომენდაციის დაცვა"
+        }
+      ];
+      save();
+      show();
+    }
+  }
+
+  function save() {
+    words = words
+      .filter(w => w && w.term)
+      .map(w => ({
+        term: String(w.term || "").trim(),
+        ipa: String(w.ipa || "").trim(),
+        def: String(w.def || "").trim(),
+        geo: String(w.geo || "").trim()
+      }));
+
+    words = Array.from(
+      new Map(words.map(w => [w.term.toLowerCase(), w])).values()
+    );
+
+    words.sort((a, b) => a.term.localeCompare(b.term));
+    localStorage.setItem("my_med_vocab_v12", JSON.stringify(words));
+  }
+
+  function show() {
+    if (!words.length) return;
+
+    const w = words[index];
+
+    document.getElementById("term").innerText = w.term;
+    document.getElementById("ipa").innerText = w.ipa;
+    document.getElementById("def").innerText = w.def;
+    document.getElementById("geo").innerText = w.geo;
+    document.getElementById("stat").innerText = `${index + 1} / ${words.length}`;
+    document.getElementById("meaning").style.display = "none";
+  }
+
+  function toggleMeaning() {
+    const box = document.getElementById("meaning");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+  }
+
+  function next() {
+    index = (index + 1) % words.length;
+    show();
+  }
+
+  function prev() {
+    index = (index - 1 + words.length) % words.length;
+    show();
+  }
+
+  function speak() {
+    if (!words.length) return;
+
+    speechSynthesis.cancel();
+
+    const voice = new SpeechSynthesisUtterance(words[index].term);
+    voice.lang = "en-US";
+    voice.rate = 0.85;
+    speechSynthesis.speak(voice);
+  }
+
+  function nav(page) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+
+    document.getElementById("p-" + page).classList.add("active");
+    document.getElementById("n-" + page).classList.add("active");
+
+    if (page === "list") renderList();
+    if (page === "quiz") newQuiz();
+  }
+
+  function renderList() {
+    const q = document.getElementById("search").value.toLowerCase();
+    const list = document.getElementById("list");
+
+    const filtered = words.filter(w =>
+      w.term.toLowerCase().includes(q) ||
+      w.geo.toLowerCase().includes(q) ||
+      w.def.toLowerCase().includes(q)
+    );
+
+    list.innerHTML = filtered.map(w => `
+      <div class="list-item" onclick="goToWord('${escapeText(w.term)}')">
+        <b>${w.term}</b><br>
+        <small>${w.ipa}</small><br>
+        ${w.geo}
+      </div>
+    `).join("");
+  }
+
+  function goToWord(term) {
+    const found = words.findIndex(w => w.term === term);
+    if (found !== -1) index = found;
+    nav("study");
+    show();
+  }
+
+  function escapeText(text) {
+    return String(text).replace(/'/g, "\\'");
+  }
+
+  function addWord() {
+    const term = document.getElementById("new-term").value.trim();
+    const ipa = document.getElementById("new-ipa").value.trim();
+    const def = document.getElementById("new-def").value.trim();
+    const geo = document.getElementById("new-geo").value.trim();
+
+    if (!term || !geo) {
+      alert("სიტყვა და ქართული თარგმანი აუცილებელია");
+      return;
+    }
+
+    if (words.some(w => w.term.toLowerCase() === term.toLowerCase())) {
+      alert("ეს სიტყვა უკვე არსებობს");
+      return;
+    }
+
+    words.push({ term, ipa, def, geo });
+    save();
+
+    index = words.findIndex(w => w.term.toLowerCase() === term.toLowerCase());
+
+    document.querySelectorAll("#p-manage input, #p-manage textarea").forEach(el => el.value = "");
+
+    alert("სიტყვა დაემატა");
+    nav("study");
+    show();
+  }
+
+  function exportData() {
+    save();
+
+    const blob = new Blob([JSON.stringify(words, null, 2)], {
+      type: "application/json"
+    });
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "medvocab_backup.json";
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = e => {
+      try {
+        const imported = JSON.parse(e.target.result);
+
+        if (!Array.isArray(imported)) {
+          alert("JSON უნდა იყოს სია");
+          return;
+        }
+
+        words = [...words, ...imported];
+        save();
+        alert("ბაზა განახლდა");
+        show();
+
+      } catch (err) {
+        alert("ფაილი არასწორია");
+      }
+    };
+
+    reader.readAsText(file);
+  }
+
+  function newQuiz() {
+    if (words.length < 4) {
+      document.getElementById("quiz-question").innerText = "Quiz-ისთვის საჭიროა მინიმუმ 4 სიტყვა.";
+      document.getElementById("quiz-options").innerHTML = "";
+      return;
+    }
+
+    const correct = words[Math.floor(Math.random() * words.length)];
+    quizAnswer = correct.geo;
+
+    const options = [correct.geo];
+
+    while (options.length < 4) {
+      const random = words[Math.floor(Math.random() * words.length)].geo;
+      if (!options.includes(random)) options.push(random);
+    }
+
+    options.sort(() => Math.random() - 0.5);
+
+    document.getElementById("quiz-question").innerText = `რას ნიშნავს: ${correct.term}?`;
+    document.getElementById("quiz-result").innerText = "";
+
+    document.getElementById("quiz-options").innerHTML = options.map(opt => `
+      <button class="quiz-option" onclick="checkQuiz(this, '${escapeText(opt)}')">${opt}</button>
+    `).join("");
+  }
+
+  function checkQuiz(button, answer) {
+    const all = document.querySelectorAll(".quiz-option");
+    all.forEach(btn => btn.disabled = true);
+
+    if (answer === quizAnswer) {
+      button.classList.add("correct");
+      document.getElementById("quiz-result").innerText = "სწორია ✅";
+    } else {
+      button.classList.add("wrong");
+      document.getElementById("quiz-result").innerText = "არასწორია. სწორი პასუხია: " + quizAnswer;
+    }
+  }
+
+  init();
+</script>
+
+</body>
+</html>
