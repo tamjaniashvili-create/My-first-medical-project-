@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>MedVocab-Pro v19.1</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1d4ed8;--blue-light:#dbeafe;--green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--red-light:#fee2e2;--amber:#d97706;--amber-light:#fef3c7;--purple:#7c3aed;--purple-light:#ede9fe;--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--radius:20px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto}
+header{background:var(--blue);color:white;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000;box-shadow:0 2px 12px rgba(29,78,216,.3)}
+.header-title{font-family:'DM Serif Display',serif;font-size:20px}
+.header-sub{font-size:11px;opacity:.75;margin-top:1px}
+.menu-btn{background:rgba(255,255,255,.15);border:none;color:white;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center}
+.dropdown{position:absolute;right:12px;top:64px;background:white;min-width:190px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.15);display:none;overflow:hidden;z-index:2000}
+.dropdown.show{display:block;animation:slideDown .2s ease}
+.dropdown a{display:flex;align-items:center;gap:10px;padding:14px 18px;color:var(--text);text-decoration:none;font-weight:500;font-size:15px;border-bottom:1px solid var(--border)}
+.dropdown a:last-child{border-bottom:none}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.container{padding:20px 16px 100px}
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:white;border-top:1px solid var(--border);display:flex;z-index:999;box-shadow:0 -4px 20px rgba(0,0,0,.08)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 12px;cursor:pointer;color:var(--muted);font-size:11px;font-weight:500;gap:4px;border:none;background:none}
+.nav-item .nav-icon{font-size:22px}
+.nav-item.active{color:var(--blue)}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}
+.progress-bar-wrap{background:var(--border);border-radius:99px;height:6px;margin-bottom:16px}
+.progress-bar-fill{height:6px;border-radius:99px;background:linear-gradient(90deg,var(--blue),#60a5fa);transition:width .4s ease}
+.card-box{perspective:1200px;height:330px;cursor:pointer;margin-bottom:20px}
+.card-inner{width:100%;height:100%;transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;position:relative}
+.card-inner.flipped{transform:rotateY(180deg)}
+.card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--card);box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.card-back{transform:rotateY(180deg);align-items:flex-start;justify-content:flex-start;padding-top:20px;background:#fafbff;overflow-y:auto}
+.level-badge{padding:4px 14px;border-radius:99px;font-size:12px;font-weight:700;margin-bottom:12px}
+.badge-b1{background:var(--green-light);color:var(--green)}
+.badge-b2{background:var(--blue-light);color:var(--blue)}
+.badge-c1{background:var(--amber-light);color:var(--amber)}
+.badge-c2{background:var(--red-light);color:var(--red)}
+.badge-med{background:var(--purple-light);color:var(--purple)}
+.card-term{font-family:'DM Serif Display',serif;font-size:34px;color:var(--text);text-align:center;line-height:1.1}
+.card-ipa{color:var(--muted);font-size:14px;margin-top:8px}
+.speak-btn{margin-top:14px;background:var(--blue-light);color:var(--blue);border:none;border-radius:99px;padding:8px 20px;font-size:14px;font-weight:600;cursor:pointer}
+.weak-badge{background:var(--red-light);color:var(--red);font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;margin-top:8px;display:none}
+.flip-hint{font-size:11px;color:var(--muted);margin-top:10px;opacity:.7}
+.back-label{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--blue);text-transform:uppercase;margin-bottom:5px}
+.back-section{width:100%;margin-bottom:12px}
+.back-def{font-size:14px;line-height:1.5}
+.back-ex{font-size:13px;font-style:italic;color:var(--muted);line-height:1.5}
+.back-geo{font-size:14px;color:var(--green);font-weight:500}
+.divider{width:100%;height:1px;background:var(--border);margin:4px 0 12px}
+.nav-btns{display:flex;gap:12px}
+.btn{flex:1;padding:14px;border-radius:16px;border:2px solid var(--border);background:white;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.btn-primary{background:var(--blue);color:white;border-color:var(--blue)}
+.btn-success{background:var(--green);color:white;border-color:var(--green)}
+.quiz-type-tabs{display:flex;gap:8px;margin-bottom:16px}
+.quiz-tab{flex:1;padding:9px 4px;border-radius:12px;border:2px solid var(--border);background:white;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.quiz-tab.active{border-color:var(--blue);background:var(--blue);color:white}
+.quiz-card{background:white;border-radius:var(--radius);padding:24px;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:box-shadow .3s}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.quiz-score{font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:4px 12px;border-radius:99px}
+.quiz-question{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.4;margin-bottom:20px}
+.quiz-term-highlight{color:var(--blue)}
+.quiz-opt{padding:14px 16px;border:2px solid var(--border);margin-bottom:10px;border-radius:14px;cursor:pointer;background:white;font-size:14px;line-height:1.4;text-align:left;width:100%;font-family:'DM Sans',sans-serif;transition:all .15s}
+.quiz-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green);pointer-events:none}
+.quiz-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red);pointer-events:none}
+.quiz-opt.disabled{pointer-events:none;opacity:.5}
+.quiz-feedback{text-align:center;padding:12px;border-radius:12px;margin-top:8px;font-weight:600;font-size:15px}
+.quiz-feedback.ok{background:var(--green-light);color:var(--green)}
+.quiz-feedback.fail{background:var(--red-light);color:var(--red)}
+.btn-next-q{width:100%;padding:15px;background:var(--blue);color:white;border:none;border-radius:16px;font-weight:700;font-size:16px;cursor:pointer;margin-top:14px;display:none;font-family:'DM Sans',sans-serif}
+@keyframes pulseGreen{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.4)}50%{box-shadow:0 0 0 14px rgba(22,163,74,0)}}
+@keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4)}50%{box-shadow:0 0 0 14px rgba(220,38,38,0)}}
+.flash-correct{animation:pulseGreen .5s ease}
+.flash-wrong{animation:pulseRed .5s ease}
+.add-tabs{display:flex;gap:8px;margin-bottom:16px}
+.add-tab{flex:1;padding:10px;border-radius:12px;border:2px solid var(--border);background:white;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center}
+.add-tab.active{border-color:var(--blue);background:var(--blue);color:white}
+.add-card{background:white;border-radius:var(--radius);padding:24px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.add-card h3{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:6px}
+.add-card p{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5}
+.field-label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;display:block}
+input,textarea,select{width:100%;padding:12px 16px;border-radius:12px;border:2px solid var(--border);font-size:15px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:12px;background:white}
+input:focus,textarea:focus{border-color:var(--blue)}
+textarea{resize:vertical;min-height:70px}
+.ai-status{text-align:center;padding:12px;border-radius:12px;font-size:14px;font-weight:600;margin-top:8px;display:none}
+.ai-status.loading{background:var(--amber-light);color:var(--amber);display:block}
+.ai-status.success{background:var(--green-light);color:var(--green);display:block}
+.ai-status.error{background:var(--red-light);color:var(--red);display:block}
+.file-drop{border:2px dashed var(--border);border-radius:16px;padding:28px;text-align:center;cursor:pointer;margin-bottom:14px;transition:all .2s}
+.file-drop:hover,.file-drop.drag{border-color:var(--blue);background:var(--blue-light)}
+.file-drop-icon{font-size:36px;margin-bottom:8px}
+.file-drop p{color:var(--muted);font-size:14px;margin:0}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.stat-box{background:white;border-radius:16px;padding:18px;box-shadow:0 2px 12px rgba(0,0,0,.05);text-align:center}
+.stat-num{font-family:'DM Serif Display',serif;font-size:36px;color:var(--blue)}
+.stat-label{font-size:12px;color:var(--muted);margin-top:4px}
+.section-title{font-family:'DM Serif Display',serif;font-size:18px;margin:20px 0 10px}
+.word-list{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:16px}
+.word-item{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.word-item:last-child{border-bottom:none}
+.word-name{font-weight:600;font-size:15px}
+.word-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.word-weak-label{font-size:11px;color:var(--red);font-weight:700}
+.del-btn{background:var(--red-light);color:var(--red);border:none;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-weight:600}
+.reset-btn{background:var(--green-light);color:var(--green);border:none;border-radius:8px;padding:4px 10px;font-size:12px;cursor:pointer;font-weight:600}
+#overlay{position:fixed;inset:0;z-index:900;display:none}
+#overlay.show{display:block}
+code{font-family:monospace;word-break:break-all}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="header-title">MedVocab-Pro</div>
+    <div class="header-sub" id="header-sub">სწავლა</div>
+  </div>
+  <button class="menu-btn" onclick="toggleMenu(event)">⋮</button>
+</header>
+<div id="overlay" onclick="closeMenu()"></div>
+<div id="dropdown" class="dropdown">
+  <a href="#" onclick="navigate('study')">📚 სწავლა</a>
+  <a href="#" onclick="navigate('quiz')">📝 ქვიზი</a>
+  <a href="#" onclick="navigate('add')">✨ სიტყვის დამატება</a>
+  <a href="#" onclick="navigate('stats')">📊 სტატისტიკა</a>
+</div>
+<div class="container">
+
+<!-- STUDY -->
+<div id="page-study" class="page active">
+  <div class="progress-label">
+    <span id="prog-text">1 / 50</span>
+    <span id="prog-cat" style="color:var(--blue);font-weight:600"></span>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bar"></div></div>
+  <div class="card-box" onclick="flipCard()">
+    <div class="card-inner" id="card-inner">
+      <div class="card-face">
+        <span class="level-badge badge-c1" id="c-level">C1</span>
+        <div class="card-term" id="c-term">Adherence</div>
+        <div class="card-ipa" id="c-ipa"></div>
+        <button class="speak-btn" onclick="event.stopPropagation();speakTerm()">🔊 გაიგე</button>
+        <div class="weak-badge" id="c-weak"></div>
+        <div class="flip-hint">👆 შეეხე — ნახე პასუხი</div>
+      </div>
+      <div class="card-face card-back">
+        <div class="back-section"><div class="back-label">განმარტება</div><div class="back-def" id="c-def"></div></div>
+        <div class="divider"></div>
+        <div class="back-section"><div class="back-label">მაგალითი</div><div class="back-ex" id="c-ex"></div></div>
+        <div class="divider"></div>
+        <div class="back-section"><div class="back-label">🇬🇪 ქართული</div><div class="back-geo" id="c-geo"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn" onclick="changeIdx(-1)">⬅️ წინა</button>
+    <button class="btn btn-primary" onclick="changeIdx(1)">შემდეგი ➡️</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="page-quiz" class="page">
+  <div class="quiz-type-tabs">
+    <button class="quiz-tab active" id="tab-def" onclick="setQuizType('def')">🔤 განმარტება</button>
+    <button class="quiz-tab" id="tab-geo" onclick="setQuizType('geo')">🇬🇪 ქართული</button>
+    <button class="quiz-tab" id="tab-term" onclick="setQuizType('term')">🔄 ტერმინი</button>
+  </div>
+  <div class="quiz-card" id="quiz-card">
+    <div class="quiz-header">
+      <span style="font-size:13px;color:var(--muted);font-weight:600">კითხვა #<span id="q-num">1</span></span>
+      <span class="quiz-score">✅ <span id="q-correct">0</span> | ❌ <span id="q-wrong">0</span></span>
+    </div>
+    <div class="quiz-question" id="q-text"></div>
+    <div id="q-options"></div>
+    <div id="q-feedback" style="display:none" class="quiz-feedback"></div>
+    <button class="btn-next-q" id="btn-next-q" onclick="nextQuestion()">შემდეგი კითხვა ➡️</button>
+  </div>
+</div>
+
+<!-- ADD -->
+<div id="page-add" class="page">
+  <div class="add-tabs">
+    <button class="add-tab active" id="add-tab-ai" onclick="setAddTab('ai')">🤖 AI ავტო</button>
+    <button class="add-tab" id="add-tab-manual" onclick="setAddTab('manual')">✍️ ხელით</button>
+    <button class="add-tab" id="add-tab-file" onclick="setAddTab('file')">📁 ფაილით</button>
+  </div>
+  <div id="add-ai" class="add-card">
+    <h3>🤖 AI ავტომატური დამატება</h3>
+    <p>ჩაწერეთ ტერმინი — AI შეავსებს ყველა ველს ავტომატურად.</p>
+    <label class="field-label">ინგლისური ტერმინი</label>
+    <input type="text" id="in-term-ai" placeholder="მაგ: Hypertension, Biopsy...">
+    <label class="field-label">კატეგორია (სურვილისამებრ)</label>
+    <input type="text" id="in-cat-ai" placeholder="მაგ: Cardiology, General...">
+    <button class="btn btn-primary" id="btn-save-ai" onclick="saveWordWithAI()" style="width:100%">✨ ავტომატური დამატება</button>
+    <div class="ai-status" id="ai-status"></div>
+  </div>
+  <div id="add-manual" class="add-card" style="display:none">
+    <h3>✍️ ხელით დამატება</h3>
+    <p>შეავსეთ ველები სასურველი სიტყვისთვის.</p>
+    <label class="field-label">ტერმინი *</label>
+    <input type="text" id="m-term" placeholder="მაგ: Syncope">
+    <label class="field-label">IPA წარმოთქმა</label>
+    <input type="text" id="m-ipa" placeholder="მაგ: /ˈsɪŋkəpi/">
+    <label class="field-label">დონე</label>
+    <select id="m-level"><option value="B1">B1</option><option value="B2">B2</option><option value="C1" selected>C1</option><option value="C2">C2</option></select>
+    <label class="field-label">კატეგორია</label>
+    <input type="text" id="m-cat" placeholder="მაგ: Neurology">
+    <label class="field-label">განმარტება *</label>
+    <textarea id="m-def" placeholder="ინგლისური განმარტება..."></textarea>
+    <label class="field-label">მაგალითი</label>
+    <textarea id="m-ex" placeholder="მაგალითი წინადადება..."></textarea>
+    <label class="field-label">ქართული თარგმანი</label>
+    <input type="text" id="m-geo" placeholder="მაგ: გათიშვა / გონება დაეკარგა">
+    <button class="btn btn-success" onclick="saveManual()" style="width:100%">💾 შენახვა</button>
+    <div class="ai-status" id="manual-status"></div>
+  </div>
+  <div id="add-file" class="add-card" style="display:none">
+    <h3>📁 ფაილით დამატება</h3>
+    <p>ატვირთეთ JSON ან CSV ფაილი სიტყვების სიით.</p>
+    <div class="file-drop" id="file-drop" onclick="document.getElementById('file-input').click()">
+      <div class="file-drop-icon">📂</div>
+      <p><strong>დააჭირეთ ან გადმოიტანეთ ფაილი</strong></p>
+      <p style="font-size:12px;margin-top:6px">JSON ან CSV ფორმატი</p>
+    </div>
+    <input type="file" id="file-input" accept=".json,.csv" style="display:none" onchange="handleFile(event)">
+    <div style="background:var(--bg);border-radius:12px;padding:14px;margin-bottom:12px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">JSON ფორმატი:</div>
+      <code style="font-size:11px;color:var(--purple);line-height:1.8">[{"term":"Syncope","ipa":"/ˈsɪŋkəpi/","level":"C1","cat":"Neurology","def":"Fainting.","ex":"Example.","geo":"გათიშვა"}]</code>
+    </div>
+    <div style="background:var(--bg);border-radius:12px;padding:14px;margin-bottom:12px">
+      <div style="font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px">CSV ფორმატი:</div>
+      <code style="font-size:11px;color:var(--purple);line-height:1.8">term,ipa,level,cat,def,ex,geo<br>Syncope,/ˈsɪŋkəpi/,C1,Neurology,Fainting.,Example.,გათიშვა</code>
+    </div>
+    <div class="ai-status" id="file-status"></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="page-stats" class="page">
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-num" id="stat-total">0</div><div class="stat-label">სულ სიტყვა</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-correct">0</div><div class="stat-label">სწორი პასუხი ✅</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-weak">0</div><div class="stat-label">სუსტი სიტყვა ⚠️</div></div>
+    <div class="stat-box"><div class="stat-num" id="stat-cats">0</div><div class="stat-label">კატეგორია</div></div>
+  </div>
+  <div class="section-title">⚠️ სუსტი სიტყვები</div>
+  <div class="word-list" id="weak-list"></div>
+  <div class="section-title">📚 ყველა სიტყვა</div>
+  <div class="word-list" id="word-list"></div>
+</div>
+
+</div>
+<nav class="bottom-nav">
+  <button class="nav-item active" id="nav-study" onclick="navigate('study')"><span class="nav-icon">📚</span>სწავლა</button>
+  <button class="nav-item" id="nav-quiz" onclick="navigate('quiz')"><span class="nav-icon">📝</span>ქვიზი</button>
+  <button class="nav-item" id="nav-add" onclick="navigate('add')"><span class="nav-icon">✨</span>დამატება</button>
+  <button class="nav-item" id="nav-stats" onclick="navigate('stats')"><span class="nav-icon">📊</span>სტატისტიკა</button>
+</nav>
+
+<script>
+const DEFAULT_WORDS=[
+{term:"Adherence",ipa:"/ədˈhɪərəns/",level:"C1",cat:"General",def:"Sticking to a prescribed medical treatment plan.",ex:"Good adherence to medication improves outcomes.",geo:"მკურნალობის დაცვა / პრეპარატის მიღება"},
+{term:"Diagnosis",ipa:"/ˌdaɪəɡˈnoʊsɪs/",level:"B2",cat:"General",def:"The process of identifying a disease from its signs and symptoms.",ex:"The diagnosis was confirmed after blood tests.",geo:"დიაგნოზი"},
+{term:"Prognosis",ipa:"/prɒɡˈnoʊsɪs/",level:"C1",cat:"General",def:"The likely outcome or course of a medical condition.",ex:"The prognosis for recovery is excellent.",geo:"პროგნოზი"},
+{term:"Hypertension",ipa:"/ˌhaɪpərˈtenʃən/",level:"B2",cat:"Cardiology",def:"Persistently high blood pressure in the arteries.",ex:"Hypertension is a major risk factor for stroke.",geo:"ჰიპერტენზია / მაღალი წნევა"},
+{term:"Tachycardia",ipa:"/ˌtækɪˈkɑːrdiə/",level:"C1",cat:"Cardiology",def:"Abnormally rapid heart rate, usually over 100 bpm.",ex:"The patient developed tachycardia during the procedure.",geo:"ტაქიკარდია / გულისცემის სიხშირის მომატება"},
+{term:"Bradycardia",ipa:"/ˌbreɪdiˈkɑːrdiə/",level:"C1",cat:"Cardiology",def:"Abnormally slow heart rate, usually under 60 bpm.",ex:"Bradycardia can cause dizziness and fatigue.",geo:"ბრადიკარდია / გულისცემის სიხშირის შემცირება"},
+{term:"Arrhythmia",ipa:"/əˈrɪðmiə/",level:"C1",cat:"Cardiology",def:"Irregular heartbeat pattern.",ex:"An arrhythmia was detected on the ECG.",geo:"არითმია / გულის რითმის დარღვევა"},
+{term:"Myocardial infarction",ipa:"/ˌmaɪəˈkɑːrdiəl ɪnˈfɑːrkʃən/",level:"C2",cat:"Cardiology",def:"Heart attack; death of heart muscle due to blocked blood supply.",ex:"He was rushed to hospital with a myocardial infarction.",geo:"მიოკარდიუმის ინფარქტი / გულის შეტევა"},
+{term:"Dyspnea",ipa:"/ˈdɪspniə/",level:"C1",cat:"Pulmonology",def:"Difficulty breathing or shortness of breath.",ex:"The patient complained of severe dyspnea on exertion.",geo:"ქოშინი / სუნთქვის სიძნელე"},
+{term:"Edema",ipa:"/ɪˈdiːmə/",level:"C1",cat:"General",def:"Swelling caused by excess fluid trapped in body tissues.",ex:"Pitting edema was noted in both ankles.",geo:"შეშუპება / ედემა"},
+{term:"Inflammation",ipa:"/ˌɪnfləˈmeɪʃən/",level:"B2",cat:"General",def:"Body's protective response to injury involving redness, heat and swelling.",ex:"Chronic inflammation can damage healthy tissue.",geo:"ანთება"},
+{term:"Syncope",ipa:"/ˈsɪŋkəpi/",level:"C1",cat:"Neurology",def:"Temporary loss of consciousness; fainting.",ex:"The patient experienced syncope during standing.",geo:"სინკოპე / გონება დაეკარგა"},
+{term:"Ischemia",ipa:"/ɪˈskiːmiə/",level:"C2",cat:"Cardiology",def:"Insufficient blood supply to an organ or tissue.",ex:"Cerebral ischemia can cause permanent brain damage.",geo:"ისქემია / სისხლმომარაგების დეფიციტი"},
+{term:"Embolism",ipa:"/ˈembəlɪzəm/",level:"C1",cat:"Hematology",def:"Blockage of a blood vessel by a clot or foreign substance.",ex:"A pulmonary embolism is a life-threatening emergency.",geo:"ემბოლია"},
+{term:"Thrombosis",ipa:"/θrɒmˈboʊsɪs/",level:"C1",cat:"Hematology",def:"Formation of a blood clot inside a vessel.",ex:"Deep vein thrombosis requires immediate treatment.",geo:"თრომბოზი / სისხლის შედედება"},
+{term:"Hemorrhage",ipa:"/ˈhemərɪdʒ/",level:"B2",cat:"General",def:"Significant, often uncontrollable bleeding.",ex:"The hemorrhage was controlled in surgery.",geo:"სისხლდენა / ჰემორაგია"},
+{term:"Sepsis",ipa:"/ˈsepsɪs/",level:"C1",cat:"Infectious",def:"Life-threatening body response to infection causing organ damage.",ex:"Sepsis requires urgent antibiotic treatment.",geo:"სეფსისი / სისხლის მოწამვლა"},
+{term:"Anemia",ipa:"/əˈniːmiə/",level:"B2",cat:"Hematology",def:"Low red blood cell count or hemoglobin levels.",ex:"Iron deficiency anemia is the most common type.",geo:"ანემია / სისხლნაკლებობა"},
+{term:"Hypoglycemia",ipa:"/ˌhaɪpoʊɡlaɪˈsiːmiə/",level:"C1",cat:"Endocrinology",def:"Abnormally low blood sugar level.",ex:"Hypoglycemia caused the patient to feel shaky.",geo:"ჰიპოგლიკემია / შაქრის დაქვეითება"},
+{term:"Hyperglycemia",ipa:"/ˌhaɪpərɡlaɪˈsiːmiə/",level:"C1",cat:"Endocrinology",def:"Abnormally high blood sugar level.",ex:"Persistent hyperglycemia damages nerves and vessels.",geo:"ჰიპერგლიკემია / შაქრის მომატება"},
+{term:"Atrial fibrillation",ipa:"/ˈeɪtriəl ˌfɪbrɪˈleɪʃən/",level:"C2",cat:"Cardiology",def:"Irregular, rapid heart rate from chaotic atrial electrical activity.",ex:"Atrial fibrillation increases stroke risk significantly.",geo:"წინაგულის ფიბრილაცია"},
+{term:"Palpitation",ipa:"/ˌpælpɪˈteɪʃən/",level:"C1",cat:"Cardiology",def:"Awareness of rapid, pounding or irregular heartbeat.",ex:"She reported palpitations during stressful situations.",geo:"პალპიტაცია / გულის ცემის შეგრძნება"},
+{term:"Dysphagia",ipa:"/dɪsˈfeɪdʒiə/",level:"C1",cat:"Gastroenterology",def:"Difficulty swallowing food or liquid.",ex:"Post-stroke dysphagia requires speech therapy.",geo:"დისფაგია / ყლაპვის სიძნელე"},
+{term:"Nausea",ipa:"/ˈnɔːziə/",level:"B1",cat:"General",def:"Feeling of sickness with urge to vomit.",ex:"Nausea is a common drug side effect.",geo:"გულისრევა"},
+{term:"Vertigo",ipa:"/ˈvɜːrtɪɡoʊ/",level:"B2",cat:"Neurology",def:"Sensation that surroundings are spinning; severe dizziness.",ex:"Vertigo can be caused by inner ear disorders.",geo:"ვერტიგო / თავბრუხვევა"},
+{term:"Fracture",ipa:"/ˈfræktʃər/",level:"B1",cat:"Orthopedics",def:"A break in a bone.",ex:"The X-ray confirmed a hairline fracture.",geo:"მოტეხილობა / ფრაქტურა"},
+{term:"Laceration",ipa:"/ˌlæsəˈreɪʃən/",level:"B2",cat:"Trauma",def:"A deep cut or tear in skin or flesh.",ex:"The laceration required six stitches.",geo:"ჭრილობა / გაჭრა"},
+{term:"Contusion",ipa:"/kənˈtjuːʒən/",level:"C1",cat:"Trauma",def:"A bruise; injury without breaking the skin.",ex:"The contusion on his forehead was swelling.",geo:"კონტუზია / სიმსივნე"},
+{term:"Biopsy",ipa:"/ˈbaɪɒpsi/",level:"B2",cat:"Oncology",def:"Removal of tissue sample for diagnostic examination.",ex:"A biopsy was ordered to rule out malignancy.",geo:"ბიოფსია / ქსოვილის ნიმუშის აღება"},
+{term:"Malignant",ipa:"/məˈlɪɡnənt/",level:"C1",cat:"Oncology",def:"Cancerous; tending to invade and destroy nearby tissue.",ex:"The tumor was found to be malignant.",geo:"ავთვისებიანი"},
+{term:"Benign",ipa:"/bɪˈnaɪn/",level:"B2",cat:"Oncology",def:"Not cancerous; not harmful in effect.",ex:"The benign cyst was removed as a precaution.",geo:"კეთილთვისებიანი"},
+{term:"Metastasis",ipa:"/məˈtæstəsɪs/",level:"C2",cat:"Oncology",def:"Spread of cancer from original site to other organs.",ex:"Metastasis to the lymph nodes was detected.",geo:"მეტასტაზი / სიმსივნის გავრცელება"},
+{term:"Antibiotic",ipa:"/ˌæntɪbaɪˈɒtɪk/",level:"B1",cat:"Pharmacology",def:"Drug used to kill or inhibit bacterial infections.",ex:"A broad-spectrum antibiotic was prescribed.",geo:"ანტიბიოტიკი"},
+{term:"Analgesic",ipa:"/ˌænlˈdʒiːzɪk/",level:"C1",cat:"Pharmacology",def:"A pain-relieving drug.",ex:"An analgesic was given before the procedure.",geo:"ანალგეტიკი / ტკივილგამაყუჩებელი"},
+{term:"Anticoagulant",ipa:"/ˌæntɪkoʊˈæɡjʊlənt/",level:"C2",cat:"Pharmacology",def:"A drug that prevents blood clot formation.",ex:"Warfarin is a commonly used anticoagulant.",geo:"ანტიკოაგულანტი"},
+{term:"Contraindication",ipa:"/ˌkɒntrəˌɪndɪˈkeɪʃən/",level:"C2",cat:"Pharmacology",def:"A reason or condition that makes a treatment inadvisable.",ex:"Allergy to penicillin is a contraindication for its use.",geo:"კონტრაინდიკაცია"},
+{term:"Catheter",ipa:"/ˈkæθɪtər/",level:"B2",cat:"Procedures",def:"A flexible tube inserted into a body cavity to drain fluid.",ex:"A urinary catheter was placed post-surgery.",geo:"კათეტერი"},
+{term:"Intubation",ipa:"/ˌɪntjuˈbeɪʃən/",level:"C1",cat:"Procedures",def:"Insertion of a tube into the trachea to maintain airway.",ex:"Emergency intubation was performed in the ICU.",geo:"ინტუბაცია / სასუნთქი მილის ჩადება"},
+{term:"Ventilation",ipa:"/ˌventɪˈleɪʃən/",level:"B2",cat:"Procedures",def:"Mechanical support of breathing using a ventilator.",ex:"The patient required mechanical ventilation for 3 days.",geo:"ვენტილაცია / სუნთქვის მხარდაჭერა"},
+{term:"Resuscitation",ipa:"/rɪˌsʌsɪˈteɪʃən/",level:"C1",cat:"Emergency",def:"Restoring consciousness or vital signs after cardiac arrest.",ex:"CPR resuscitation was started immediately.",geo:"რეანიმაცია / გაცოცხლება"},
+{term:"Triage",ipa:"/ˈtriːɑːʒ/",level:"C1",cat:"Emergency",def:"Sorting patients by urgency to prioritize treatment.",ex:"Triage nurses assess patients on arrival.",geo:"ტრიაჟი / პაციენტების პრიორიტეტიზაცია"},
+{term:"Auscultation",ipa:"/ˌɔːskəlˈteɪʃən/",level:"C2",cat:"Examination",def:"Listening to internal body sounds with a stethoscope.",ex:"Auscultation revealed abnormal lung sounds.",geo:"ავსკულტაცია / სმენა სტეტოსკოპით"},
+{term:"Palpation",ipa:"/pælˈpeɪʃən/",level:"C2",cat:"Examination",def:"Physical examination by pressing the body surface.",ex:"Palpation revealed tenderness in the lower abdomen.",geo:"პალპაცია / ხელით შეხება"},
+{term:"Acute",ipa:"/əˈkjuːt/",level:"B2",cat:"General",def:"Sudden onset and short duration, often severe.",ex:"Acute pain requires immediate medical attention.",geo:"მწვავე"},
+{term:"Chronic",ipa:"/ˈkrɒnɪk/",level:"B1",cat:"General",def:"Persistent, long-lasting medical condition.",ex:"She manages chronic back pain with physiotherapy.",geo:"ქრონიკული / მუდმივი"},
+{term:"Idiopathic",ipa:"/ˌɪdiəˈpæθɪk/",level:"C2",cat:"General",def:"Of unknown cause with no identifiable origin.",ex:"The idiopathic condition had no clear trigger.",geo:"იდიოპათიური / უცნობი მიზეზის"},
+{term:"Pruritus",ipa:"/prʊˈraɪtəs/",level:"C2",cat:"Dermatology",def:"Severe itching of the skin.",ex:"Pruritus was relieved with antihistamine cream.",geo:"ქავილი / პრურიტუსი"},
+{term:"Jaundice",ipa:"/ˈdʒɔːndɪs/",level:"B2",cat:"Gastroenterology",def:"Yellow discoloration of skin and eyes due to high bilirubin.",ex:"Neonatal jaundice is common in newborns.",geo:"სიყვითლე"},
+{term:"Cyanosis",ipa:"/ˌsaɪəˈnoʊsɪs/",level:"C1",cat:"Pulmonology",def:"Blue discoloration of skin due to lack of oxygen.",ex:"Cyanosis around the lips indicated low oxygen.",geo:"ციანოზი / კანის ლურჯი შეფერილობა"},
+{term:"Pallor",ipa:"/ˈpælər/",level:"B2",cat:"General",def:"Abnormal paleness of the skin.",ex:"Pallor was noted in the anemic patient.",geo:"სიფერმკრთალე"}
+];
+
+let words=JSON.parse(localStorage.getItem('medvocab_v19'))||[...DEFAULT_WORDS];
+let weakMap=JSON.parse(localStorage.getItem('medvocab_weak'))||{};
+let quizStats=JSON.parse(localStorage.getItem('medvocab_qstats'))||{correct:0,wrong:0};
+function save(){localStorage.setItem('medvocab_v19',JSON.stringify(words))}
+function saveWeak(){localStorage.setItem('medvocab_weak',JSON.stringify(weakMap))}
+function saveQStats(){localStorage.setItem('medvocab_qstats',JSON.stringify(quizStats))}
+
+// SOUND
+const AudioCtx=window.AudioContext||window.webkitAudioContext;
+let audioCtx;
+function getCtx(){if(!audioCtx)audioCtx=new AudioCtx();return audioCtx}
+function playCorrect(){
+  try{const ctx=getCtx(),o1=ctx.createOscillator(),o2=ctx.createOscillator(),g=ctx.createGain();
+  o1.connect(g);o2.connect(g);g.connect(ctx.destination);
+  o1.frequency.setValueAtTime(523,ctx.currentTime);o2.frequency.setValueAtTime(784,ctx.currentTime);
+  o1.frequency.linearRampToValueAtTime(659,ctx.currentTime+.15);o2.frequency.linearRampToValueAtTime(1047,ctx.currentTime+.15);
+  g.gain.setValueAtTime(.3,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.5);
+  o1.start();o2.start();o1.stop(ctx.currentTime+.5);o2.stop(ctx.currentTime+.5)}catch(e){}}
+function playWrong(){
+  try{const ctx=getCtx(),o=ctx.createOscillator(),g=ctx.createGain();
+  o.connect(g);g.connect(ctx.destination);o.type='sawtooth';
+  o.frequency.setValueAtTime(220,ctx.currentTime);o.frequency.linearRampToValueAtTime(100,ctx.currentTime+.35);
+  g.gain.setValueAtTime(.3,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.4);
+  o.start();o.stop(ctx.currentTime+.4)}catch(e){}}
+
+// NAV
+let currentPage='study';
+function navigate(p){
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active'));
+  const n=document.getElementById('nav-'+p);if(n)n.classList.add('active');
+  currentPage=p;closeMenu();
+  const subs={study:words.length+' სიტყვა',quiz:'ქვიზი',add:'სიტყვის დამატება',stats:'სტატისტიკა'};
+  document.getElementById('header-sub').innerText=subs[p]||'';
+  if(p==='quiz')initQuiz();
+  if(p==='stats')renderStats();
+}
+function toggleMenu(e){e.stopPropagation();document.getElementById('dropdown').classList.toggle('show');document.getElementById('overlay').classList.toggle('show')}
+function closeMenu(){document.getElementById('dropdown').classList.remove('show');document.getElementById('overlay').classList.remove('show')}
+
+// STUDY
+let idx=0;
+function updateView(){
+  const w=words[idx];if(!w)return;
+  document.getElementById('c-term').innerText=w.term;
+  document.getElementById('c-ipa').innerText=w.ipa||'';
+  document.getElementById('c-def').innerText=w.def;
+  document.getElementById('c-ex').innerText=w.ex||'—';
+  document.getElementById('c-geo').innerText=w.geo||'—';
+  const lb=document.getElementById('c-level');
+  lb.innerText=w.level||'MED';lb.className='level-badge';
+  const lm={B1:'badge-b1',B2:'badge-b2',C1:'badge-c1',C2:'badge-c2'};
+  lb.classList.add(lm[w.level]||'badge-med');
+  document.getElementById('prog-bar').style.width=Math.round(((idx+1)/words.length)*100)+'%';
+  document.getElementById('prog-text').innerText=(idx+1)+' / '+words.length;
+  document.getElementById('prog-cat').innerText=w.cat||'';
+  const miss=weakMap[w.term]||0;
+  const wb=document.getElementById('c-weak');
+  if(miss>=2){wb.style.display='block';wb.innerText='⚠️ '+miss+'-ჯერ გამოტოვებული — განმეორება!'}
+  else wb.style.display='none';
+  document.getElementById('card-inner').classList.remove('flipped');
+  document.getElementById('header-sub').innerText=words.length+' სიტყვა';
+}
+function changeIdx(d){idx=(idx+d+words.length)%words.length;updateView()}
+function flipCard(){document.getElementById('card-inner').classList.toggle('flipped')}
+function speakTerm(){if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(words[idx].term);u.lang='en-US';u.rate=.9;window.speechSynthesis.speak(u)}
+
+// QUIZ
+let quizType='def',qNum=0,currentCorrectTerm='';
+function setQuizType(t){quizType=t;document.querySelectorAll('.quiz-tab').forEach(el=>el.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');initQuiz()}
+function initQuiz(){qNum=0;buildQuestion()}
+function buildQuestion(){
+  if(words.length<2){document.getElementById('q-text').innerText='დაამატეთ მინიმუმ 2 სიტყვა!';document.getElementById('q-options').innerHTML='';return}
+  qNum++;
+  document.getElementById('q-feedback').style.display='none';
+  document.getElementById('btn-next-q').style.display='none';
+  document.getElementById('q-num').innerText=qNum;
+  document.getElementById('quiz-card').className='quiz-card';
+  const weakWords=words.filter(w=>(weakMap[w.term]||0)>=2);
+  const pool=weakWords.length>0&&Math.random()<.6?weakWords:words;
+  const correct=pool[Math.floor(Math.random()*pool.length)];
+  currentCorrectTerm=correct.term;
+  let question,correctAns,getAns;
+  if(quizType==='def'){question='რას ნიშნავს <span class="quiz-term-highlight">"'+correct.term+'"</span>?';correctAns=correct.def;getAns=w=>w.def}
+  else if(quizType==='geo'){question='"'+correct.term+'" — ქართულად?';correctAns=correct.geo||correct.def;getAns=w=>w.geo||w.def}
+  else{question='რომელი სიტყვა ნიშნავს:<br><em style="color:var(--muted)">"'+correct.def+'"</em>';correctAns=correct.term;getAns=w=>w.term}
+  document.getElementById('q-text').innerHTML=question;
+  let opts=[correctAns];
+  const others=words.filter(w=>getAns(w)!==correctAns).sort(()=>.5-Math.random());
+  opts.push(...others.slice(0,3).map(w=>getAns(w)));
+  opts=[...new Set(opts)].sort(()=>.5-Math.random()).slice(0,4);
+  const container=document.getElementById('q-options');container.innerHTML='';
+  opts.forEach(o=>{
+    const btn=document.createElement('button');btn.className='quiz-opt';btn.innerHTML=o;
+    btn.onclick=function(){checkAnswer(this,o,correctAns,container)};
+    container.appendChild(btn)
+  })
+}
+function checkAnswer(btn,chosen,correct,container){
+  container.querySelectorAll('.quiz-opt').forEach(b=>b.classList.add('disabled'));
+  const fb=document.getElementById('q-feedback');fb.style.display='block';
+  const card=document.getElementById('quiz-card');
+  if(chosen===correct){
+    btn.classList.add('correct');fb.className='quiz-feedback ok';fb.innerText='✅ სწორია! გაიმარჯვე!';
+    card.classList.add('flash-correct');playCorrect();quizStats.correct++;
+    if(weakMap[currentCorrectTerm]>0){weakMap[currentCorrectTerm]--;saveWeak()}
+  }else{
+    btn.classList.add('wrong');fb.className='quiz-feedback fail';fb.innerHTML='❌ არასწორი — სწორი: <strong>'+correct+'</strong>';
+    card.classList.add('flash-wrong');playWrong();quizStats.wrong++;
+    weakMap[currentCorrectTerm]=(weakMap[currentCorrectTerm]||0)+1;saveWeak();
+    container.querySelectorAll('.quiz-opt').forEach(b=>{if(b.innerHTML===correct||b.innerText===correct)b.classList.add('correct')})
+  }
+  document.getElementById('q-correct').innerText=quizStats.correct;
+  document.getElementById('q-wrong').innerText=quizStats.wrong;
+  saveQStats();document.getElementById('btn-next-q').style.display='block';
+  setTimeout(()=>card.className='quiz-card',600)
+}
+function nextQuestion(){buildQuestion()}
+
+// ADD TABS
+let addTab='ai';
+function setAddTab(t){
+  addTab=t;
+  ['ai','manual','file'].forEach(tab=>{
+    document.getElementById('add-'+tab).style.display=tab===t?'block':'none';
+    document.getElementById('add-tab-'+tab).classList.toggle('active',tab===t)
+  })
+}
+
+// AI ADD
+async function saveWordWithAI(){
+  const term=document.getElementById('in-term-ai').value.trim();
+  const cat=document.getElementById('in-cat-ai').value.trim()||'General';
+  if(!term){showStatus('ai-status','⚠️ ჩაწერეთ ტერმინი!','error');return}
+  if(words.find(w=>w.term.toLowerCase()===term.toLowerCase())){showStatus('ai-status','⚠️ ეს სიტყვა უკვე გაქვს!','error');return}
+  const btn=document.getElementById('btn-save-ai');btn.disabled=true;
+  showStatus('ai-status','🤖 AI ამუშავებს...','loading');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,messages:[{role:'user',content:'You are a medical English dictionary. For the term "'+term+'", provide ONLY a JSON object:\n{"ipa":"IPA pronunciation","level":"B1 or B2 or C1 or C2","def":"clear English definition 1-2 sentences","ex":"example sentence","geo":"Georgian translation"}\nReturn ONLY the JSON, nothing else.'}]})});
+    const data=await res.json();
+    const raw=data.content.map(i=>i.text||'').join('').trim();
+    const parsed=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    words.push({term,ipa:parsed.ipa||'',level:parsed.level||'C1',cat,def:parsed.def,ex:parsed.ex||'',geo:parsed.geo||''});
+    save();idx=words.length-1;updateView();
+    showStatus('ai-status','✅ "'+term+'" დაემატა!','success');
+    document.getElementById('in-term-ai').value='';document.getElementById('in-cat-ai').value='';
+    setTimeout(()=>navigate('study'),1800)
+  }catch(e){showStatus('ai-status','❌ შეცდომა. სცადეთ ხელახლა.','error')}
+  btn.disabled=false
+}
+
+// MANUAL ADD
+function saveManual(){
+  const term=document.getElementById('m-term').value.trim();
+  const def=document.getElementById('m-def').value.trim();
+  if(!term||!def){showStatus('manual-status','⚠️ ტერმინი და განმარტება სავალდებულოა!','error');return}
+  if(words.find(w=>w.term.toLowerCase()===term.toLowerCase())){showStatus('manual-status','⚠️ ეს სიტყვა უკვე გაქვს!','error');return}
+  words.push({term,ipa:document.getElementById('m-ipa').value.trim(),level:document.getElementById('m-level').value,cat:document.getElementById('m-cat').value.trim()||'General',def,ex:document.getElementById('m-ex').value.trim(),geo:document.getElementById('m-geo').value.trim()});
+  save();idx=words.length-1;updateView();
+  showStatus('manual-status','✅ "'+term+'" დაემატა!','success');
+  ['m-term','m-ipa','m-cat','m-def','m-ex','m-geo'].forEach(id=>document.getElementById(id).value='');
+  setTimeout(()=>navigate('study'),1800)
+}
+
+// FILE ADD
+function handleFile(e){
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      let imported=[];
+      if(file.name.endsWith('.json')){imported=JSON.parse(ev.target.result)}
+      else if(file.name.endsWith('.csv')){
+        const lines=ev.target.result.split('\n').filter(l=>l.trim());
+        const headers=lines[0].split(',').map(h=>h.trim());
+        imported=lines.slice(1).map(line=>{const vals=line.split(',');const obj={};headers.forEach((h,i)=>obj[h]=(vals[i]||'').trim());return obj})
+      }
+      if(!Array.isArray(imported)||imported.length===0)throw new Error('empty');
+      let added=0;
+      imported.forEach(w=>{if(w.term&&w.def&&!words.find(x=>x.term.toLowerCase()===w.term.toLowerCase())){words.push({term:w.term,ipa:w.ipa||'',level:w.level||'C1',cat:w.cat||'General',def:w.def,ex:w.ex||'',geo:w.geo||''});added++}});
+      save();updateView();
+      showStatus('file-status','✅ '+added+' სიტყვა დაემატა!','success')
+    }catch(err){showStatus('file-status','❌ ფაილი ვერ წაიკითხა. შეამოწმეთ ფორმატი.','error')}
+  };
+  reader.readAsText(file);e.target.value=''
+}
+const dz=document.getElementById('file-drop');
+dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag')});
+dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
+dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag');const f=e.dataTransfer.files[0];if(f)handleFile({target:{files:[f]}})});
+
+function showStatus(id,msg,type){const el=document.getElementById(id);el.innerText=msg;el.className='ai-status '+type}
+
+// STATS
+function renderStats(){
+  const weak=words.filter(w=>(weakMap[w.term]||0)>=2);
+  document.getElementById('stat-total').innerText=words.length;
+  document.getElementById('stat-correct').innerText=quizStats.correct;
+  document.getElementById('stat-weak').innerText=weak.length;
+  document.getElementById('stat-cats').innerText=[...new Set(words.map(w=>w.cat||'General'))].length;
+  const wl=document.getElementById('weak-list');
+  if(weak.length===0){wl.innerHTML='<div class="word-item" style="color:var(--green);font-weight:600">🎉 სუსტი სიტყვები არ გაქვს!</div>'}
+  else{wl.innerHTML='';weak.sort((a,b)=>(weakMap[b.term]||0)-(weakMap[a.term]||0)).forEach(w=>{const d=document.createElement('div');d.className='word-item';d.innerHTML='<div><div class="word-name">'+w.term+'</div><div class="word-weak-label">❌ '+weakMap[w.term]+'-ჯერ გამოტოვებული</div></div><button class="reset-btn" onclick="resetWeak(\''+w.term+'\')">✅ გასუფთავება</button>';wl.appendChild(d)})}
+  const list=document.getElementById('word-list');list.innerHTML='';
+  [...words].reverse().forEach((w,i)=>{
+    const ri=words.length-1-i;const miss=weakMap[w.term]||0;
+    const d=document.createElement('div');d.className='word-item';
+    d.innerHTML='<div><div class="word-name">'+w.term+(miss>=2?' ⚠️':'')+'</div><div class="word-meta">'+(w.ipa||'')+' · '+(w.cat||'General')+' · '+(w.level||'')+'</div></div><button class="del-btn" onclick="deleteWord('+ri+')">🗑</button>';
+    list.appendChild(d)
+  })
+}
+function resetWeak(term){delete weakMap[term];saveWeak();renderStats()}
+function deleteWord(i){
+  if(words.length<=1){alert('მინიმუმ 1 სიტყვა უნდა დარჩეს!');return}
+  if(!confirm('წაშალოთ "'+words[i].term+'"?'))return;
+  delete weakMap[words[i].term];words.splice(i,1);
+  if(idx>=words.length)idx=words.length-1;
+  save();saveWeak();updateView();renderStats()
+}
+
+// INIT
+updateView();
+document.getElementById('q-correct').innerText=quizStats.correct;
+document.getElementById('q-wrong').innerText=quizStats.wrong;
+</script>
+</body>
+</html>
