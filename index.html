@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedVocab-Pro v14.2</title>
+
+<style>
+:root{
+  --primary:#2563eb;
+  --bg:#f1f5f9;
+  --card:#ffffff;
+  --text:#1e293b;
+  --muted:#64748b;
+  --success:#22c55e;
+  --danger:#ef4444;
+  --border:#cbd5e1;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  padding-bottom:82px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+.header{
+  background:var(--primary);
+  color:white;
+  padding:18px 12px;
+  text-align:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+.header h2{margin:0;font-size:28px}
+.header small{font-size:16px}
+
+.page{display:none;padding:16px;max-width:680px;margin:auto}
+.active{display:block}
+
+/* ── 3D FLIP CARD ── */
+.card-scene{
+  width:100%;
+  min-height:300px;
+  perspective:1000px;
+  margin-top:16px;
+  cursor:pointer;
+}
+
+.card-3d{
+  width:100%;
+  min-height:300px;
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform 0.55s cubic-bezier(.4,0,.2,1);
+  border-radius:22px;
+}
+
+.card-scene.flipped .card-3d{
+  transform:rotateY(180deg);
+}
+
+.card-face{
+  position:absolute;
+  width:100%;
+  min-height:300px;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:22px;
+  background:var(--card);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:24px;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+}
+
+.card-hint{
+  position:absolute;
+  bottom:14px;
+  right:16px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+h1{margin:0;color:var(--primary);font-size:36px;word-break:break-word}
+.ipa{margin-top:10px;color:var(--muted);font-size:19px}
+.def-text{font-size:17px;color:var(--text);line-height:1.5;margin:0}
+.geo-box{
+  margin-top:16px;
+  padding:16px 20px;
+  background:white;
+  color:#1e40af;
+  border-radius:14px;
+  font-size:22px;
+  font-weight:800;
+  box-shadow:0 2px 8px rgba(37,99,235,.15);
+  width:100%;
+}
+
+/* ── general ── */
+.box{
+  background:var(--card);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
+  margin-top:16px;
+}
+
+h3{margin-top:0}
+
+button{
+  border:0;
+  border-radius:14px;
+  padding:14px 16px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn-main{background:var(--primary);color:white}
+.btn-sec{background:white;color:var(--text);border:1px solid var(--border)}
+.btn-success{background:var(--success);color:white}
+.btn-danger{background:white;color:var(--danger);border:1px solid var(--danger)}
+.btn-muted{background:#e2e8f0;color:var(--text)}
+.btn-github{background:#24292e;color:white}
+
+.controls{display:flex;gap:10px;margin-top:16px}
+.controls button{flex:1}
+
+input,textarea,select{
+  width:100%;
+  padding:15px;
+  margin:9px 0;
+  border:1px solid var(--border);
+  border-radius:14px;
+  font-size:17px;
+  background:white;
+  color:var(--text);
+}
+textarea{min-height:100px}
+
+.row{display:flex;gap:10px;align-items:center}
+.row>*{flex:1}
+
+.list-item{
+  background:white;
+  padding:16px;
+  margin:11px 0;
+  border-radius:16px;
+  border-left:6px solid var(--primary);
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+  font-size:18px;
+}
+.list-item small{color:var(--muted);display:block;margin-top:4px;word-break:break-word}
+.list-actions{display:flex;gap:8px;margin-top:10px}
+.list-actions button{padding:9px 11px;font-size:13px;border-radius:10px}
+
+.ok-box{
+  background:#ecfdf5;color:#166534;
+  border:1px solid #bbf7d0;
+  padding:12px;border-radius:14px;
+  font-size:14px;line-height:1.45;
+}
+.info-box{
+  background:#eff6ff;color:#1e40af;
+  border:1px solid #bfdbfe;
+  padding:12px;border-radius:14px;
+  font-size:14px;line-height:1.5;margin:10px 0;
+}
+
+.quiz-option{
+  display:block;width:100%;margin:10px 0;
+  background:white;border:1px solid var(--border);text-align:left;
+}
+.correct{background:#dcfce7;border:1px solid #22c55e}
+.wrong{background:#fee2e2;border:1px solid #ef4444}
+
+.nav{
+  position:fixed;bottom:0;width:100%;height:72px;
+  background:white;display:flex;
+  border-top:1px solid #e2e8f0;z-index:30;
+}
+.nav-item{
+  flex:1;text-align:center;font-size:12px;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;cursor:pointer;
+}
+.nav-item.active{color:var(--primary);font-weight:900;border-top:4px solid var(--primary)}
+
+.note{color:var(--muted);font-size:13px;line-height:1.5}
+
+#gh-status{
+  margin-top:10px;padding:12px;border-radius:14px;
+  font-size:14px;display:none;
+}
+#gh-status.ok{display:block;background:#ecfdf5;color:#166534;border:1px solid #bbf7d0}
+#gh-status.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+
+.token-row{display:flex;gap:8px;align-items:center}
+.token-row input{flex:1;margin:0}
+.token-row button{padding:15px 14px;font-size:14px;border-radius:14px}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+  <h2>MedVocab-Pro v14.2</h2>
+  <small id="stat">Loading...</small>
+</header>
+
+<!-- სწავლა -->
+
+<section id="p-study" class="page active">
+
+  <div class="card-scene" id="cardScene" onclick="flipCard()">
+    <div class="card-3d" id="card3d">
+
+```
+  <!-- წინა მხარე: სიტყვა -->
+  <div class="card-face card-front">
+    <h1 id="term">...</h1>
+    <div class="ipa" id="ipa"></div>
+    <span class="card-hint">შეეხე — ბრუნვისთვის 🔄</span>
+  </div>
+
+  <!-- უკანა მხარე: თარგმანი -->
+  <div class="card-face card-back">
+    <p class="def-text" id="def"></p>
+    <div class="geo-box" id="geo"></div>
+    <span class="card-hint">შეეხე — უკან 🔄</span>
+  </div>
+
+</div>
+```
+
+  </div>
+
+  <div class="controls">
+    <button class="btn-sec" onclick="prev()">◀ წინა</button>
+    <button class="btn-sec" onclick="speak()">🔊</button>
+    <button class="btn-main" onclick="next()">შემდეგი ▶</button>
+  </div>
+
+  <div class="controls">
+    <button class="btn-muted" onclick="shuffleStudy()">🔀 Shuffle</button>
+    <button class="btn-sec" onclick="sortStudyAZ()">A-Z</button>
+  </div>
+
+</section>
+
+<!-- სია -->
+
+<section id="p-list" class="page">
+  <input id="search" placeholder="ძებნა: English / ქართული / definition" oninput="renderList()">
+  <div class="row">
+    <select id="listMode" onchange="renderList()">
+      <option value="az">ლექსიკონი A-Z</option>
+      <option value="random">არეულად</option>
+      <option value="recent">ბოლო დამატებული</option>
+      <option value="duplicates">დუბლიკატები</option>
+    </select>
+    <button class="btn-sec" onclick="renderList()">↻</button>
+  </div>
+  <div class="row">
+    <button class="btn-success" onclick="autoRemoveDuplicates()">Auto dedupe</button>
+    <button class="btn-danger" onclick="clearAllWords()">Clear all</button>
+  </div>
+  <p class="note" id="listInfo"></p>
+  <div id="list"></div>
+</section>
+
+<!-- Quiz -->
+
+<section id="p-quiz" class="page">
+  <div class="box">
+    <h3>🧠 Quiz</h3>
+    <p id="quiz-q"></p>
+    <div id="quiz-opts"></div>
+    <p id="quiz-res"></p>
+    <button class="btn-main" style="width:100%" onclick="newQuiz()">შემდეგი კითხვა</button>
+  </div>
+</section>
+
+<!-- მართვა -->
+
+<section id="p-manage" class="page">
+
+  <div class="box">
+    <h3>🐙 GitHub-ში შენახვა</h3>
+    <div class="info-box">
+      სიტყვები ავტომატურად ინახება GitHub-ში.<br>
+      Token ერთხელ შეინახება — მეტჯერ არ გჭირდება შევსება.
+    </div>
+
+```
+<label style="font-size:13px;color:var(--muted);display:block;margin-top:8px">GitHub Token</label>
+<div class="token-row">
+  <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxx">
+  <button class="btn-sec" onclick="toggleTok()">👁</button>
+</div>
+
+<label style="font-size:13px;color:var(--muted);display:block;margin-top:8px">GitHub Username</label>
+<input id="gh-user" placeholder="tamjaniashvili-create">
+
+<label style="font-size:13px;color:var(--muted);display:block;margin-top:8px">Repository</label>
+<input id="gh-repo" placeholder="My-first-medical-project-">
+
+<label style="font-size:13px;color:var(--muted);display:block;margin-top:8px">JSON ფაილი</label>
+<input id="gh-file" placeholder="json.words">
+
+<div style="display:flex;gap:10px;margin-top:12px">
+  <button class="btn-sec" style="flex:1" onclick="saveGhCfg()">💾 შენახვა</button>
+  <button class="btn-github" style="flex:1" onclick="pushToGithub()">⬆️ GitHub-ში შენახვა</button>
+</div>
+<div id="gh-status"></div>
+```
+
+  </div>
+
+  <div class="box">
+    <h3>➕ ახალი ტერმინი</h3>
+    <input id="new-term" placeholder="სიტყვა (English)">
+    <input id="new-ipa" placeholder="ტრანსკრიპცია /.../">
+    <textarea id="new-def" placeholder="ინგლისური განმარტება"></textarea>
+    <input id="new-geo" placeholder="ქართული თარგმანი">
+    <button class="btn-success" style="width:100%" onclick="addWord()">დამატება</button>
+
+```
+<hr>
+
+<h3>📂 ფაილის მართვა</h3>
+<div class="ok-box">ფაილი: <b>json.words</b> ან სრული URL</div>
+<input id="jsonUrl" placeholder="json.words ან URL">
+<button class="btn-main" style="width:100%;margin-bottom:10px" onclick="importFromUrl()">Import from file / URL</button>
+<button class="btn-sec" style="width:100%;margin-bottom:10px" onclick="exportData()">Export JSON</button>
+<button class="btn-danger" style="width:100%" onclick="resetDb()">Reset Database</button>
+<p class="note">Reset წაშლის localStorage-ს და თავიდან ჩაიტვირთება json.words-იდან.</p>
+<input type="file" accept=".json,.txt" onchange="importFile(event)" style="margin-top:10px">
+```
+
+  </div>
+
+  <div class="box">
+    <h3>📋 Raw JSON Paste</h3>
+    <textarea id="rawJson" placeholder="ჩასვი JSON array"></textarea>
+    <button class="btn-main" style="width:100%" onclick="importFromText()">Import</button>
+  </div>
+
+</section>
+
+<nav class="nav">
+  <div class="nav-item active" id="n-study" onclick="nav('study')">📖<br>სწავლა</div>
+  <div class="nav-item" id="n-list"  onclick="nav('list')">📚<br>სია</div>
+  <div class="nav-item" id="n-quiz"  onclick="nav('quiz')">🧠<br>Quiz</div>
+  <div class="nav-item" id="n-manage" onclick="nav('manage')">⚙️<br>მართვა</div>
+</nav>
+
+<script>
+let words=[], studyWords=[], idx=0, quizAns="";
+let cardFlipped=false;
+
+const SKEY="medvocab_v14";
+const GHKEY="medvocab_gh_v2";
+const DEFAULTS=["json.words","words.json","medvocab_300_usmle.json"];
+
+// ── normalize ──
+function norm(w){
+  return{
+    term:   String(w.term||w.word||w.Term||w.name||"").trim(),
+    ipa:    String(w.ipa||w.trans||w.IPA||"").trim(),
+    def:    String(w.def||w.definition||w.Definition||w.desc||"").trim(),
+    geo:    String(w.geo||w.translation||w.ka||w.georgian||w.simpleDef||"").trim(),
+    addedAt:Number(w.addedAt||Date.now())
+  };
+}
+
+function sortAZ(a){return[...a].sort((x,y)=>x.term.localeCompare(y.term,"en",{sensitivity:"base"}))}
+
+function shuffle(a){
+  const b=[...a];
+  for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}
+  return b;
+}
+
+function dedupe(arr){
+  const m=new Map();
+  arr.map(norm).forEach(w=>{
+    if(!w.term)return;
+    const k=w.term.toLowerCase();
+    const o=m.get(k);
+    if(!o){m.set(k,w);}
+    else{m.set(k,{term:o.term||w.term,ipa:o.ipa||w.ipa,def:o.def||w.def,geo:o.geo||w.geo,addedAt:Math.min(o.addedAt,w.addedAt)});}
+  });
+  return sortAZ([...m.values()]);
+}
+
+function save(){
+  words=dedupe(words);
+  localStorage.setItem(SKEY,JSON.stringify(words));
+  if(!studyWords.length)studyWords=shuffle(words);
+  updStat();
+}
+
+function updStat(){
+  document.getElementById("stat").innerText=`${words.length?(idx+1):0} / ${words.length}`;
+}
+
+// ── init ──
+async function init(){
+  loadGhCfg();
+  const s=localStorage.getItem(SKEY);
+  if(s){
+    try{
+      const p=JSON.parse(s);
+      if(Array.isArray(p)&&p.length){words=dedupe(p);studyWords=shuffle(words);show();return;}
+    }catch(e){}
+  }
+  await loadDefaults();
+}
+
+async function loadDefaults(){
+  let all=[];
+  for(const f of DEFAULTS){
+    try{
+      const r=await fetch(f+"?v="+Date.now());
+      if(!r.ok)continue;
+      const d=await r.json();
+      if(Array.isArray(d))all=all.concat(d);
+    }catch(e){}
+  }
+  if(!all.length){
+    all=[{term:"Adherence",ipa:"/ədˈhɪərəns/",def:"Following treatment correctly.",geo:"მკურნალობის დაცვა",addedAt:Date.now()}];
+    alert("ფაილი ვერ ჩაიტვირთა. გამოიყენე Import.");
+  }
+  words=dedupe(all);studyWords=shuffle(words);save();show();
+}
+
+// ── show card ──
+function show(){
+  if(!words.length){
+    document.getElementById("term").innerText="No words";
+    ["ipa","def","geo"].forEach(id=>document.getElementById(id).innerText="");
+    updStat();return;
+  }
+  if(!studyWords.length)studyWords=shuffle(words);
+  if(idx<0)idx=0;
+  if(idx>=studyWords.length)idx=studyWords.length-1;
+  const w=studyWords[idx];
+  document.getElementById("term").innerText=w.term;
+  document.getElementById("ipa").innerText=w.ipa||"";
+  document.getElementById("def").innerText=w.def||"";
+  document.getElementById("geo").innerText=w.geo||"";
+  // reset flip
+  cardFlipped=false;
+  document.getElementById("cardScene").classList.remove("flipped");
+  document.getElementById("stat").innerText=`${idx+1} / ${studyWords.length}`;
+}
+
+function flipCard(){
+  cardFlipped=!cardFlipped;
+  document.getElementById("cardScene").classList.toggle("flipped",cardFlipped);
+}
+
+function next(){if(!studyWords.length)return;idx=(idx+1)%studyWords.length;show();}
+function prev(){if(!studyWords.length)return;idx=(idx-1+studyWords.length)%studyWords.length;show();}
+
+function speak(){
+  if(!studyWords.length)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(studyWords[idx].term);
+  u.lang="en-US";u.rate=0.85;
+  speechSynthesis.speak(u);
+}
+
+function shuffleStudy(){studyWords=shuffle(words);idx=0;show();}
+function sortStudyAZ(){studyWords=sortAZ(words);idx=0;show();}
+
+// ── nav ──
+function nav(page){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
+  document.getElementById("p-"+page).classList.add("active");
+  document.getElementById("n-"+page).classList.add("active");
+  if(page==="list")renderList();
+  if(page==="quiz")newQuiz();
+}
+
+// ── list ──
+function renderList(){
+  const q=document.getElementById("search").value.toLowerCase();
+  const mode=document.getElementById("listMode").value;
+  let data=words.filter(w=>w.term.toLowerCase().includes(q)||w.geo.toLowerCase().includes(q)||w.def.toLowerCase().includes(q));
+  if(mode==="az")data=sortAZ(data);
+  if(mode==="random")data=shuffle(data);
+  if(mode==="recent")data=[...data].sort((a,b)=>(b.addedAt||0)-(a.addedAt||0));
+  if(mode==="duplicates"){
+    const g={};words.forEach(w=>{const k=w.term.toLowerCase();if(!g[k])g[k]=[];g[k].push(w);});
+    const d=new Set(Object.values(g).filter(x=>x.length>1).flat().map(w=>w.term.toLowerCase()));
+    data=data.filter(w=>d.has(w.term.toLowerCase()));
+  }
+  document.getElementById("listInfo").innerText=`ნაპოვნია: ${data.length} | სულ: ${words.length}`;
+  document.getElementById("list").innerHTML=data.map(w=>`
+    <div class="list-item">
+      <b>${eh(w.term)}</b><small>${eh(w.ipa||"")}</small>
+      <div>${eh(w.geo||"")}</div><small>${eh(w.def||"")}</small>
+      <div class="list-actions">
+        <button class="btn-main" onclick="goToWord('${ea(w.term)}')">Study</button>
+        <button class="btn-danger" onclick="delWord('${ea(w.term)}')">Delete</button>
+      </div>
+    </div>`).join("");
+}
+
+function goToWord(term){studyWords=sortAZ(words);const f=studyWords.findIndex(w=>w.term===term);if(f!==-1)idx=f;nav("study");show();}
+function delWord(term){if(!confirm("წაიშალოს?"))return;words=words.filter(w=>w.term!==term);studyWords=studyWords.filter(w=>w.term!==term);save();renderList();show();}
+function autoRemoveDuplicates(){const b=words.length;words=dedupe(words);studyWords=shuffle(words);idx=0;save();alert(`წაშლილია: ${b-words.length}`);renderList();show();}
+function clearAllWords(){if(!confirm("ნამდვილად?"))return;words=[];studyWords=[];localStorage.setItem(SKEY,JSON.stringify([]));renderList();show();}
+
+// ── add word ──
+function addWord(){
+  const term=document.getElementById("new-term").value.trim();
+  const ipa =document.getElementById("new-ipa").value.trim();
+  const def =document.getElementById("new-def").value.trim();
+  const geo =document.getElementById("new-geo").value.trim();
+  if(!term||!geo){alert("სიტყვა და ქართული თარგმანი აუცილებელია");return;}
+  const b=words.length;
+  words.push({term,ipa,def,geo,addedAt:Date.now()});
+  save();
+  ["new-term","new-ipa","new-def","new-geo"].forEach(id=>document.getElementById(id).value="");
+  if(words.length===b){alert("დუბლიკატი!");}
+  else{alert("დაემატა ✅");studyWords=sortAZ(words);idx=studyWords.findIndex(w=>w.term.toLowerCase()===term.toLowerCase());nav("study");show();}
+}
+
+// ── import / export ──
+function exportData(){
+  save();
+  const b=new Blob([JSON.stringify(words,null,2)],{type:"application/json"});
+  const u=URL.createObjectURL(b);const a=document.createElement("a");
+  a.href=u;a.download="medvocab_export.json";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
+}
+
+async function importFromUrl(){
+  const v=document.getElementById("jsonUrl").value.trim();
+  if(!v){alert("ჩაწერე ფაილის სახელი ან URL");return;}
+  await loadUrl(v);
+}
+
+async function loadUrl(url){
+  try{
+    const r=await fetch(url+(url.includes("?")?"&":"?")+"v="+Date.now());
+    if(!r.ok)throw new Error("ვერ ჩაიტვირთა ("+r.status+")");
+    const d=await r.json();
+    if(!Array.isArray(d))throw new Error("JSON array არ არის");
+    mergeWords(d);
+  }catch(e){alert("შეცდომა: "+e.message);}
+}
+
+function importFromText(){
+  const t=document.getElementById("rawJson").value.trim();if(!t)return;
+  if(!t.startsWith("[")&&t.includes(".json")){loadUrl(t);return;}
+  try{const d=JSON.parse(arrFromText(t)||t);if(!Array.isArray(d))throw 0;mergeWords(d);document.getElementById("rawJson").value="";}
+  catch(e){alert("სწორი JSON array ჩასვი");}
+}
+
+function importFile(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{try{const d=JSON.parse(arrFromText(ev.target.result)||ev.target.result);if(!Array.isArray(d))throw 0;mergeWords(d);}catch(err){alert("ფაილი არასწორია");}};
+  r.readAsText(f);
+}
+
+function mergeWords(imp){
+  const b=words.length;words=dedupe([...words,...imp]);studyWords=shuffle(words);idx=0;
+  save();renderList();show();alert(`დაემატა: ${words.length-b} | სულ: ${words.length}`);
+}
+
+function resetDb(){
+  if(!confirm("წაიშალოს localStorage?"))return;
+  ["medvocab_v14","my_med_vocab_v14","my_med_vocab_v13","my_med_vocab"].forEach(k=>localStorage.removeItem(k));
+  location.reload();
+}
+
+function arrFromText(t){
+  const s=String(t||"").trim();
+  if(s.startsWith("[")&&s.endsWith("]"))return s;
+  const a=s.indexOf("["),b=s.lastIndexOf("]");
+  if(a!==-1&&b>a)return s.slice(a,b+1);
+  return"";
+}
+
+// ── quiz ──
+function newQuiz(){
+  if(words.length<4){document.getElementById("quiz-q").innerText="საჭიროა მინიმუმ 4 სიტყვა.";document.getElementById("quiz-opts").innerHTML="";document.getElementById("quiz-res").innerText="";return;}
+  const c=words[Math.floor(Math.random()*words.length)];quizAns=c.geo;
+  const opts=[c.geo];
+  while(opts.length<4){const r=words[Math.floor(Math.random()*words.length)].geo;if(r&&!opts.includes(r))opts.push(r);}
+  opts.sort(()=>Math.random()-.5);
+  document.getElementById("quiz-q").innerText=`რას ნიშნავს: ${c.term}?`;
+  document.getElementById("quiz-res").innerText="";
+  document.getElementById("quiz-opts").innerHTML=opts.map(o=>`<button class="quiz-option" onclick="checkQuiz(this,'${ea(o)}')">${eh(o)}</button>`).join("");
+}
+
+function checkQuiz(btn,ans){
+  document.querySelectorAll(".quiz-option").forEach(b=>b.disabled=true);
+  if(ans===quizAns){btn.classList.add("correct");document.getElementById("quiz-res").innerText="სწორია ✅";}
+  else{btn.classList.add("wrong");document.getElementById("quiz-res").innerText="არასწორია. სწორი: "+quizAns;}
+}
+
+// ── GitHub ──
+function loadGhCfg(){
+  try{
+    const c=JSON.parse(localStorage.getItem(GHKEY)||"{}");
+    if(c.token)document.getElementById("gh-token").value=c.token;
+    if(c.user) document.getElementById("gh-user").value=c.user;
+    if(c.repo) document.getElementById("gh-repo").value=c.repo;
+    if(c.file) document.getElementById("gh-file").value=c.file;
+  }catch(e){}
+}
+
+function saveGhCfg(){
+  const c={
+    token:document.getElementById("gh-token").value.trim(),
+    user: document.getElementById("gh-user").value.trim(),
+    repo: document.getElementById("gh-repo").value.trim(),
+    file: document.getElementById("gh-file").value.trim()
+  };
+  if(!c.token){alert("Token ჩაწერე!");return;}
+  localStorage.setItem(GHKEY,JSON.stringify(c));
+  ghMsg("✅ კონფიგურაცია შენახულია! შემდეგ ჯერ ავტომატურად ჩაიტვირთება.",false);
+}
+
+function toggleTok(){const i=document.getElementById("gh-token");i.type=i.type==="password"?"text":"password";}
+
+function ghMsg(msg,isErr){
+  const el=document.getElementById("gh-status");
+  el.textContent=msg;el.className=isErr?"err":"ok";
+}
+
+async function pushToGithub(){
+  const token=document.getElementById("gh-token").value.trim();
+  const user= document.getElementById("gh-user").value.trim();
+  const repo= document.getElementById("gh-repo").value.trim();
+  const file= document.getElementById("gh-file").value.trim();
+  if(!token||!user||!repo||!file){ghMsg("❌ ყველა ველი შეავსე!",true);return;}
+
+  ghMsg("⏳ GitHub-ში იტვირთება...",false);
+  const api=`https://api.github.com/repos/${user}/${repo}/contents/${file}`;
+
+  try{
+    let sha=null;
+    const g=await fetch(api,{headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json"}});
+    if(g.ok){sha=(await g.json()).sha;}
+    else if(g.status!==404){throw new Error(`GitHub: ${g.status}`);}
+
+    save();
+    const body={message:`MedVocab: ${words.length} words — ${new Date().toLocaleString("ka-GE")}`,content:btoa(unescape(encodeURIComponent(JSON.stringify(words,null,2))))};
+    if(sha)body.sha=sha;
+
+    const p=await fetch(api,{method:"PUT",headers:{"Authorization":`token ${token}`,"Accept":"application/vnd.github.v3+json","Content-Type":"application/json"},body:JSON.stringify(body)});
+    if(!p.ok){const e=await p.json();throw new Error(e.message||`HTTP ${p.status}`);}
+
+    ghMsg(`✅ შენახულია! ${words.length} სიტყვა → ${file}`,false);
+  }catch(e){ghMsg(`❌ შეცდომა: ${e.message}`,true);}
+}
+
+// ── helpers ──
+function ea(t){return String(t).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/"/g,"&quot;");}
+function eh(t){return String(t).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");}
+
+init();
+</script>
+
+</body>
+</html>
