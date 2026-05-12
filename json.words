@@ -1,5 +1,12 @@
 [
   {
+    "term": "Abating",
+    "ipa": "",
+    "def": "**Definition:** Becoming less intense or widespread.<br>**Example:** The fever is **abating** after the medication.",
+    "geo": "შემცირება, დაცხრომა, კლება.",
+    "addedAt": 1778619750737
+  },
+  {
     "term": "Abdominal pain",
     "ipa": "/æbˈdɒmɪnəl/",
     "def": "Pain in abdomen.",
@@ -21,6 +28,104 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Acromegaly",
+    "ipa": "/ˌækrəʊˈmeɡəli/",
+    "def": "Growth hormone excess.",
+    "geo": "აკრომეგალია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Acute kidney injury",
+    "ipa": "/əˈkjuːt ˈkɪdni/",
+    "def": "Sudden decline in kidney function.",
+    "geo": "თირკმლის მწვავე დაზიანება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Acute otitis externa",
+    "ipa": "/əˈkjuːt əʊˈtaɪtɪs/",
+    "def": "Outer ear infection.",
+    "geo": "გარეთა ყურის ანთება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Acute pancreatitis",
+    "ipa": "/əˈkjuːt ˌpæŋkriəˈtaɪtɪs/",
+    "def": "Sudden pancreas inflammation.",
+    "geo": "მწვავე პანკრეატიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Acute respiratory distress syndrome",
+    "ipa": "/əˈkjuːt rɪˈspɪrətəri/",
+    "def": "Severe inflammatory lung failure.",
+    "geo": "მწვავე რესპირატორული დისტრეს სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Addison disease",
+    "ipa": "/ˈædɪsən/",
+    "def": "Primary adrenal insufficiency.",
+    "geo": "ადისონის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Adenoma",
+    "ipa": "/ˌædɪˈnəʊmə/",
+    "def": "Benign glandular tumor.",
+    "geo": "ადენომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Adherence",
+    "ipa": "/ədˈhɪərəns/",
+    "def": "Following treatment correctly.",
+    "geo": "მკურნალობის დაცვა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Adrenal insufficiency",
+    "ipa": "/əˈdriːnəl/",
+    "def": "Low adrenal hormone production.",
+    "geo": "თირკმელზედა ჯირკვლის უკმარისობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Affronted",
+    "ipa": "",
+    "def": "**Definition:** Insulted or offended.<br>**Example:** The patient felt **affronted**.",
+    "geo": "შეურაცხყოფილი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Agnosia",
+    "ipa": "/æɡˈnəʊziə/",
+    "def": "Failure to recognize stimuli.",
+    "geo": "აგნოზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Agonist",
+    "ipa": "/ˈæɡənɪst/",
+    "def": "Drug that activates receptor.",
+    "geo": "აგონისტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Albuminuria",
+    "ipa": "/ælˌbjuːmɪˈnjʊəriə/",
+    "def": "Albumin in urine.",
+    "geo": "ალბუმინურია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Algae",
+    "ipa": "",
+    "def": "**Definition:** Simple aquatic plants.<br>**Example:** Some **algae** are used in medicine.",
+    "geo": "წყალმცენარეები.",
+    "addedAt": 1778619750737
+  },
+  {
     "term": "Alkalosis",
     "ipa": "/ˌæl.kəˈləʊ.sɪs/",
     "def": "Excess base.",
@@ -33,6 +138,34 @@
     "def": "Immune reaction.",
     "geo": "ალერგია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Alterations",
+    "ipa": "",
+    "def": "**Definition:** The action or process of being altered.<br>**Example:** Small **alterations** in DNA can cause diseases.",
+    "geo": "ცვლილებები.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Alzheimer disease",
+    "ipa": "/ˈæltshaɪmər/",
+    "def": "Progressive neurodegenerative dementia.",
+    "geo": "ალცჰაიმერის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Amnesia",
+    "ipa": "/æmˈniːziə/",
+    "def": "Memory loss.",
+    "geo": "ამნეზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Anal fissure",
+    "ipa": "/ˈeɪnəl ˈfɪʃə/",
+    "def": "Tear in anal mucosa.",
+    "geo": "ანალური ნაპრალი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Anaphylaxis",
@@ -49,11 +182,39 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Aneurysm",
+    "ipa": "/ˈæn.jə.rɪ.zəm/",
+    "def": "Abnormal vessel dilation.",
+    "geo": "ანევრიზმა",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Angina",
     "ipa": "/ænˈdʒaɪ.nə/",
     "def": "Chest pain.",
     "geo": "სტენოკარდია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Angioedema",
+    "ipa": "/ˌændʒiəʊɪˈdiːmə/",
+    "def": "Deep tissue swelling.",
+    "geo": "ანგიოედემა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ankylosing spondylitis",
+    "ipa": "/ˌæŋkɪˈləʊsɪŋ/",
+    "def": "Inflammatory spine arthritis.",
+    "geo": "ანკილოზური სპონდილიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Antagonist",
+    "ipa": "/ænˈtæɡənɪst/",
+    "def": "Drug that blocks receptor.",
+    "geo": "ანტაგონისტი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Antibiotic",
@@ -70,6 +231,62 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Antiemetic",
+    "ipa": "/ˌæntiɪˈmetɪk/",
+    "def": "Drug that reduces vomiting.",
+    "geo": "ღებინების საწინააღმდეგო",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Antipyretic",
+    "ipa": "/ˌæntipaɪˈretɪk/",
+    "def": "Drug that reduces fever.",
+    "geo": "ცხელების დამწევი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Aortic stenosis",
+    "ipa": "/eɪˈɔːtɪk/",
+    "def": "Narrowing of aortic valve.",
+    "geo": "აორტული სტენოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Aphasia",
+    "ipa": "/əˈfeɪʒə/",
+    "def": "Language impairment.",
+    "geo": "აფაზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Aplastic anemia",
+    "ipa": "/eɪˈplæstɪk/",
+    "def": "Bone marrow failure anemia.",
+    "geo": "აპლაზიური ანემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Apnea",
+    "ipa": "/ˈæpniə/",
+    "def": "Temporary stop of breathing.",
+    "geo": "აპნოე",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Appendicitis",
+    "ipa": "/əˌpendɪˈsaɪtɪs/",
+    "def": "Appendix inflammation.",
+    "geo": "აპენდიციტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Apraxia",
+    "ipa": "/əˈpræksiə/",
+    "def": "Impaired learned movement.",
+    "geo": "აპრაქსია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Arrhythmia",
     "ipa": "/əˈrɪð.mi.ə/",
     "def": "Irregular rhythm.",
@@ -84,11 +301,46 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Ascites",
+    "ipa": "/əˈsaɪtiːz/",
+    "def": "Fluid in the abdomen.",
+    "geo": "ასციტი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Asthma",
     "ipa": "/ˈæz.mə/",
     "def": "Airway disease.",
     "geo": "ასთმა",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Ataxia",
+    "ipa": "/əˈtæksiə/",
+    "def": "Impaired coordination.",
+    "geo": "ატაქსია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Atelectasis",
+    "ipa": "/ˌætəˈlektəsɪs/",
+    "def": "Collapsed lung tissue.",
+    "geo": "ატელექტაზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Atherosclerosis",
+    "ipa": "/ˌæθərəʊskləˈrəʊsɪs/",
+    "def": "Plaque buildup in arteries.",
+    "geo": "ათეროსკლეროზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Atrial fibrillation",
+    "ipa": "/ˈeɪtriəl/",
+    "def": "Irregular atrial rhythm.",
+    "geo": "ატრიული ფიბრილაცია",
+    "addedAt": 1778619685259
   },
   {
     "term": "Atrophy",
@@ -98,11 +350,67 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Auscultation",
+    "ipa": "/ˌɔːskəlˈteɪʃən/",
+    "def": "Listening to body sounds.",
+    "geo": "აუსკულტაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Autoimmune disease",
+    "ipa": "/ˌɔːtəʊɪˈmjuːn/",
+    "def": "Disease caused by immune attack on self.",
+    "geo": "აუტოიმუნური დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Aversion",
+    "ipa": "",
+    "def": "**Definition:** A strong dislike or disinclination.<br>**Example:** Some patients have an **aversion** to needles.",
+    "geo": "ძლიერი ანტიპათია, ზიზღი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Babinski sign",
+    "ipa": "/bəˈbɪnski/",
+    "def": "Abnormal plantar reflex.",
+    "geo": "ბაბინსკის ნიშანი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Bacteremia",
+    "ipa": "/ˌbæktəˈriːmiə/",
+    "def": "Bacteria in blood.",
+    "geo": "ბაქტერიემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Basal cell carcinoma",
+    "ipa": "/ˈbeɪzəl/",
+    "def": "Common slow-growing skin cancer.",
+    "geo": "ბაზალურუჯრედოვანი კარცინომა",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Benign",
     "ipa": "/bɪˈnaɪn/",
     "def": "Non-cancer.",
     "geo": "კეთილთვისებიანი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Benign prostatic hyperplasia",
+    "ipa": "/prɒˈstætɪk/",
+    "def": "Noncancerous prostate enlargement.",
+    "geo": "პროსტატის კეთილთვისებიანი ჰიპერპლაზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Bioavailability",
+    "ipa": "/ˌbaɪəʊəveɪləˈbɪləti/",
+    "def": "Fraction of drug reaching circulation.",
+    "geo": "ბიოშეღწევადობა",
+    "addedAt": 1778619685259
   },
   {
     "term": "Biopsy",
@@ -112,11 +420,25 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Bowel obstruction",
+    "ipa": "/ˈbaʊəl əbˈstrʌkʃən/",
+    "def": "Blocked intestine.",
+    "geo": "ნაწლავის გაუვალობა",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Bradycardia",
     "ipa": "/ˌbræd.iˈkɑː.di.ə/",
     "def": "Slow pulse.",
     "geo": "ბრადიკარდია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Bronchiectasis",
+    "ipa": "/ˌbrɒŋkiˈektəsɪs/",
+    "def": "Permanent bronchial dilation.",
+    "geo": "ბრონქოექტაზია",
+    "addedAt": 1778619685259
   },
   {
     "term": "Bronchitis",
@@ -126,11 +448,32 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Bursitis",
+    "ipa": "/bɜːˈsaɪtɪs/",
+    "def": "Bursa inflammation.",
+    "geo": "ბურსიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Cachexia",
+    "ipa": "/kəˈkeksiə/",
+    "def": "Severe weight loss and wasting.",
+    "geo": "კახექსია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Cancer",
     "ipa": "/ˈkæn.sə/",
     "def": "Malignant growth.",
     "geo": "კიბო",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Cardiac tamponade",
+    "ipa": "/ˈkɑːdiæk tæmpəˈneɪd/",
+    "def": "Heart compression by pericardial fluid.",
+    "geo": "გულის ტამპონადა",
+    "addedAt": 1778619685259
   },
   {
     "term": "Cardiomyopathy",
@@ -140,11 +483,81 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Cataract",
+    "ipa": "/ˈkætərækt/",
+    "def": "Lens opacity.",
+    "geo": "კატარაქტა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Celiac disease",
+    "ipa": "/ˈsiːliæk/",
+    "def": "Gluten-sensitive enteropathy.",
+    "geo": "ცელიაკია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Cellulitis",
+    "ipa": "/ˌseljʊˈlaɪtɪs/",
+    "def": "Skin and soft tissue infection.",
+    "geo": "ცელულიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Cholangitis",
+    "ipa": "/ˌkɒlænˈdʒaɪtɪs/",
+    "def": "Bile duct infection.",
+    "geo": "ქოლანგიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Cholecystitis",
+    "ipa": "/ˌkɒlɪsɪsˈtaɪtɪs/",
+    "def": "Gallbladder inflammation.",
+    "geo": "ქოლეცისტიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Chronic kidney disease",
+    "ipa": "/ˈkrɒnɪk ˈkɪdni/",
+    "def": "Long-term kidney damage.",
+    "geo": "თირკმლის ქრონიკული დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Chronic obstructive pulmonary disease",
+    "ipa": "/ˈkrɒnɪk əbˈstrʌktɪv/",
+    "def": "Chronic airflow limitation.",
+    "geo": "ქრონიკული ობსტრუქციული ფილტვის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Chronic pancreatitis",
+    "ipa": "/ˈkrɒnɪk ˌpæŋkriəˈtaɪtɪs/",
+    "def": "Long-term pancreas inflammation.",
+    "geo": "ქრონიკული პანკრეატიტი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Cirrhosis",
     "ipa": "/sɪˈrəʊ.sɪs/",
     "def": "Liver damage.",
     "geo": "ციროზი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Claudication",
+    "ipa": "/ˌklɔːdɪˈkeɪʃən/",
+    "def": "Limb pain with exertion due to ischemia.",
+    "geo": "კლაუდიკაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Clearance",
+    "ipa": "/ˈklɪərəns/",
+    "def": "Drug elimination rate from plasma.",
+    "geo": "კლირენსი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Coma",
@@ -154,11 +567,81 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Comorbidity",
+    "ipa": "/ˌkəʊmɔːˈbɪdəti/",
+    "def": "Additional disease in same patient.",
+    "geo": "თანმხლები დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Compartment syndrome",
+    "ipa": "/kəmˈpɑːtmənt/",
+    "def": "Pressure injury in muscle compartment.",
+    "geo": "კომპარტმენტ სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Concussion",
+    "ipa": "/kənˈkʌʃən/",
+    "def": "Mild traumatic brain injury.",
+    "geo": "ტვინის შერყევა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Conjunctivitis",
+    "ipa": "/kənˌdʒʌŋktɪˈvaɪtɪs/",
+    "def": "Conjunctival inflammation.",
+    "geo": "კონიუნქტივიტი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Constipation",
     "ipa": "/ˌkɒn.stɪˈpeɪ.ʃən/",
     "def": "Hard stool.",
     "geo": "ყაბზობა",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Contraindication",
+    "ipa": "/ˌkɒntrəɪndɪˈkeɪʃən/",
+    "def": "Reason to avoid treatment.",
+    "geo": "უკუჩვენება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Convulsion",
+    "ipa": "/kənˈvʌlʃən/",
+    "def": "Involuntary muscle contractions.",
+    "geo": "კრუნჩხვა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Crohn disease",
+    "ipa": "/krəʊn/",
+    "def": "Inflammatory bowel disease.",
+    "geo": "კრონის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Cue",
+    "ipa": "",
+    "def": "**Definition:** A signal for action.<br>**Example:** Thirst is a biological **cue** to drink water.",
+    "geo": "ნიშანი, მინიშნება მოქმედებისთვის.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Cultural Accretion",
+    "ipa": "",
+    "def": "**Definition:** Gradual accumulation of cultural traits over time.<br>**Example:** Language evolves through **cultural accretion**.",
+    "geo": "კულტურული დაგროვება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Cushing syndrome",
+    "ipa": "/ˈkʊʃɪŋ/",
+    "def": "Cortisol excess syndrome.",
+    "geo": "კუშინგის სინდრომი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Cyanosis",
@@ -168,11 +651,60 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Cystitis",
+    "ipa": "/sɪˈstaɪtɪs/",
+    "def": "Bladder inflammation.",
+    "geo": "ცისტიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Deep tendon reflex",
+    "ipa": "/diːp ˈtendən/",
+    "def": "Reflex tested by tendon tap.",
+    "geo": "ღრმა მყესის რეფლექსი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Deep vein thrombosis",
+    "ipa": "/diːp veɪn θrɒmˈbəʊsɪs/",
+    "def": "Clot in deep vein.",
+    "geo": "ღრმა ვენის თრომბოზი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Dehydration",
     "ipa": "/ˌdiːhaɪˈdreɪʃən/",
     "def": "Fluid loss.",
     "geo": "დეჰიდრატაცია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Delirium",
+    "ipa": "/dɪˈlɪriəm/",
+    "def": "Acute confusion.",
+    "geo": "დელირიუმი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dementia",
+    "ipa": "/dɪˈmenʃə/",
+    "def": "Chronic cognitive decline.",
+    "geo": "დემენცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Deprivation",
+    "ipa": "",
+    "def": "**Definition:** The lack or denial of something considered to be a necessity.<br>**Example:** Sleep **deprivation** affects cognitive function.",
+    "geo": "უკმარისობა, რაღაც აუცილებლის ნაკლებობა.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Dermatitis",
+    "ipa": "/ˌdɜːməˈtaɪtɪs/",
+    "def": "Skin inflammation.",
+    "geo": "დერმატიტი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Diabetes",
@@ -182,6 +714,20 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Diabetes mellitus",
+    "ipa": "/ˌdaɪəˈbiːtiːz/",
+    "def": "Metabolic disease with high glucose.",
+    "geo": "შაქრიანი დიაბეტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Diabetic ketoacidosis",
+    "ipa": "/ˌkaɪtəʊæsɪˈdəʊsɪs/",
+    "def": "Acidotic complication of diabetes.",
+    "geo": "დიაბეტური კეტოაციდოზი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Diarrhea",
     "ipa": "/ˌdaɪ.əˈrɪə/",
     "def": "Loose stool.",
@@ -189,11 +735,88 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Diplopia",
+    "ipa": "/dɪˈpləʊpiə/",
+    "def": "Double vision.",
+    "geo": "დიპლოპია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dissection",
+    "ipa": "/dɪˈsekʃən/",
+    "def": "Tear within a vessel wall.",
+    "geo": "დისექცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Disseminated intravascular coagulation",
+    "ipa": "/dɪˈsemɪneɪtɪd/",
+    "def": "Widespread clotting and bleeding.",
+    "geo": "დისემინირებული ინტრავასკულარული კოაგულაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Diverticulitis",
+    "ipa": "/ˌdaɪvətɪkjʊˈlaɪtɪs/",
+    "def": "Inflamed diverticula.",
+    "geo": "დივერტიკულიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dysarthria",
+    "ipa": "/dɪsˈɑːθriə/",
+    "def": "Impaired speech articulation.",
+    "geo": "დიზართრია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dysmetria",
+    "ipa": "/dɪsˈmiːtriə/",
+    "def": "Impaired movement distance control.",
+    "geo": "დისმეტრია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dysphagia",
+    "ipa": "/dɪsˈfeɪdʒiə/",
+    "def": "Difficulty swallowing.",
+    "geo": "დისფაგია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Dysplasia",
+    "ipa": "/dɪsˈpleɪziə/",
+    "def": "Abnormal cell development.",
+    "geo": "დისპლაზია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Dyspnea",
     "ipa": "/ˈdɪsp.niː.ə/",
     "def": "Short breath.",
     "geo": "დისპნოე",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Dysuria",
+    "ipa": "/dɪsˈjʊəriə/",
+    "def": "Painful urination.",
+    "geo": "დიზურია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ectopic pregnancy",
+    "ipa": "/ekˈtɒpɪk/",
+    "def": "Pregnancy outside uterus.",
+    "geo": "ექტოპიური ორსულობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Eczema",
+    "ipa": "/ˈeksɪmə/",
+    "def": "Inflammatory itchy skin disease.",
+    "geo": "ეგზემა",
+    "addedAt": 1778619685259
   },
   {
     "term": "Edema",
@@ -210,11 +833,81 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Empyema",
+    "ipa": "/ˌempaɪˈiːmə/",
+    "def": "Pus in pleural space.",
+    "geo": "ემპიემა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Encephalitis",
+    "ipa": "/enˌsefəˈlaɪtɪs/",
+    "def": "Brain inflammation.",
+    "geo": "ენცეფალიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Endocarditis",
+    "ipa": "/ˌendəʊkɑːˈdaɪtɪs/",
+    "def": "Infection of heart lining.",
+    "geo": "ენდოკარდიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Endometrial hyperplasia",
+    "ipa": "/ˌendəʊˈmiːtriəl/",
+    "def": "Thickening of endometrium.",
+    "geo": "ენდომეტრიუმის ჰიპერპლაზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Endometriosis",
+    "ipa": "/ˌendəʊmiːtriˈəʊsɪs/",
+    "def": "Endometrial tissue outside uterus.",
+    "geo": "ენდომეტრიოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Envisage",
+    "ipa": "",
+    "def": "**Definition:** Form a mental picture of; anticipate.<br>**Example:** Doctors **envisage** a full recovery.",
+    "geo": "წარმოდგენა, განჭვრეტა.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Epididymitis",
+    "ipa": "/ˌepɪdɪdɪˈmaɪtɪs/",
+    "def": "Epididymis inflammation.",
+    "geo": "ეპიდიდიმიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Epidural hematoma",
+    "ipa": "/ˌepɪˈdjʊərəl/",
+    "def": "Bleeding between skull and dura.",
+    "geo": "ეპიდურული ჰემატომა",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Epilepsy",
     "ipa": "/ˈepɪlepsi/",
     "def": "Seizure disorder.",
     "geo": "ეპილეფსია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Epistaxis",
+    "ipa": "/ˌepɪˈstæksɪs/",
+    "def": "Nosebleed.",
+    "geo": "ცხვირიდან სისხლდენა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Equilibrium",
+    "ipa": "",
+    "def": "**Definition:** A state in which opposing forces or influences are balanced.<br>**Example:** The inner ear helps maintain physical **equilibrium**.",
+    "geo": "წონასწორობა.",
+    "addedAt": 1778619750737
   },
   {
     "term": "Erythema",
@@ -224,11 +917,74 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Exacerbation",
+    "ipa": "/ɪɡˌzæsəˈbeɪʃən/",
+    "def": "Worsening of disease.",
+    "geo": "გამწვავება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Fatigue",
+    "ipa": "/fəˈtiːɡ/",
+    "def": "Persistent tiredness.",
+    "geo": "დაღლილობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Fever",
+    "ipa": "/ˈfiːvə/",
+    "def": "Elevated body temperature.",
+    "geo": "ცხელება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Fibrosis",
+    "ipa": "/faɪˈbrəʊsɪs/",
+    "def": "Formation of scar tissue.",
+    "geo": "ფიბროზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "First-pass metabolism",
+    "ipa": "/ˈfɜːst pɑːs/",
+    "def": "Drug metabolism before systemic circulation.",
+    "geo": "პირველი გავლის მეტაბოლიზმი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Fistula",
+    "ipa": "/ˈfɪstjʊlə/",
+    "def": "Abnormal connection between organs.",
+    "geo": "ფისტულა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Fortified",
+    "ipa": "",
+    "def": "**Definition:** Strengthened (often used for food with added nutrients).<br>**Example:** **Fortified** milk contains extra vitamin D.",
+    "geo": "გაძლიერებული (მაგ. ვიტამინებით).",
+    "addedAt": 1778619750737
+  },
+  {
     "term": "Fracture",
     "ipa": "/ˈfræktʃə/",
     "def": "Bone break.",
     "geo": "მოტეხილობა",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Futile",
+    "ipa": "",
+    "def": "**Definition:** Incapable of producing any useful result; pointless.<br>**Example:** It is **futile** to continue the treatment if it shows no results.",
+    "geo": "ამაო, უშედეგო.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Gallstone",
+    "ipa": "/ˈɡɔːlstəʊn/",
+    "def": "Stone in gallbladder.",
+    "geo": "ნაღვლის კენჭი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Gastritis",
@@ -238,11 +994,137 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Gastroenteritis",
+    "ipa": "/ˌɡæstrəʊentəˈraɪtɪs/",
+    "def": "Stomach and intestinal inflammation.",
+    "geo": "გასტროენტერიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Gastroesophageal reflux disease",
+    "ipa": "/ˌɡæstrəʊɪˌsɒfəˈdʒiːəl/",
+    "def": "Acid reflux disease.",
+    "geo": "გასტროეზოფაგური რეფლუქსური დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Glaucoma",
+    "ipa": "/ɡlɔːˈkəʊmə/",
+    "def": "Optic nerve disease with pressure risk.",
+    "geo": "გლაუკომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Glomerulonephritis",
+    "ipa": "/ɡləˌmerjʊləʊnɪˈfraɪtɪs/",
+    "def": "Inflammation of kidney glomeruli.",
+    "geo": "გლომერულონეფრიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Goiter",
+    "ipa": "/ˈɡɔɪtə/",
+    "def": "Enlarged thyroid gland.",
+    "geo": "ჩიყვი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Gout",
+    "ipa": "/ɡaʊt/",
+    "def": "Crystal arthritis from uric acid.",
+    "geo": "პოდაგრა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Graves disease",
+    "ipa": "/ɡreɪvz dɪˈziːz/",
+    "def": "Autoimmune hyperthyroidism.",
+    "geo": "გრეივსის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Guillain-Barre syndrome",
+    "ipa": "/ɡiːˈjæn bæˈreɪ/",
+    "def": "Acute autoimmune neuropathy.",
+    "geo": "გიენ-ბარეს სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Half-life",
+    "ipa": "/ˈhɑːf laɪf/",
+    "def": "Time for drug level to fall by half.",
+    "geo": "ნახევარდაშლის დრო",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hashimoto thyroiditis",
+    "ipa": "/ˌhæʃɪˈməʊtəʊ/",
+    "def": "Autoimmune thyroiditis.",
+    "geo": "ჰაშიმოტოს თირეოიდიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Heart failure",
+    "ipa": "/hɑːt ˈfeɪljə/",
+    "def": "Inability of heart to pump effectively.",
+    "geo": "გულის უკმარისობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hematemesis",
+    "ipa": "/ˌhiːməˈtemɪsɪs/",
+    "def": "Vomiting blood.",
+    "geo": "სისხლიანი ღებინება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hematuria",
+    "ipa": "/ˌhiːməˈtjʊəriə/",
+    "def": "Blood in urine.",
+    "geo": "ჰემატურია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hemolytic anemia",
+    "ipa": "/ˌhiːməˈlɪtɪk/",
+    "def": "Anemia from red cell destruction.",
+    "geo": "ჰემოლიზური ანემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hemophilia",
+    "ipa": "/ˌhiːməˈfɪliə/",
+    "def": "Inherited bleeding disorder.",
+    "geo": "ჰემოფილია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hemoptysis",
+    "ipa": "/hɪˈmɒptɪsɪs/",
+    "def": "Coughing blood.",
+    "geo": "ჰემოპტიზი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Hemorrhage",
     "ipa": "/ˈhem.ər.ɪdʒ/",
     "def": "Bleeding.",
     "geo": "სისხლდენა",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Hemorrhoids",
+    "ipa": "/ˈhemərɔɪdz/",
+    "def": "Swollen anorectal veins.",
+    "geo": "ჰემოროიდები",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hepatic encephalopathy",
+    "ipa": "/hɪˈpætɪk/",
+    "def": "Brain dysfunction from liver failure.",
+    "geo": "ღვიძლისმიერი ენცეფალოპათია",
+    "addedAt": 1778619685259
   },
   {
     "term": "Hepatitis",
@@ -252,11 +1134,81 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Hepatomegaly",
+    "ipa": "/ˌhepətəʊˈmeɡəli/",
+    "def": "Enlarged liver.",
+    "geo": "ჰეპატომეგალია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hernia",
+    "ipa": "/ˈhɜːniə/",
+    "def": "Protrusion through tissue wall.",
+    "geo": "თიაქარი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Herpes zoster",
+    "ipa": "/ˈhɜːpiːz ˈzɒstə/",
+    "def": "Shingles from varicella-zoster virus.",
+    "geo": "ჰერპეს ზოსტერი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Huntington disease",
+    "ipa": "/ˈhʌntɪŋtən/",
+    "def": "Inherited neurodegenerative disorder.",
+    "geo": "ჰანტინგტონის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hydronephrosis",
+    "ipa": "/ˌhaɪdrəʊnɪˈfrəʊsɪs/",
+    "def": "Kidney swelling from urine blockage.",
+    "geo": "ჰიდრონეფროზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hypercalcemia",
+    "ipa": "/ˌhaɪpəkælˈsiːmiə/",
+    "def": "High calcium level.",
+    "geo": "ჰიპერკალცემია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Hyperglycemia",
     "ipa": "/ˌhaɪ.pə.ɡlaɪˈsiː.mi.ə/",
     "def": "High sugar.",
     "geo": "ჰიპერგლიკემია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Hyperkalemia",
+    "ipa": "/ˌhaɪpəkəˈliːmiə/",
+    "def": "High potassium level.",
+    "geo": "ჰიპერკალიემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hyperlipidemia",
+    "ipa": "/ˌhaɪpəlɪpɪˈdiːmiə/",
+    "def": "High blood lipids.",
+    "geo": "ჰიპერლიპიდემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hypernatremia",
+    "ipa": "/ˌhaɪpənəˈtriːmiə/",
+    "def": "High sodium level.",
+    "geo": "ჰიპერნატრემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hyperparathyroidism",
+    "ipa": "/ˌhaɪpəˌpærəˈθaɪrɔɪdɪzəm/",
+    "def": "High parathyroid hormone.",
+    "geo": "ჰიპერპარათირეოზი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Hypertension",
@@ -266,6 +1218,20 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Hyperthyroidism",
+    "ipa": "/ˌhaɪpəˈθaɪrɔɪdɪzəm/",
+    "def": "Excess thyroid activity.",
+    "geo": "ჰიპერთირეოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hypocalcemia",
+    "ipa": "/ˌhaɪpəʊkælˈsiːmiə/",
+    "def": "Low calcium level.",
+    "geo": "ჰიპოკალცემია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Hypoglycemia",
     "ipa": "/ˌhaɪ.pəʊ.ɡlaɪˈsiː.mi.ə/",
     "def": "Low sugar.",
@@ -273,11 +1239,74 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Hypokalemia",
+    "ipa": "/ˌhaɪpəʊkəˈliːmiə/",
+    "def": "Low potassium level.",
+    "geo": "ჰიპოკალიემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hyponatremia",
+    "ipa": "/ˌhaɪpəʊnəˈtriːmiə/",
+    "def": "Low sodium level.",
+    "geo": "ჰიპონატრემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hypoparathyroidism",
+    "ipa": "/ˌhaɪpəʊˌpærəˈθaɪrɔɪdɪzəm/",
+    "def": "Low parathyroid hormone.",
+    "geo": "ჰიპოპარათირეოზი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Hypotension",
     "ipa": "/ˌhaɪ.pəʊˈten.ʃən/",
     "def": "Low BP.",
     "geo": "ჰიპოტენზია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Hypothyroidism",
+    "ipa": "/ˌhaɪpəʊˈθaɪrɔɪdɪzəm/",
+    "def": "Low thyroid activity.",
+    "geo": "ჰიპოთირეოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Hypoxia",
+    "ipa": "/haɪˈpɒksiə/",
+    "def": "Low tissue oxygen.",
+    "geo": "ჰიპოქსია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Idiosyncratic reaction",
+    "ipa": "/ˌɪdiəʊsɪŋˈkrætɪk/",
+    "def": "Unpredictable drug reaction.",
+    "geo": "იდიოსინკრაზიული რეაქცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ileus",
+    "ipa": "/ˈɪliəs/",
+    "def": "Functional bowel obstruction.",
+    "geo": "ილეუსი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Impetigo",
+    "ipa": "/ˌɪmpɪˈtaɪɡəʊ/",
+    "def": "Superficial bacterial skin infection.",
+    "geo": "იმპეტიგო",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Infarction",
+    "ipa": "/ɪnˈfɑːkʃən/",
+    "def": "Tissue death from ischemia.",
+    "geo": "ინფარქტი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Infection",
@@ -301,6 +1330,41 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Inter body spacer",
+    "ipa": "",
+    "def": "**Definition:** A medical device used in spinal fusion surgery.<br>**Example:** An **inter body spacer** was inserted.",
+    "geo": "მალთაშუა სპეისერი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Interstitial lung disease",
+    "ipa": "/ˌɪntəˈstɪʃəl/",
+    "def": "Fibrotic lung disorder group.",
+    "geo": "ინტერსტიციული ფილტვის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Intracranial pressure",
+    "ipa": "/ˌɪntrəˈkreɪniəl/",
+    "def": "Pressure inside skull.",
+    "geo": "ინტრაკრანიალური წნევა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Iron deficiency anemia",
+    "ipa": "/ˈaɪən/",
+    "def": "Anemia from low iron.",
+    "geo": "რკინადეფიციტური ანემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Irritable bowel syndrome",
+    "ipa": "/ˈɪrɪtəbəl/",
+    "def": "Functional bowel disorder.",
+    "geo": "გაღიზიანებული ნაწლავის სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Ischemia",
     "ipa": "/ɪˈskiː.mi.ə/",
     "def": "Low blood flow.",
@@ -315,11 +1379,39 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Ketoacidosis",
+    "ipa": "/ˌkiːtəʊæsɪˈdəʊsɪs/",
+    "def": "Acidosis from ketones.",
+    "geo": "კეტოაციდოზი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Kidney failure",
     "ipa": "/ˈkɪdni/",
     "def": "Renal failure.",
     "geo": "თირკმლის უკმარისობა",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Lactic acidosis",
+    "ipa": "/ˈlæktɪk/",
+    "def": "Acidosis from lactate accumulation.",
+    "geo": "ლაქტაციდოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Laryngitis",
+    "ipa": "/ˌlærɪnˈdʒaɪtɪs/",
+    "def": "Voice box inflammation.",
+    "geo": "ლარინგიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Lavished",
+    "ipa": "",
+    "def": "**Definition:** Bestowed something in generous quantities.<br>**Example:** Care was **lavished** on the patient.",
+    "geo": "უხვად გაცემული მზრუნველობა.",
+    "addedAt": 1778619750737
   },
   {
     "term": "Leukemia",
@@ -329,6 +1421,20 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Leukocytosis",
+    "ipa": "/ˌluːkəʊsaɪˈtəʊsɪs/",
+    "def": "High white blood cell count.",
+    "geo": "ლეიკოციტოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Lymphadenopathy",
+    "ipa": "/lɪmˌfædɪˈnɒpəθi/",
+    "def": "Enlarged lymph nodes.",
+    "geo": "ლიმფადენოპათია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Lymphoma",
     "ipa": "/lɪmˈfəʊmə/",
     "def": "Lymph cancer.",
@@ -336,11 +1442,46 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Macular degeneration",
+    "ipa": "/ˈmækjʊlər/",
+    "def": "Degeneration of central retina.",
+    "geo": "მაკულარული დეგენერაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Malabsorption",
+    "ipa": "/ˌmæləbˈsɔːpʃən/",
+    "def": "Poor nutrient absorption.",
+    "geo": "მალაბსორბცია",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Malignant",
     "ipa": "/məˈlɪɡnənt/",
     "def": "Cancerous.",
     "geo": "ავთვისებიანი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Mediocre",
+    "ipa": "",
+    "def": "**Definition:** Of only moderate quality; not very good.<br>**Example:** The facilities were only **mediocre**.",
+    "geo": "საშუალო დონის, არც ისე კარგი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Melanoma",
+    "ipa": "/ˌmeləˈnəʊmə/",
+    "def": "Malignant melanocyte tumor.",
+    "geo": "მელანომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Meningitis",
+    "ipa": "/ˌmenɪnˈdʒaɪtɪs/",
+    "def": "Inflammation of meninges.",
+    "geo": "მენინგიტი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Metastasis",
@@ -357,11 +1498,88 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Mining Of",
+    "ipa": "",
+    "def": "**Definition:** To extract or search for valuable information.<br>**Example:** Data **mining of** records can reveal trends.",
+    "geo": "ინფორმაციის მოპოვება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Mitral regurgitation",
+    "ipa": "/ˈmaɪtrəl/",
+    "def": "Backflow through mitral valve.",
+    "geo": "მიტრალური რეგურგიტაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Multiple myeloma",
+    "ipa": "/ˈmaɪələʊmə/",
+    "def": "Plasma cell malignancy.",
+    "geo": "მრავლობითი მიელომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Multiple sclerosis",
+    "ipa": "/ˈmʌltɪpl skləˈrəʊsɪs/",
+    "def": "Demyelinating CNS disease.",
+    "geo": "გაფანტული სკლეროზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Myalgia",
+    "ipa": "/maɪˈældʒiə/",
+    "def": "Muscle pain.",
+    "geo": "მიალგია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Myasthenia gravis",
+    "ipa": "/ˌmaɪəsˈθiːniə ˈɡrɑːvɪs/",
+    "def": "Autoimmune neuromuscular weakness.",
+    "geo": "მიასთენია გრავისი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Myocardial infarction",
+    "ipa": "/ˌmaɪəˈkɑːdiəl/",
+    "def": "Heart attack.",
+    "geo": "მიოკარდიუმის ინფარქტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Myocarditis",
+    "ipa": "/ˌmaɪəʊkɑːˈdaɪtɪs/",
+    "def": "Heart muscle inflammation.",
+    "geo": "მიოკარდიტი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Necrosis",
     "ipa": "/nəˈkrəʊ.sɪs/",
     "def": "Cell death.",
     "geo": "ნეკროზი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Nephritic syndrome",
+    "ipa": "/nɪˈfrɪtɪk/",
+    "def": "Kidney inflammation with hematuria.",
+    "geo": "ნეფრიტული სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Nephrolithiasis",
+    "ipa": "/ˌnefrəʊlɪˈθaɪəsɪs/",
+    "def": "Kidney stones.",
+    "geo": "თირკმლის კენჭები",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Nephrotic syndrome",
+    "ipa": "/nɪˈfrɒtɪk/",
+    "def": "Proteinuria and edema syndrome.",
+    "geo": "ნეფროზული სინდრომი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Neuropathy",
@@ -371,6 +1589,20 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Neutropenia",
+    "ipa": "/ˌnjuːtrəˈpiːniə/",
+    "def": "Low neutrophil count.",
+    "geo": "ნეიტროპენია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Nystagmus",
+    "ipa": "/nɪˈstæɡməs/",
+    "def": "Involuntary eye movement.",
+    "geo": "ნისტაგმი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Obesity",
     "ipa": "/əʊˈbiː.sə.ti/",
     "def": "Excess fat.",
@@ -378,11 +1610,60 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Observer Bias",
+    "ipa": "",
+    "def": "**Definition:** Tendency of observers to see what they expect to see.<br>**Example:** Double-blind studies help to avoid **observer bias**.",
+    "geo": "დამკვირვებლის მიკერძოება; ტენდენცია, დაინახო ის, რასაც ელი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Osteoarthritis",
+    "ipa": "/ˌɒstiəʊɑːˈθraɪtɪs/",
+    "def": "Degenerative joint disease.",
+    "geo": "ოსტეოართრიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Osteomalacia",
+    "ipa": "/ˌɒstiəʊməˈleɪʃə/",
+    "def": "Softening of bones.",
+    "geo": "ოსტეომალაცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Osteomyelitis",
+    "ipa": "/ˌɒstiəʊmaɪəˈlaɪtɪs/",
+    "def": "Bone infection.",
+    "geo": "ოსტეომიელიტი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Osteoporosis",
     "ipa": "/ˌɒstiəʊpəˈrəʊsɪs/",
     "def": "Weak bones.",
     "geo": "ოსტეოპოროზი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Otitis media",
+    "ipa": "/əʊˈtaɪtɪs/",
+    "def": "Middle ear infection.",
+    "geo": "შუა ყურის ანთება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ovarian cyst",
+    "ipa": "/əʊˈveəriən sɪst/",
+    "def": "Fluid-filled ovarian lesion.",
+    "geo": "საკვერცხის კისტა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Paget disease of bone",
+    "ipa": "/ˈpædʒɪt/",
+    "def": "Disordered bone remodeling.",
+    "geo": "პეჯეტის ძვლის დაავადება",
+    "addedAt": 1778619685259
   },
   {
     "term": "Pancreatitis",
@@ -399,11 +1680,144 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Parkinson disease",
+    "ipa": "/ˈpɑːkɪnsən/",
+    "def": "Neurodegenerative movement disorder.",
+    "geo": "პარკინსონის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Partial agonist",
+    "ipa": "/ˈpɑːʃəl/",
+    "def": "Drug with partial receptor activation.",
+    "geo": "ნაწილობრივი აგონისტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pelvic inflammatory disease",
+    "ipa": "/ˈpelvɪk/",
+    "def": "Infection of female reproductive organs.",
+    "geo": "მენჯის ანთებითი დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Peptic ulcer disease",
+    "ipa": "/ˈpeptɪk/",
+    "def": "Acid-related ulcer disease.",
+    "geo": "პეპტიკური წყლული",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pericarditis",
+    "ipa": "/ˌperɪkɑːˈdaɪtɪs/",
+    "def": "Inflammation of pericardium.",
+    "geo": "პერიკარდიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Peripheral neuropathy",
+    "ipa": "/pəˈrɪfərəl/",
+    "def": "Peripheral nerve dysfunction.",
+    "geo": "პერიფერიული ნეიროპათია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Peritonitis",
+    "ipa": "/ˌperɪtəˈnaɪtɪs/",
+    "def": "Inflammation of peritoneum.",
+    "geo": "პერიტონიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pernicious anemia",
+    "ipa": "/pəˈnɪʃəs/",
+    "def": "B12 deficiency from intrinsic factor loss.",
+    "geo": "პერნიციოზული ანემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pharyngitis",
+    "ipa": "/ˌfærɪnˈdʒaɪtɪs/",
+    "def": "Throat inflammation.",
+    "geo": "ფარინგიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pheochromocytoma",
+    "ipa": "/ˌfiːəʊˌkrəʊməsaɪˈtəʊmə/",
+    "def": "Catecholamine-secreting tumor.",
+    "geo": "ფეოქრომოციტომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pleural effusion",
+    "ipa": "/ˈplʊərəl/",
+    "def": "Fluid in pleural space.",
+    "geo": "პლევრული გამონაჟონი",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Pneumonia",
     "ipa": "/njuːˈməʊ.ni.ə/",
     "def": "Lung infection.",
     "geo": "პნევმონია",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Pneumothorax",
+    "ipa": "/ˌnjuːməʊˈθɔːræks/",
+    "def": "Air in pleural space.",
+    "geo": "პნევმოთორაქსი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Polycystic ovary syndrome",
+    "ipa": "/ˌpɒliˈsɪstɪk/",
+    "def": "Endocrine ovarian disorder.",
+    "geo": "პოლიკისტოზური საკვერცხეების სინდრომი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Polycythemia vera",
+    "ipa": "/ˌpɒlɪsaɪˈθiːmiə/",
+    "def": "Myeloproliferative high red cell disorder.",
+    "geo": "პოლიციტემია ვერა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Polymyalgia rheumatica",
+    "ipa": "/ˌpɒlɪmaɪˈældʒiə/",
+    "def": "Inflammatory pain syndrome.",
+    "geo": "პოლიმიალგია რევმატიკა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Polyuria",
+    "ipa": "/ˌpɒliˈjʊəriə/",
+    "def": "Excessive urination.",
+    "geo": "პოლიურია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Portal hypertension",
+    "ipa": "/ˈpɔːtəl/",
+    "def": "High pressure in portal venous system.",
+    "geo": "პორტული ჰიპერტენზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Postpone",
+    "ipa": "",
+    "def": "**Definition:** Cause or arrange for something to take place at a time later than first scheduled.<br>**Example:** The surgery was **postponed**.",
+    "geo": "გადადება (დროში).",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Primary biliary cholangitis",
+    "ipa": "/ˈpraɪməri ˈbɪliəri/",
+    "def": "Autoimmune bile duct disease.",
+    "geo": "პირველადი ბილიარული ქოლანგიტი",
+    "addedAt": 1778619685259
   },
   {
     "term": "Prognosis",
@@ -413,10 +1827,843 @@
     "addedAt": 1778619080001
   },
   {
+    "term": "Prostatitis",
+    "ipa": "/ˌprɒstəˈtaɪtɪs/",
+    "def": "Prostate inflammation.",
+    "geo": "პროსტატიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Proteinuria",
+    "ipa": "/ˌprəʊtiːˈnjʊəriə/",
+    "def": "Protein in urine.",
+    "geo": "პროტეინურია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pruritus",
+    "ipa": "/prʊˈraɪtəs/",
+    "def": "Itching.",
+    "geo": "ქავილი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Psoriasis",
+    "ipa": "/səˈraɪəsɪs/",
+    "def": "Chronic inflammatory skin disease.",
+    "geo": "ფსორიაზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pulmonary edema",
+    "ipa": "/ˈpʊlmənəri/",
+    "def": "Fluid in lungs.",
+    "geo": "ფილტვის შეშუპება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pulmonary embolism",
+    "ipa": "/ˈpʊlmənəri ˈembəlɪzəm/",
+    "def": "Clot in pulmonary artery.",
+    "geo": "ფილტვის ემბოლია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pulmonary hypertension",
+    "ipa": "/ˈpʊlmənəri/",
+    "def": "High pressure in pulmonary arteries.",
+    "geo": "ფილტვის ჰიპერტენზია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Pyelonephritis",
+    "ipa": "/ˌpaɪələʊnɪˈfraɪtɪs/",
+    "def": "Kidney infection.",
+    "geo": "პიელონეფრიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Radiculopathy",
+    "ipa": "/rəˌdɪkjʊˈlɒpəθi/",
+    "def": "Nerve root disorder.",
+    "geo": "რადიკულოპათია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Recruitment",
+    "ipa": "",
+    "def": "**Definition:** The process of adding new individuals to a group.<br>**Example:** Muscle fiber **recruitment** increases during lifting.",
+    "geo": "რეკრუტირება, ახალი წევრების ჩართვა.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Recuperation",
+    "ipa": "",
+    "def": "**Definition:** Recovery from illness or exertion.<br>**Example:** A period of **recuperation** is needed after surgery.",
+    "geo": "გამოჯანმრთელება, ძალების აღდგენა.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Refractory",
+    "ipa": "/rɪˈfræktəri/",
+    "def": "Resistant to treatment.",
+    "geo": "მკურნალობისადმი რეზისტენტული",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Relapse",
+    "ipa": "/rɪˈlæps/",
+    "def": "Return of disease.",
+    "geo": "რეციდივი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Remission",
+    "ipa": "/rɪˈmɪʃən/",
+    "def": "Reduction or disappearance of disease activity.",
+    "geo": "რემისია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Renal failure",
+    "ipa": "/ˈriːnəl/",
+    "def": "Kidney failure.",
+    "geo": "თირკმლის უკმარისობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Respiratory acidosis",
+    "ipa": "/rɪˈspɪrətəri ˌæsɪˈdəʊsɪs/",
+    "def": "Acidosis from CO2 retention.",
+    "geo": "რესპირატორული აციდოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Respiratory alkalosis",
+    "ipa": "/rɪˈspɪrətəri ˌælkəˈləʊsɪs/",
+    "def": "Alkalosis from low CO2.",
+    "geo": "რესპირატორული ალკალოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Respiratory failure",
+    "ipa": "/rɪˈspɪrətəri/",
+    "def": "Failure of gas exchange.",
+    "geo": "სუნთქვის უკმარისობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Retinal detachment",
+    "ipa": "/ˈretɪnəl/",
+    "def": "Separation of retina.",
+    "geo": "ბადურის ჩამოშლა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Rhabdomyolysis",
+    "ipa": "/ˌræbdəʊmaɪˈɒlɪsɪs/",
+    "def": "Muscle breakdown.",
+    "geo": "რაბდომიოლიზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Rheumatoid arthritis",
+    "ipa": "/ˈruːmətɔɪd/",
+    "def": "Autoimmune joint disease.",
+    "geo": "რევმატოიდული ართრიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Rigor Check",
+    "ipa": "",
+    "def": "**Definition:** A strict evaluation of the accuracy and quality.<br>**Example:** The scientific method requires a **rigor check**.",
+    "geo": "სიმკაცრის და სიზუსტის შემოწმება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Scleroderma",
+    "ipa": "/ˌsklerəˈdɜːmə/",
+    "def": "Fibrosing autoimmune disease.",
+    "geo": "სკლეროდერმია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Seizure",
+    "ipa": "/ˈsiːʒə/",
+    "def": "Abnormal brain electrical activity.",
+    "geo": "კრუნჩხვითი შეტევა",
+    "addedAt": 1778619685259
+  },
+  {
     "term": "Sepsis",
     "ipa": "/ˈsep.sɪs/",
     "def": "Severe infection.",
     "geo": "სეფსისი",
     "addedAt": 1778619080001
+  },
+  {
+    "term": "Shock",
+    "ipa": "/ʃɒk/",
+    "def": "Critical circulatory failure.",
+    "geo": "შოკი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Sickle cell disease",
+    "ipa": "/ˈsɪkəl/",
+    "def": "Inherited hemoglobin disorder.",
+    "geo": "ნამგლისებრუჯრედოვანი დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Sinusitis",
+    "ipa": "/ˌsaɪnəˈsaɪtɪs/",
+    "def": "Sinus inflammation.",
+    "geo": "სინუსიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Sluggish",
+    "ipa": "",
+    "def": "**Definition:** Slow-moving or inactive; lacking energy.<br>**Example:** The patient felt **sluggish** due to low blood sugar.",
+    "geo": "დუნე, შენელებული, უენერგიო.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Spinal stenosis",
+    "ipa": "/ˈspaɪnəl/",
+    "def": "Narrowing of spinal canal.",
+    "geo": "ზურგის არხის სტენოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Splenomegaly",
+    "ipa": "/ˌspliːnəʊˈmeɡəli/",
+    "def": "Enlarged spleen.",
+    "geo": "სპლენომეგალია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Squamous cell carcinoma",
+    "ipa": "/ˈskweɪməs/",
+    "def": "Cancer of squamous cells.",
+    "geo": "ბრტყელუჯრედოვანი კარცინომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Stall",
+    "ipa": "",
+    "def": "**Definition:** To stop making progress or to delay.<br>**Example:** The recovery process has **stalled**.",
+    "geo": "შეჩერება, პროგრესის შეფერხება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Stenosis",
+    "ipa": "/stəˈnəʊsɪs/",
+    "def": "Narrowing of a passage.",
+    "geo": "სტენოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Stroke",
+    "ipa": "/strəʊk/",
+    "def": "Brain injury from ischemia or bleeding.",
+    "geo": "ინსულტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Subarachnoid hemorrhage",
+    "ipa": "/ˌsʌbəˈræknɔɪd/",
+    "def": "Bleeding into subarachnoid space.",
+    "geo": "სუბარაქნოიდული სისხლდენა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Subdural hematoma",
+    "ipa": "/sʌbˈdjʊərəl/",
+    "def": "Bleeding under dura.",
+    "geo": "სუბდურული ჰემატომა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Surplus",
+    "ipa": "",
+    "def": "**Definition:** An amount left over when requirements have been met.<br>**Example:** The body stores **surplus** energy as fat.",
+    "geo": "ჭარბი რაოდენობა, ნამატი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Syncope",
+    "ipa": "/ˈsɪŋkəpi/",
+    "def": "Fainting.",
+    "geo": "გულის წასვლა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Systemic lupus erythematosus",
+    "ipa": "/sɪˈstemɪk ˈluːpəs/",
+    "def": "Systemic autoimmune disease.",
+    "geo": "სისტემური წითელი მგლურა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Tachycardia",
+    "ipa": "/ˌtækiˈkɑːdiə/",
+    "def": "Fast heart rate.",
+    "geo": "ტაქიკარდია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Tachyphylaxis",
+    "ipa": "/ˌtækiˌfaɪˈlæksɪs/",
+    "def": "Rapid decrease in drug response.",
+    "geo": "ტაქიფილაქსია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Tardive",
+    "ipa": "",
+    "def": "**Definition:** Having a delayed onset (often used for side effects).<br>**Example:** **Tardive** dyskinesia is a delayed side effect.",
+    "geo": "დაგვიანებული სიმპტომი.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Tendinitis",
+    "ipa": "/ˌtendɪˈnaɪtɪs/",
+    "def": "Tendon inflammation.",
+    "geo": "ტენდინიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Testicular torsion",
+    "ipa": "/teˈstɪkjʊlər/",
+    "def": "Twisting of spermatic cord.",
+    "geo": "სათესლის ტორსია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Thalassemia",
+    "ipa": "/ˌθæləˈsiːmiə/",
+    "def": "Inherited hemoglobin production disorder.",
+    "geo": "თალასემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Therapeutic index",
+    "ipa": "/ˌθerəˈpjuːtɪk/",
+    "def": "Ratio of toxic to effective dose.",
+    "geo": "თერაპიული ინდექსი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Thrombocytopenia",
+    "ipa": "/ˌθrɒmbəʊsaɪtəˈpiːniə/",
+    "def": "Low platelet count.",
+    "geo": "თრომბოციტოპენია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Thrombosis",
+    "ipa": "/θrɒmˈbəʊsɪs/",
+    "def": "Blood clot formation.",
+    "geo": "თრომბოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Thyroiditis",
+    "ipa": "/ˌθaɪrɔɪˈdaɪtɪs/",
+    "def": "Thyroid inflammation.",
+    "geo": "თირეოიდიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "To ebb",
+    "ipa": "",
+    "def": "**Definition:** To gradually lessen or reduce.<br>**Example:** The patient's strength began to **ebb**.",
+    "geo": "შემცირება, შესუსტება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Tolerance",
+    "ipa": "/ˈtɒlərəns/",
+    "def": "Reduced response after repeated exposure.",
+    "geo": "ტოლერანტობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Tonsillitis",
+    "ipa": "/ˌtɒnsɪˈlaɪtɪs/",
+    "def": "Tonsil inflammation.",
+    "geo": "ტონზილიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Transient ischemic attack",
+    "ipa": "/ˈtrænziənt/",
+    "def": "Temporary stroke-like episode.",
+    "geo": "ტრანზიტორული იშემიური შეტევა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Tuberculosis",
+    "ipa": "/tjuːˌbɜːkjʊˈləʊsɪs/",
+    "def": "Mycobacterial infection.",
+    "geo": "ტუბერკულოზი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ulcer",
+    "ipa": "/ˈʌlsə/",
+    "def": "Open sore in tissue.",
+    "geo": "წყლული",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ulcerative colitis",
+    "ipa": "/ˈʌlsərətɪv kəˈlaɪtɪs/",
+    "def": "Inflammatory disease of colon.",
+    "geo": "წყლულოვანი კოლიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Unwittingly",
+    "ipa": "",
+    "def": "**Definition:** Without being aware; unintentionally.<br>**Example:** He **unwittingly** spread the virus.",
+    "geo": "უნებლიეთ, გაუცნობიერებლად.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Uremia",
+    "ipa": "/jʊˈriːmiə/",
+    "def": "Toxin accumulation from renal failure.",
+    "geo": "ურემია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Urinary retention",
+    "ipa": "/ˈjʊərɪnəri/",
+    "def": "Inability to empty bladder.",
+    "geo": "შარდის შეკავება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Urinary tract infection",
+    "ipa": "/ˈjʊərɪnəri trækt/",
+    "def": "Infection of urinary tract.",
+    "geo": "შარდსასქესო ინფექცია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Urticaria",
+    "ipa": "/ˌɜːtɪˈkeəriə/",
+    "def": "Hives.",
+    "geo": "ჭინჭრის ციება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Uveitis",
+    "ipa": "/ˌjuːviˈaɪtɪs/",
+    "def": "Uveal tract inflammation.",
+    "geo": "უვეიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Vasculitis",
+    "ipa": "/ˌvæskjʊˈlaɪtɪs/",
+    "def": "Blood vessel inflammation.",
+    "geo": "ვასკულიტი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ventricular tachycardia",
+    "ipa": "/venˈtrɪkjʊlər/",
+    "def": "Fast rhythm from ventricles.",
+    "geo": "ვენტრიკულური ტაქიკარდია",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Vertigo",
+    "ipa": "/ˈvɜːtɪɡəʊ/",
+    "def": "False spinning sensation.",
+    "geo": "ვერტიგო",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Volume of distribution",
+    "ipa": "/ˈvɒljuːm/",
+    "def": "Apparent distribution space of drug.",
+    "geo": "განაწილების მოცულობა",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Ward off",
+    "ipa": "",
+    "def": "**Definition:** To prevent someone or something from harming or affecting one.<br>**Example:** Vitamins can help **ward off** infections.",
+    "geo": "თავიდან აცილება, მოგერიება.",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Wheezing",
+    "ipa": "/ˈwiːzɪŋ/",
+    "def": "Whistling breath sound.",
+    "geo": "ხიხინი",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Wilson disease",
+    "ipa": "/ˈwɪlsən/",
+    "def": "Copper metabolism disorder.",
+    "geo": "ვილსონის დაავადება",
+    "addedAt": 1778619685259
+  },
+  {
+    "term": "Word1",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება1",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word10",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება10",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word11",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება11",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word12",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება12",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word13",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება13",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word14",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება14",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word15",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება15",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word16",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება16",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word17",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება17",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word18",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება18",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word19",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება19",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word2",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება2",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word20",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება20",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word21",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება21",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word22",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება22",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word23",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება23",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word24",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება24",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word25",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება25",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word26",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება26",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word27",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება27",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word28",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება28",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word29",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება29",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word3",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება3",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word30",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება30",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word31",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება31",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word32",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება32",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word33",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება33",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word34",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება34",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word35",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება35",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word36",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება36",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word37",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება37",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word38",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება38",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word39",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება39",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word4",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება4",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word40",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება40",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word41",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება41",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word42",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება42",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word43",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება43",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word44",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება44",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word45",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება45",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word46",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება46",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word47",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება47",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word48",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება48",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word49",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება49",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word5",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება5",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word50",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება50",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word6",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება6",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word7",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება7",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word8",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება8",
+    "addedAt": 1778619750737
+  },
+  {
+    "term": "Word9",
+    "ipa": "",
+    "def": "",
+    "geo": "შეიძლება9",
+    "addedAt": 1778619750737
   }
 ]
