@@ -14,6 +14,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Achondroplasia",
+    "ipa": "/eɪˌkɒndrəˈpleɪziə/",
+    "def": "Most common form of dwarfism.",
+    "geo": "აქონდროპლაზია",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Acidosis",
     "ipa": "/ˌæsɪˈdəʊsɪs/",
     "def": "Excess acid in body fluids.",
@@ -126,6 +133,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Amenorrhea",
+    "ipa": "/ˌeɪˌmenəˈrɪə/",
+    "def": "Absence of menstruation.",
+    "geo": "ამენორეა",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Amnesia",
     "ipa": "/æmˈniːziə/",
     "def": "Memory loss.",
@@ -222,6 +236,13 @@
     "def": "Narrowing of aortic valve.",
     "geo": "აორტული სტენოზი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Apgar score",
+    "ipa": "/ˈæpɡɑː skɔː/",
+    "def": "Newborn health assessment score.",
+    "geo": "აფგარის ქულა",
+    "addedAt": 1778622651678
   },
   {
     "term": "Aphasia",
@@ -329,6 +350,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Autism spectrum disorder",
+    "ipa": "/ˈɔːtɪzəm ˈspektrəm/",
+    "def": "Neurodevelopmental communication disorder.",
+    "geo": "აუტიზმის სპექტრის აშლილობა",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Autoimmune disease",
     "ipa": "/ˌɔːtəʊɪˈmjuːn/",
     "def": "Disease caused by immune attack on self.",
@@ -399,6 +427,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Breast cancer",
+    "ipa": "/brest ˈkænsə/",
+    "def": "Malignant breast tumor.",
+    "geo": "სარძევე ჯირკვლის კიბო",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Bronchiectasis",
     "ipa": "/ˌbrɒŋkiˈektəsɪs/",
     "def": "Permanent bronchial dilation.",
@@ -467,6 +502,20 @@
     "def": "Skin and soft tissue infection.",
     "geo": "ცელულიტი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Cerebral palsy",
+    "ipa": "/ˈserɪbrəl ˈpɔːlzi/",
+    "def": "Motor disorder from brain damage.",
+    "geo": "ცერებრული დამბლა",
+    "addedAt": 1778622651679
+  },
+  {
+    "term": "Cervical cancer",
+    "ipa": "/ˈsɜːvɪkəl ˈkænsə/",
+    "def": "Malignancy of the cervix.",
+    "geo": "საშვილოსნოს ყელის კიბო",
+    "addedAt": 1778622651678
   },
   {
     "term": "Cholangitis",
@@ -553,6 +602,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Congenital anomaly",
+    "ipa": "/kənˈdʒenɪtəl əˈnɒməli/",
+    "def": "Birth defect present from birth.",
+    "geo": "თანდაყოლილი ანომალია",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Conjunctivitis",
     "ipa": "/kənˌdʒʌŋktɪˈvaɪtɪs/",
     "def": "Conjunctival inflammation.",
@@ -600,6 +656,13 @@
     "def": "Bluish discoloration from low oxygen.",
     "geo": "ციანოზი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Cystic fibrosis",
+    "ipa": "/ˈsɪstɪk faɪˈbrəʊsɪs/",
+    "def": "Inherited exocrine gland disorder.",
+    "geo": "კისტოზური ფიბროზი",
+    "addedAt": 1778622651678
   },
   {
     "term": "Cystitis",
@@ -700,11 +763,25 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Down syndrome",
+    "ipa": "/daʊn ˈsɪndrəʊm/",
+    "def": "Trisomy 21 chromosomal disorder.",
+    "geo": "დაუნის სინდრომი",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Dysarthria",
     "ipa": "/dɪsˈɑːθriə/",
     "def": "Impaired speech articulation.",
     "geo": "დიზართრია",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Dysmenorrhea",
+    "ipa": "/ˌdɪsˌmenəˈrɪə/",
+    "def": "Painful menstruation.",
+    "geo": "დისმენორეა",
+    "addedAt": 1778622651678
   },
   {
     "term": "Dysmetria",
@@ -742,6 +819,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Eclampsia",
+    "ipa": "/ɪˈklæmpsiə/",
+    "def": "Seizures in preeclampsia.",
+    "geo": "ეკლამფსია",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Ectopic pregnancy",
     "ipa": "/ekˈtɒpɪk/",
     "def": "Pregnancy outside uterus.",
@@ -761,6 +845,13 @@
     "def": "Swelling from fluid accumulation.",
     "geo": "შეშუპება",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Ehlers-Danlos syndrome",
+    "ipa": "/ˈeɪləz ˈdænləs/",
+    "def": "Connective tissue hypermobility disorder.",
+    "geo": "ელერს-დანლოს სინდრომი",
+    "addedAt": 1778622651679
   },
   {
     "term": "Embolism",
@@ -847,6 +938,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Fabry disease",
+    "ipa": "/ˈfæbri dɪˈziːz/",
+    "def": "X-linked lysosomal storage disorder.",
+    "geo": "ფაბრის დაავადება",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Fatigue",
     "ipa": "/fəˈtiːɡ/",
     "def": "Persistent tiredness.",
@@ -889,6 +987,20 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Galactorrhea",
+    "ipa": "/ɡəˌlæktəˈrɪə/",
+    "def": "Inappropriate milk secretion.",
+    "geo": "გალაქტორეა",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Galactosemia",
+    "ipa": "/ɡəˌlæktəˈsiːmiə/",
+    "def": "Inherited galactose metabolism disorder.",
+    "geo": "გალაქტოზემია",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Gallstone",
     "ipa": "/ˈɡɔːlstəʊn/",
     "def": "Stone in gallbladder.",
@@ -915,6 +1027,20 @@
     "def": "Acid reflux disease.",
     "geo": "გასტროეზოფაგური რეფლუქსური დაავადება",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Gaucher disease",
+    "ipa": "/ˈɡɔːʃeɪ dɪˈziːz/",
+    "def": "Lysosomal glucocerebrosidase deficiency.",
+    "geo": "გოშეს დაავადება",
+    "addedAt": 1778622651679
+  },
+  {
+    "term": "Gestational diabetes",
+    "ipa": "/dʒeˈsteɪʃənəl ˌdaɪəˈbiːtiːz/",
+    "def": "Diabetes occurring during pregnancy.",
+    "geo": "გესტაციური დიაბეტი",
+    "addedAt": 1778622651678
   },
   {
     "term": "Glaucoma",
@@ -1071,6 +1197,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Hydrocephalus",
+    "ipa": "/ˌhaɪdrəˈsefələs/",
+    "def": "Excess CSF in brain ventricles.",
+    "geo": "ჰიდროცეფალია",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Hydronephrosis",
     "ipa": "/ˌhaɪdrəʊnɪˈfrəʊsɪs/",
     "def": "Kidney swelling from urine blockage.",
@@ -1083,6 +1216,13 @@
     "def": "High calcium level.",
     "geo": "ჰიპერკალცემია",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Hyperemesis gravidarum",
+    "ipa": "/ˌhaɪpərˈeməsɪs ˌɡrævɪˈdeərəm/",
+    "def": "Severe vomiting in pregnancy.",
+    "geo": "ორსულთა მძიმე ღებინება",
+    "addedAt": 1778622651678
   },
   {
     "term": "Hyperglycemia",
@@ -1253,6 +1393,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Intrauterine growth restriction",
+    "ipa": "/ˌɪntrəˈjuːtəraɪn ɡrəʊθ/",
+    "def": "Fetal growth below expected rate.",
+    "geo": "საშვილოსნოსშიდა ზრდის შეფერხება",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Iron deficiency anemia",
     "ipa": "/ˈaɪən/",
     "def": "Anemia from low iron.",
@@ -1286,6 +1433,13 @@
     "def": "Acidosis from ketones.",
     "geo": "კეტოაციდოზი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Klinefelter syndrome",
+    "ipa": "/ˈklaɪnfeltə ˈsɪndrəʊm/",
+    "def": "XXY chromosomal disorder in males.",
+    "geo": "კლაინფელტერის სინდრომი",
+    "addedAt": 1778622651678
   },
   {
     "term": "Lactic acidosis",
@@ -1351,6 +1505,20 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Marfan syndrome",
+    "ipa": "/ˈmɑːfæn ˈsɪndrəʊm/",
+    "def": "Connective tissue genetic disorder.",
+    "geo": "მარფანის სინდრომი",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Mastitis",
+    "ipa": "/mæˈstaɪtɪs/",
+    "def": "Breast tissue inflammation.",
+    "geo": "მასტიტი",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Melanoma",
     "ipa": "/ˌmeləˈnəʊmə/",
     "def": "Malignant melanocyte tumor.",
@@ -1363,6 +1531,20 @@
     "def": "Inflammation of meninges.",
     "geo": "მენინგიტი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Menopausal hormone therapy",
+    "ipa": "/ˌmenəˈpɔːzəl ˈhɔːməʊn ˈθerəpi/",
+    "def": "Hormones given to relieve menopause symptoms.",
+    "geo": "მენოპაუზის ჰორმონული თერაპია",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Menopause",
+    "ipa": "/ˈmenəpɔːz/",
+    "def": "Permanent cessation of menstruation.",
+    "geo": "მენოპაუზა",
+    "addedAt": 1778622651678
   },
   {
     "term": "Metastasis",
@@ -1435,6 +1617,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Neonatal jaundice",
+    "ipa": "/ˌniːəʊˈneɪtəl ˈdʒɔːndɪs/",
+    "def": "Jaundice in newborn.",
+    "geo": "ახალშობილის სიყვითლე",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Nephritic syndrome",
     "ipa": "/nɪˈfrɪtɪk/",
     "def": "Kidney inflammation with hematuria.",
@@ -1454,6 +1643,13 @@
     "def": "Proteinuria and edema syndrome.",
     "geo": "ნეფროზული სინდრომი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Neurofibromatosis",
+    "ipa": "/ˌnjʊərəʊˌfaɪbrəʊməˈtəʊsɪs/",
+    "def": "Genetic nerve tumor disorder.",
+    "geo": "ნეიროფიბრომატოზი",
+    "addedAt": 1778622651679
   },
   {
     "term": "Neuropathy",
@@ -1491,6 +1687,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Osteogenesis imperfecta",
+    "ipa": "/ˌɒstiəʊˈdʒenəsɪs ɪmˈpɜːfektə/",
+    "def": "Brittle bone genetic disease.",
+    "geo": "ოსტეოგენეზის იმპერფექტა",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Osteomalacia",
     "ipa": "/ˌɒstiəʊməˈleɪʃə/",
     "def": "Softening of bones.",
@@ -1517,6 +1720,13 @@
     "def": "Middle ear infection.",
     "geo": "შუა ყურის ანთება",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Ovarian cancer",
+    "ipa": "/əʊˈveəriən ˈkænsə/",
+    "def": "Malignancy of the ovary.",
+    "geo": "საკვერცხის კიბო",
+    "addedAt": 1778622651678
   },
   {
     "term": "Ovarian cyst",
@@ -1610,11 +1820,32 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Phenylketonuria",
+    "ipa": "/ˌfiːnaɪlˌkiːtəˈnjʊəriə/",
+    "def": "Inherited phenylalanine metabolism disorder.",
+    "geo": "ფენილკეტონურია",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Pheochromocytoma",
     "ipa": "/ˌfiːəʊˌkrəʊməsaɪˈtəʊmə/",
     "def": "Catecholamine-secreting tumor.",
     "geo": "ფეოქრომოციტომა",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Placenta previa",
+    "ipa": "/pləˈsentə ˈpriːviə/",
+    "def": "Placenta covering the cervical os.",
+    "geo": "პლაცენტა პრევია",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Placental abruption",
+    "ipa": "/pləˈsentəl əˈbrʌpʃən/",
+    "def": "Premature placental separation.",
+    "geo": "პლაცენტის აბრუფცია",
+    "addedAt": 1778622651678
   },
   {
     "term": "Pleural effusion",
@@ -1673,11 +1904,53 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Postpartum depression",
+    "ipa": "/ˌpəʊstˈpɑːtəm dɪˈpreʃən/",
+    "def": "Depression after childbirth.",
+    "geo": "მშობიარობის შემდგომი დეპრესია",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Postpartum hemorrhage",
+    "ipa": "/ˌpəʊstˈpɑːtəm ˈhemərɪdʒ/",
+    "def": "Excessive bleeding after delivery.",
+    "geo": "მშობიარობის შემდგომი სისხლდენა",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Preeclampsia",
+    "ipa": "/ˌpriːɪˈklæmpsiə/",
+    "def": "Hypertension with proteinuria in pregnancy.",
+    "geo": "პრეეკლამფსია",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Premature rupture of membranes",
+    "ipa": "/prɪˈmætʃə ˈrʌptʃə/",
+    "def": "Membrane rupture before labor onset.",
+    "geo": "სანაყოფე გარსების ნაადრევი გახეთქვა",
+    "addedAt": 1778622651678
+  },
+  {
+    "term": "Preterm labor",
+    "ipa": "/ˈpriːtɜːm ˈleɪbə/",
+    "def": "Labor before 37 weeks gestation.",
+    "geo": "ნაადრევი მშობიარობა",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Primary biliary cholangitis",
     "ipa": "/ˈpraɪməri ˈbɪliəri/",
     "def": "Autoimmune bile duct disease.",
     "geo": "პირველადი ბილიარული ქოლანგიტი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Prolactinoma",
+    "ipa": "/prəʊˌlæktɪˈnəʊmə/",
+    "def": "Prolactin-secreting pituitary tumor.",
+    "geo": "პროლაქტინომა",
+    "addedAt": 1778622651678
   },
   {
     "term": "Prostatitis",
@@ -1785,6 +2058,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Respiratory distress syndrome",
+    "ipa": "/rɪˈspɪrətəri dɪˈstres/",
+    "def": "Lung immaturity in premature infants.",
+    "geo": "რესპირაციული დისტრეს სინდრომი",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Respiratory failure",
     "ipa": "/rɪˈspɪrətəri/",
     "def": "Failure of gas exchange.",
@@ -1853,6 +2133,13 @@
     "def": "Sinus inflammation.",
     "geo": "სინუსიტი",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Spina bifida",
+    "ipa": "/ˈspaɪnə ˈbɪfɪdə/",
+    "def": "Neural tube defect of spine.",
+    "geo": "ხერხემლის გაპობა",
+    "addedAt": 1778622651679
   },
   {
     "term": "Spinal stenosis",
@@ -1932,6 +2219,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Tay-Sachs disease",
+    "ipa": "/teɪ sæks/",
+    "def": "Fatal ganglioside storage disorder.",
+    "geo": "ტეი-საქსის დაავადება",
+    "addedAt": 1778622651679
+  },
+  {
     "term": "Tendinitis",
     "ipa": "/ˌtendɪˈnaɪtɪs/",
     "def": "Tendon inflammation.",
@@ -2009,6 +2303,13 @@
     "addedAt": 1778621974340
   },
   {
+    "term": "Turner syndrome",
+    "ipa": "/ˈtɜːnə ˈsɪndrəʊm/",
+    "def": "Monosomy X in females.",
+    "geo": "ტერნერის სინდრომი",
+    "addedAt": 1778622651678
+  },
+  {
     "term": "Ulcer",
     "ipa": "/ˈʌlsə/",
     "def": "Open sore in tissue.",
@@ -2049,6 +2350,13 @@
     "def": "Hives.",
     "geo": "ჭინჭრის ციება",
     "addedAt": 1778621974340
+  },
+  {
+    "term": "Uterine fibroid",
+    "ipa": "/ˈjuːtərɪn ˈfaɪbrɔɪd/",
+    "def": "Benign uterine smooth muscle tumor.",
+    "geo": "საშვილოსნოს მიომა",
+    "addedAt": 1778622651678
   },
   {
     "term": "Uveitis",
